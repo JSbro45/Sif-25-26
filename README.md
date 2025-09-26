@@ -12,6 +12,11 @@ cíl:
 > ### -:
 > - nejistá systematika 
 > - 
+kdyby, tak jak:
+- grafika zkrz JS modul/knihovnu
+- několik AI-API
+- 
+
 
 .
 .
@@ -27,9 +32,16 @@ vytvořit aplikaci:
 >### -:
 > - minimální přidaná hodnota
 
+kdyby, tak:
+1. úvodní okno
+2. okno s vyhledávací lištou
+3. back-end zkrz AI-API
+4. okno s outputem
+5. link k spotify/youtube
+
 .
 .
 .
 
-> ### __Sidenote:__
+> ### ___Sidenote:___
 > *ETULP*
