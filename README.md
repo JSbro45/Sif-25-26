@@ -1,47 +1,26 @@
-# Projekty na Sif 25/26
+# Shrnutí projektu na seminář z informatiky 2025/26
+## Ultimátní mapa koncertů v ČR
 
-### Concept 1: **AI grapher**
-vytvořit aplikaci:
-    - s interaktivními grafikami (např. grafy, diagramy a myšlenkové mapy)
-    - využívající free API umělé inteligence (např. OpenAI, DeepSeek...)
-cíl: 
-    - vytvořit interaktivní a pohodlné prostředí pro uživatele AI
-> ### +: 
-> + 30-50% aplikace API umělé inteligence
-> + práce s grafikami, méně CSS
-> ### -:
-> - nejistá systematika 
-> - 
-kdyby, tak jak:
-- grafika zkrz JS modul/knihovnu
-- několik AI-API
-- 
+__Vypracují:__ Katarína Vislocká, Jean Samuel Brou
 
+__Cíl projektu:__ Vytvořit mapu, která by zaznamenávala všechny koncerty, které jsou v určitý den 
 
-.
-.
+__Materiály, které využijeme:__ 
+- nějaké API (Mapy cz, Mapbox)
+- oficiální stránky (budov, hudebníků - případně youtube kanál)
+- framework(nejspíš JS framework + React)
+
+__Vytvoříme to v:__ 
+ Frontend - HTML, CSS, JavaScript + React
+ Backend - 
+
+__Postup:__
 
 
-### Concept 2: **Dependent music streaming platform**
-vytvořit aplikaci:
-    - platforma propagující začátečnické hudebníky a jejich tvorbu
-    - využívající API streamovacích platform(např. spotify, iMusic, SoundCloud)
 
->### +:
-> - 50% aplikace externí databáze a API
->### -:
-> - minimální přidaná hodnota
+> __Funkce:__ 
+> - movement: přiblížit - oddálit, posouvání mapy v různých směrech
+> - jednotlivé bodíky na mapě (místo kde se koncert koná) - půjde na ně kliknout
+> - po rozkliknutí informace o koncertu (kdo hraje, čas, místo, jak dlouho hraje, odkazy na stránky)
 
-kdyby, tak:
-1. úvodní okno
-2. okno s vyhledávací lištou
-3. back-end zkrz AI-API
-4. okno s outputem
-5. link k spotify/youtube
 
-.
-.
-.
-
-> ### ___Sidenote:___
-> *ETULP*
