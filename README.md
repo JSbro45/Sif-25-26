@@ -13,8 +13,8 @@ __Materiály, které využijeme:__
 - Přehled koncertů, sálů atd. 
 
 __Vytvoříme to v:__ 
- > Frontend - HTML, CSS, JavaScript + React
- > Backend - 
+> Frontend - HTML, CSS, JavaScript + React
+> Backend - 
 
 __Postup:__
   1.
