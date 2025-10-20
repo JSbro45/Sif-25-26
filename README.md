@@ -28,3 +28,4 @@ __Funkce:__
 > - neustálá aktualizace dat 
 > (- hledání místa - vyhledá konkrétní sál na mapě)
 
+https://www.youtube.com/watch?v=c7ptpvp1CYw
