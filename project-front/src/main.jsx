@@ -4,10 +4,8 @@ import './index.css'
 import Map from './App.jsx'
 
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Map />
   </StrictMode>,
 )
-
