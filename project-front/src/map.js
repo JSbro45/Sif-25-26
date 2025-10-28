@@ -1,5 +1,5 @@
 
-const API_KEY = 'eyJpIjoyNTcsImMiOjE2Njc0ODU2MjN9.c_UlvdpHGTI_Jb-TNMYlDYuIkCLJaUpi911RdlwPsAY';
+const API_KEYs = ['9DkBdKq2zLtbtPX8ozoHjiakIoOeV6gjxjbOdk0cEhk','lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78']
 
 const map = L.map('map').setView([50.725, 15.603], 15);
 
