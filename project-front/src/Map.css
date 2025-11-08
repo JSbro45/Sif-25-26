@@ -33,15 +33,13 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
 
 .read-the-docs {
   color: #888;
 }
 
 .leaflet-container{
-  width: 200em;
-  height: 150em;
+  width: 120em;
+  height: 80em;
 }
+
