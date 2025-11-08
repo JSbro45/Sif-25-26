@@ -10,9 +10,6 @@ export function LMarker(pos,evt,email) {
                     <li> <span className="event"> 
                             <b className="n"> event: </b> {evt} </span> 
                     </li>
-                    <li> <span className="email">
-                            <b className="n"> email: </b> {email} </span> 
-                    </li>
                 </ul>
             </Popup>
         </Marker>

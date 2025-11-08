@@ -10,7 +10,7 @@ constructor(){
         }
     this.markers = [
         {coords:[50,15], event:'rockfest', email:'joe.shmoe@gmail.com'},
-        {coords:[54.612,12.48], event:'jazzfest', email:'matt.summers@gmail.com'},
+        {coords:[49.612,14.48], event:'jazzfest', email:'matt.summers@gmail.com'},
         {coords:[49.24,15.701], event:'rockfest2', email:'joe.shmoe@gmail.com'}
         ]
     }
