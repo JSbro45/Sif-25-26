@@ -15,7 +15,7 @@ export default function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {mapAtt.markers.map((mark, key) => (
-        <LMarker key={key} pos={mark.coords} evt={mark.event} email={mark.email} />
+        <LMarker key={key} pos={mark.coords} evt={mark.event} />
       ))}
     </MapContainer>
   );

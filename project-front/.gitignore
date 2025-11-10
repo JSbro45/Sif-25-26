@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules/*
 !node_modules/react-leaflet
+!node_modules/@types/leaflet
 dist
 dist-ssr
 *.local
