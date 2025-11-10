@@ -2,7 +2,7 @@ import { Marker, Popup } from "react-leaflet";
 //import { MapAttributes } from "./map-attrib";
 import '../Map.css'
 
-export function LMarker(pos,evt,email) {
+export function LMarker({pos,evt}: {pos: [number,number], evt: string}) {
     return (
         <Marker position={pos}>
             <Popup>
