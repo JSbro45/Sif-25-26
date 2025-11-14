@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalFest - Login</title>
-    <style>
+    <title>LocalFest - Sign in </title>
+      <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -14,7 +14,7 @@
             margin: 0;
             background: linear-gradient(135deg, #165810 0%, #1234cf 100%);
         }
-        .login-container {
+        .signin-container {
             background: white;
             padding: 40px;
             border-radius: 8px;
@@ -69,18 +69,30 @@
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Přihlásit se <br> jako pořadatel</h1>
+    <div class="signin-container">
+        <h1>Zaregistrovat se <br> jako pořadatel</h1>
         <form>
+            <div class="form-group">
+                <label for="username">Jméno/Název:</label>
+                <input type="username" id="username" name="username" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
+                <label for="phone-number">Tel. číslo:</label>
+                <input type="phone-number" id="phone-number" name="phone-number" required>
+            </div>
+            <div class="form-group">
                 <label for="password">Heslo:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Přihlásit se</button>
+            <div class="form-group">
+                <label for="socialnisite">Odkaz na stránky/sociální sítě:</label>
+                <input type="socialnisite" id="socialnisite" name="socialnisite" required>
+            </div>
+            <button type="submit">Zaregistrovat se</button>
         </form>
     </div>
 

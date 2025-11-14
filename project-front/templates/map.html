@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalFest map</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script href="/project-front/src/components/Map.jsx">
+
+    </script>
+    <script>
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import Map from '/project-front/src/components/Map.jsx';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            ReactDOM.render(
+                <Map />,
+                document.getElementById('map')
+            );
+        });
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
