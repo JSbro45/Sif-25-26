@@ -1,12 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import Map from './components/Map.jsx'
+import './styles/main.css'
 
-console.log(Map)
+import HomePage from './components/page/home.jsx'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-      <Map />
+      <HomePage />
   </StrictMode>
 )
-console.log(Map().props);
+
