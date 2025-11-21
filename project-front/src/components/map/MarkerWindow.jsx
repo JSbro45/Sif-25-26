@@ -1,14 +1,16 @@
 import { Marker, Popup } from "react-leaflet";
 //import { MapAttributes } from "./map-attrib";
-import '../Map.css'
+import '../styles/map.css'
 
-export function LMarker(pos,evt,email) {
+export default function MarkerWindow({pos,evt}) {
     return (
         <Marker position={pos}>
             <Popup>
                 <ul className="event-thumbnail">
-                    <li> <span className="event"> 
-                            <b className="n"> event: </b> {evt} </span> 
+                    <li> 
+                        <span className="event"> 
+                            <b className="n"> event: </b> { evt } 
+                        </span> 
                     </li>
                 </ul>
             </Popup>
