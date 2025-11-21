@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Plus bar</title>
+    <style>
+        :root{
+            --accent:#102157;
+            --bg:#fff;
+            --shadow: 0 6px 18px rgba(37,99,235,0.14);
+            --radius:12px;
+        }
+        body{
+            margin:0;
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+            background:#f7f9fc;
+        }
+
+        .dropdown{
+            position:relative;
+            display:inline-block;
+        }
+
+        .round-btn{
+            width:56px;
+            height:56px;
+            border-radius:50%;
+            border:0;
+            background:var(--accent);
+            color:#102157;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            box-shadow: var(--shadow);
+            font-weight:600;
+            font-size:18px;
+            transition:transform .12s ease;
+        }
+        .round-btn:active{ transform:scale(.98); }
+
+        .menu{
+            position:absolute;
+            right:0;
+            top: calc(100% + 10px);
+            background:var(--bg);
+            border-radius:var(--radius);
+            box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+            min-width:180px;
+            padding:6px;
+            transform-origin:top right;
+            transform: translateY(-8px) scale(.98);
+            opacity:0;
+            pointer-events:none;
+            transition:opacity .18s ease, transform .18s ease;
+            z-index:40;
+        }
+        .menu.show{
+            transform: translateY(0) scale(1);
+            opacity:1;
+            pointer-events:auto;
+        }
+
+        .menu a{
+            display:block;
+            padding:10px 14px;
+            color:#0f172a;
+            text-decoration:none;
+            border-radius:8px;
+            font-size:14px;
+        }
+        .menu a:hover{
+            background:#f1f5f9;
+        }
+
+        /* small caret icon */
+        .caret{
+            width:0; height:0;
+            border-left:6px solid transparent;
+            border-right:6px solid transparent;
+            border-bottom:8px solid var(--bg);
+            position:absolute;
+            right:20px;
+            top:-6px;
+            filter:drop-shadow(0 1px 0 rgba(0,0,0,0.03));
+            display:none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button class="round-btn" id="ddToggle" aria-expanded="false" aria-controls="ddMenu" title="Open menu" style="font-size: xx-large;color: whitesmoke;">
+            +
+        </button>
+
+        <div class="menu" id="ddMenu" role="menu" aria-labelledby="ddToggle">
+            <a href="add_pin_form.html" role="menuitem">Přidat</a>
+            <a href="#" role="menuitem">Váš účet</a>
+            <a href="#" role="menuitem">O nás</a>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const btn = document.getElementById('ddToggle');
+            const menu = document.getElementById('ddMenu');
+
+            function open(){
+                menu.classList.add('show');
+                btn.setAttribute('aria-expanded','true');
+            }
+            function close(){
+                menu.classList.remove('show');
+                btn.setAttribute('aria-expanded','false');
+            }
+            function toggle(){
+                menu.classList.contains('show') ? close() : open();
+            }
+
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                toggle();
+            });
+
+            // close when clicking outside
+            document.addEventListener('click', function(e){
+                if (!menu.contains(e.target) && !btn.contains(e.target)) close();
+            });
+
+            // close with Escape
+            document.addEventListener('keydown', function(e){
+                if (e.key === 'Escape') close();
+            });
+
+            // optional: close when a menu item is activated (simulate navigation)
+            menu.addEventListener('click', function(e){
+                const target = e.target.closest('a');
+                if (target) close();
+            });
+        })();
+    </script>
+</body>
+</html>
