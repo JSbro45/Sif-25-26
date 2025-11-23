@@ -31,7 +31,7 @@
             height:56px;
             border-radius:50%;
             border:0;
-            background:var(--accent);
+            background:#102157;
             color:#102157;
             display:flex;
             align-items:center;
@@ -48,7 +48,7 @@
             position:absolute;
             right:0;
             top: calc(100% + 10px);
-            background:var(--bg);
+            background-color:#d4ecff;
             border-radius:var(--radius);
             box-shadow: 0 6px 18px rgba(15,23,42,0.12);
             min-width:180px;
@@ -59,6 +59,9 @@
             pointer-events:none;
             transition:opacity .18s ease, transform .18s ease;
             z-index:40;
+            border: #102157 2px solid;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
         }
         .menu.show{
             transform: translateY(0) scale(1);
@@ -69,13 +72,14 @@
         .menu a{
             display:block;
             padding:10px 14px;
-            color:#0f172a;
+            color:#102157;
             text-decoration:none;
             border-radius:8px;
-            font-size:14px;
+            font-size: 20px;
         }
         .menu a:hover{
-            background:#f1f5f9;
+            background:#75a0c9;
+            color: #d4ecff;
         }
 
         /* small caret icon */
@@ -94,7 +98,7 @@
 </head>
 <body>
     <div class="dropdown">
-        <button class="round-btn" id="ddToggle" aria-expanded="false" aria-controls="ddMenu" title="Open menu" style="font-size: xx-large;color: whitesmoke;">
+        <button class="round-btn" id="ddToggle" aria-expanded="false" aria-controls="ddMenu" title="Open menu" style="font-size: xx-large; color:#d4ecff;">
             +
         </button>
 
