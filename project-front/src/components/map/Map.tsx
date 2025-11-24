@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { MapContainer,TileLayer, Marker, Popup} from 'react-leaflet' 
-import { MarkerWindow } from './MarkerWindow'
+import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
-import { MapAttributes } from '../map-attrib.js'
-import './styles/map.css'
+import { MapAttributes } from '../../map-attrib'
+import '../../styles/map.css'
+
 
 export default function Map() {
   //const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'

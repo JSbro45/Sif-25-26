@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import {SearchBar} from './SearchBar.jsx'
+import SearchBar from './SearchBar'
+
 
 export default function Header() {
     return (
         <header>
             <div id="logo_header">
                 <img> src="/static/logo.png" alt="LocalFest logo" style="height:40px;width:40px;object-fit:contain;" </img>
-                <a href="/" style="text-decoration:none;color:#333;font-weight:700;font-size:1.25rem;">
+                <a href="/">
                     <h1>LocalFest.cz</h1>
                 </a>
             </div>
