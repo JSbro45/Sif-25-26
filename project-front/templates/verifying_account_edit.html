@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Verify Your Account</title>
+    <style>
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f6f8fa; color:#111; padding:32px; }
+        .card { max-width:480px; margin:0 auto; background:#fff; border-radius:8px; padding:20px; box-shadow:0 6px 18px rgba(20,20,20,0.06); }
+        h1 { margin:0 0 8px; font-size:20px; }
+        p.lead { margin:0 0 18px; color:#555; font-size:13px; }
+        .switch { display:flex; gap:8px; margin-bottom:14px; }
+        .switch button { flex:1; padding:8px 12px; border:1px solid #ddd; background:#fafafa; cursor:pointer; border-radius:6px; }
+        .switch button.active { background:#2563eb; color:#fff; border-color:transparent; }
+        label { display:block; font-size:13px; margin-bottom:6px; }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
+            width:100%; padding:10px 12px; border:1px solid #dfe3e8; border-radius:6px; box-sizing:border-box; margin-bottom:10px;
+        }
+        .row { display:flex; gap:8px; }
+        .btn { padding:10px 12px; border-radius:6px; border:0; cursor:pointer; background:#2563eb; color:white; }
+        .btn.secondary { background:#6b7280; }
+        .muted { color:#666; font-size:13px; margin-top:8px; }
+        .notice { margin-top:10px; font-size:13px; color:#065f46; background:#ecfdf5; padding:8px 10px; border-radius:6px; display:none; }
+        .error { color:#7f1d1d; background:#fff1f2; padding:8px 10px; border-radius:6px; display:none; margin-top:10px; }
+        form { margin-top:6px; }
+        small { color:#666; }
+    </style>
+</head>
+<body>
+    <main class="card" role="main">
+        <h1>Verify your account</h1>
+        <p class="lead">Choose to verify by email or phone. You will receive a one-time code to confirm your identity.</p>
+
+        <div class="switch" role="tablist" aria-label="Verification method">
+            <button id="btn-email" class="active" type="button" aria-pressed="true">Email</button>
+            <button id="btn-phone" type="button" aria-pressed="false">Phone</button>
+        </div>
+
+        <!-- Email panel -->
+        <section id="panel-email" aria-hidden="false">
+            <form id="send-email-form" onsubmit="return false;">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
+                <div class="row">
+                    <button id="send-email" class="btn" type="button">Send verification code</button>
+                    <button id="clear-email" class="btn secondary" type="button">Clear</button>
+                </div>
+            </form>
+
+            <form id="verify-email-form" onsubmit="return false;" style="margin-top:12px;">
+                <label for="email-code">Enter code (email)</label>
+                <input id="email-code" name="code" type="text" inputmode="numeric" maxlength="8" placeholder="123456" />
+                <div class="row">
+                    <button id="verify-email" class="btn" type="button">Verify email</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Phone panel -->
+        <section id="panel-phone" aria-hidden="true" style="display:none;">
+            <form id="send-phone-form" onsubmit="return false;">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" placeholder="+1 555 555 5555" required autocomplete="tel" />
+                <small>Include country code (e.g. +1).</small>
+                <div class="row" style="margin-top:8px;">
+                    <button id="send-phone" class="btn" type="button">Send verification code</button>
+                    <button id="clear-phone" class="btn secondary" type="button">Clear</button>
+                </div>
+            </form>
+
+            <form id="verify-phone-form" onsubmit="return false;" style="margin-top:12px;">
+                <label for="phone-code">Enter code (SMS)</label>
+                <input id="phone-code" name="code" type="text" inputmode="numeric" maxlength="8" placeholder="123456" />
+                <div class="row">
+                    <button id="verify-phone" class="btn" type="button">Verify phone</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="notice" class="notice" role="status" aria-live="polite"></div>
+        <div id="error" class="error" role="alert"></div>
+
+        <p class="muted">If you prefer, you can contact support to assist you with verification.</p>
+    </main>
+
+    <script>
+        // Basic UI switching and client-side behavior.
+        // Replace endpoints (/send-code, /verify-code) with your server endpoints.
+        const btnEmail = document.getElementById('btn-email');
+        const btnPhone = document.getElementById('btn-phone');
+        const panelEmail = document.getElementById('panel-email');
+        const panelPhone = document.getElementById('panel-phone');
+        const notice = document.getElementById('notice');
+        const error = document.getElementById('error');
+
+        function showNotice(msg) { error.style.display='none'; notice.textContent = msg; notice.style.display = msg ? 'block' : 'none'; }
+        function showError(msg) { notice.style.display='none'; error.textContent = msg; error.style.display = msg ? 'block' : 'none'; }
+
+        btnEmail.addEventListener('click', () => {
+            btnEmail.classList.add('active'); btnPhone.classList.remove('active');
+            btnEmail.setAttribute('aria-pressed','true'); btnPhone.setAttribute('aria-pressed','false');
+            panelEmail.style.display='block'; panelEmail.setAttribute('aria-hidden','false');
+            panelPhone.style.display='none'; panelPhone.setAttribute('aria-hidden','true');
+            showNotice('');
+            showError('');
+        });
+        btnPhone.addEventListener('click', () => {
+            btnPhone.classList.add('active'); btnEmail.classList.remove('active');
+            btnPhone.setAttribute('aria-pressed','true'); btnEmail.setAttribute('aria-pressed','false');
+            panelPhone.style.display='block'; panelPhone.setAttribute('aria-hidden','false');
+            panelEmail.style.display='none'; panelEmail.setAttribute('aria-hidden','true');
+            showNotice('');
+            showError('');
+        });
+
+        // Helper to POST JSON
+        async function postJSON(url, data) {
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data),
+            });
+            if (!res.ok) {
+                const text = await res.text().catch(()=>null);
+                throw new Error(text || res.statusText || 'Request failed');
+            }
+            return res.json().catch(()=>null);
+        }
+
+        // Email send / verify
+        document.getElementById('send-email').addEventListener('click', async () => {
+            const email = document.getElementById('email').value.trim();
+            if (!email) return showError('Enter an email address.');
+            showNotice('Sending code...'); showError('');
+            try {
+                // Server: send code to email and return success.
+                await postJSON('/send-code', { method: 'email', email });
+                showNotice('Verification code sent to your email.');
+            } catch (err) {
+                showError('Unable to send code. ' + (err.message || ''));
+            }
+        });
+
+        document.getElementById('verify-email').addEventListener('click', async () => {
+            const email = document.getElementById('email').value.trim();
+            const code = document.getElementById('email-code').value.trim();
+            if (!email || !code) return showError('Provide email and code.');
+            showNotice('Verifying...'); showError('');
+            try {
+                // Server: verify code for given email.
+                await postJSON('/verify-code', { method: 'email', email, code });
+                showNotice('Email verified. You are now verified.');
+            } catch (err) {
+                showError('Verification failed. ' + (err.message || ''));
+            }
+        });
+
+        // Phone send / verify
+        document.getElementById('send-phone').addEventListener('click', async () => {
+            const phone = document.getElementById('phone').value.trim();
+            if (!phone) return showError('Enter a phone number with country code.');
+            showNotice('Sending code...'); showError('');
+            try {
+                await postJSON('/send-code', { method: 'phone', phone });
+                showNotice('Verification code sent via SMS.');
+            } catch (err) {
+                showError('Unable to send SMS. ' + (err.message || ''));
+            }
+        });
+
+        document.getElementById('verify-phone').addEventListener('click', async () => {
+            const phone = document.getElementById('phone').value.trim();
+            const code = document.getElementById('phone-code').value.trim();
+            if (!phone || !code) return showError('Provide phone and code.');
+            showNotice('Verifying...'); showError('');
+            try {
+                await postJSON('/verify-code', { method: 'phone', phone, code });
+                showNotice('Phone verified. You are now verified.');
+            } catch (err) {
+                showError('Verification failed. ' + (err.message || ''));
+            }
+        });
+
+        // Clear buttons
+        document.getElementById('clear-email').addEventListener('click', () => {
+            document.getElementById('email').value=''; document.getElementById('email-code').value=''; showNotice(''); showError('');
+        });
+        document.getElementById('clear-phone').addEventListener('click', () => {
+            document.getElementById('phone').value=''; document.getElementById('phone-code').value=''; showNotice(''); showError('');
+        });
+    </script>
+</body>
+</html>
