@@ -1,0 +1,4 @@
+Sem klidně piš random poznámky k templatum...
+
+Co je potř. ještě změnit:
+-> date_choosing html 
