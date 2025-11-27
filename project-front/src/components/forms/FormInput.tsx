@@ -1,8 +1,10 @@
+import { HTMLInputTypeAttribute } from "react";
 
-export function FormInputBox({label, type, id, required}: {label: string, type: string, id: string, required: boolean}) {
+
+export function FormInputBox({label, type, id, required}: {label: string, type: HTMLInputTypeAttribute, id: string, required: boolean}) {
     return (
         <div className="form-group">
-            <label >{label}{ required? (<a ><b>*</b></a>) : (null) }</label>
+            <label > { label } { required? ( <a><b> * </b></a> ) : ( null ) } </label> {/* if required => add '*', else => add nothing */}
             <input type={type} id={id} name={id} required={required}/>
         </div>
     )

@@ -6,7 +6,7 @@ import { MapAttributes } from '../../map-attrib'
 import '../../styles/map.css'
 
 
-export default function Map() {
+export default function MapModule() {
   //const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   const mapAtt = new MapAttributes()
   return (

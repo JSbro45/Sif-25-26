@@ -1,14 +1,20 @@
-import SignUpForm from "./signup";
+import SignUpForm from "./Signup";
 import LogInForm from "./Login";
+import AddEventForm from "./AddEvent";
 import '../../styles/forms.css'
 
 
-export default function AuthFormPage() {
+const forms = {
+        "signup": <SignUpForm />,
+        "login": <LogInForm />,
+        "addevent": <AddEventForm />
+    }
+type FormType = keyof typeof forms;
+
+export default function Form({type}: {type: FormType}) {
     return (
         <main>
-            <SignUpForm/>
-            <LogInForm/>
-
+             { forms[type] } 
         </main>
     )
 }
