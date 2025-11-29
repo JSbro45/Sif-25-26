@@ -15,7 +15,7 @@
         }
         .date-container {
             background: white;
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
@@ -25,40 +25,21 @@
             font-weight: 500;
             color: #333;
         }
-        select {
-            width: 200px;
-            padding: 0.75rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+        input[type="date"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
             font-size: 1rem;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-        select:hover {
-            border-color: #999;
-        }
-        select:focus {
-            outline: none;
-            border-color:lightsteelblue;
         }
     </style>
 </head>
 <body>
-        <select id="date-select">
-            <option value="">Vyber datum</option>
-        </select>
-    <script>
-        const select = document.getElementById('date-select');
-        const today = new Date();
-        for (let i = 0; i < 175; i++) {
-            const date = new Date(today);
-            date.setDate(today.getDate() + i);
-            const option = document.createElement('option');
-            option.value = date.toISOString().split('T')[0];
-            option.textContent = date.toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric'});
-            select.appendChild(option);
-        }
-    </script>
+    <div class="date-container">
+        <form>
+            <label for="date-select"><b>Datum:</b></label>
+            <input type="date" id="date-select" name="date-select" />
+        </form>
+    </div>
 </body>
  
 </html>
