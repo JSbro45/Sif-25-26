@@ -15,9 +15,8 @@ export default function AddEventForm() {
                     <button type="submit"> Přidat </button>
                 </form>
             </section>
-            <section>
-                <MapModule />
-            </section>
+            
+                <MapModule map_type='embed' />
         </div>
     )
 }

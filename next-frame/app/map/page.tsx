@@ -1,5 +1,5 @@
 import MapModule from './components/MapModule'
-import '../../../styles/map.css'
+import '../styles/map.css'
 
 
 export default function MapPage() {

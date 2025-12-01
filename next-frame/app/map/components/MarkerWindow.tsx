@@ -1,5 +1,5 @@
 import { Marker, Popup } from "react-leaflet";
-import '../../styles/map.css'
+//import '../../styles/map.css'
 
 
 export default function MarkerWindow({pos,evt}: {pos: [number,number], evt: string}) {
