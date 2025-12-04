@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Verify Your Account</title>
     <style>
-        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f6f8fa; color:#111; padding:32px; }
-        .card { max-width:480px; margin:0 auto; background:#fff; border-radius:8px; padding:20px; box-shadow:0 6px 18px rgba(20,20,20,0.06); }
+        body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f6f8fa; color:#111; padding:250px; }
+        .card { max-width:480px; margin:0 auto; background:#fff; border-radius:8px; padding: 20px; box-shadow:0 6px 18px rgba(20,20,20,0.06); }
         h1 { margin:0 0 8px; font-size:20px; }
         p.lead { margin:0 0 18px; color:#555; font-size:13px; }
         .switch { display:flex; gap:8px; margin-bottom:14px; }
         .switch button { flex:1; padding:8px 12px; border:1px solid #ddd; background:#fafafa; cursor:pointer; border-radius:6px; }
-        .switch button.active { background:#2563eb; color:#fff; border-color:transparent; }
+        .switch button.active { background:#75a0c9; color:#102157; border-color:transparent; }
         label { display:block; font-size:13px; margin-bottom:6px; }
         input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
             width:100%; padding:10px 12px; border:1px solid #dfe3e8; border-radius:6px; box-sizing:border-box; margin-bottom:10px;
         }
         .row { display:flex; gap:8px; }
-        .btn { padding:10px 12px; border-radius:6px; border:0; cursor:pointer; background:#2563eb; color:white; }
+        .btn { padding:10px 12px; border-radius:6px; border:0; cursor:pointer; background:#102157; color:white; }
         .btn.secondary { background:#6b7280; }
         .muted { color:#666; font-size:13px; margin-top:8px; }
         .notice { margin-top:10px; font-size:13px; color:#065f46; background:#ecfdf5; padding:8px 10px; border-radius:6px; display:none; }
@@ -28,30 +28,30 @@
 </head>
 <body>
     <main class="card" role="main">
-        <h1>Verify your account</h1>
-        <p class="lead">Choose to verify by email or phone. You will receive a one-time code to confirm your identity.</p>
+        <h1>Ověř svůj účet</h1>
+        <p class="lead">Vyberte, zda chcete ověřit pomocí emailu nebo telefonu. Obdržíte jednorázový kód pro potvrzení své identity.</p>
 
         <div class="switch" role="tablist" aria-label="Verification method">
             <button id="btn-email" class="active" type="button" aria-pressed="true">Email</button>
-            <button id="btn-phone" type="button" aria-pressed="false">Phone</button>
+            <button id="btn-phone" type="button" aria-pressed="false">Telefon</button>
         </div>
 
         <!-- Email panel -->
         <section id="panel-email" aria-hidden="false">
             <form id="send-email-form" onsubmit="return false;">
-                <label for="email">Email address</label>
+                <label for="email">Email adresa</label>
                 <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email" />
                 <div class="row">
-                    <button id="send-email" class="btn" type="button">Send verification code</button>
-                    <button id="clear-email" class="btn secondary" type="button">Clear</button>
+                    <button id="send-email" class="btn" type="button">Odeslat ověřovací kód</button>
+                    <button id="clear-email" class="btn secondary" type="button">Vymazat</button>
                 </div>
             </form>
 
             <form id="verify-email-form" onsubmit="return false;" style="margin-top:12px;">
-                <label for="email-code">Enter code (email)</label>
+                <label for="email-code">Zadejte kód (email)</label>
                 <input id="email-code" name="code" type="text" inputmode="numeric" maxlength="8" placeholder="123456" />
                 <div class="row">
-                    <button id="verify-email" class="btn" type="button">Verify email</button>
+                    <button id="verify-email" class="btn" type="button">Ověřit email</button>
                 </div>
             </form>
         </section>
@@ -59,20 +59,20 @@
         <!-- Phone panel -->
         <section id="panel-phone" aria-hidden="true" style="display:none;">
             <form id="send-phone-form" onsubmit="return false;">
-                <label for="phone">Phone number</label>
+                <label for="phone">Telefonní číslo</label>
                 <input id="phone" name="phone" type="tel" placeholder="+1 555 555 5555" required autocomplete="tel" />
-                <small>Include country code (e.g. +1).</small>
+                <small>Zahrňte kód země (např. +1).</small>
                 <div class="row" style="margin-top:8px;">
-                    <button id="send-phone" class="btn" type="button">Send verification code</button>
-                    <button id="clear-phone" class="btn secondary" type="button">Clear</button>
+                    <button id="send-phone" class="btn" type="button">Odeslat ověřovací kód</button>
+                    <button id="clear-phone" class="btn secondary" type="button">Vymazat</button>
                 </div>
             </form>
 
             <form id="verify-phone-form" onsubmit="return false;" style="margin-top:12px;">
-                <label for="phone-code">Enter code (SMS)</label>
+                <label for="phone-code">Zadejte kód (SMS)</label>
                 <input id="phone-code" name="code" type="text" inputmode="numeric" maxlength="8" placeholder="123456" />
                 <div class="row">
-                    <button id="verify-phone" class="btn" type="button">Verify phone</button>
+                    <button id="verify-phone" class="btn" type="button">Ověřit telefon</button>
                 </div>
             </form>
         </section>
@@ -80,7 +80,7 @@
         <div id="notice" class="notice" role="status" aria-live="polite"></div>
         <div id="error" class="error" role="alert"></div>
 
-        <p class="muted">If you prefer, you can contact support to assist you with verification.</p>
+        <p class="muted">Pokud chcete, můžete kontaktovat podporu, která vám pomůže s ověřením.</p>
     </main>
 
     <script>

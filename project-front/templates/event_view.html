@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>O koncertu</title>
+    <style>
+        :root {
+            --bg: #f6f8fa;
+            --card: #ffffff;
+            --border: #e6e9ee;
+            --muted: #6b7280;
+            --radius: 10px;
+            --max-width: 720px;
+            --padding: 20px;
+        }
+
+        html,body {
+            height: 100%;
+            margin: 0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: #111827;
+        }
+
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .text-container {
+            width: 100%;
+            max-width: var(--max-width);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: var(--padding);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        }
+
+        .text-container h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .text-container .meta {
+            margin: 0 0 12px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .text-container p {
+            margin: 0 0 12px 0;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <article class="text-container" role="region" aria-label="Event description">
+            <h1>Název koncertu</h1>
+            <img src="path/to/image.jpg" alt="Koncert_Foto" style="max-width:100%; height:auto; margin-bottom:12px;" />
+            <p class="meta">Jméno pořadatele</p>
+
+            <div class="event-info">
+                <label for="text">Odkaz na interpreta:</label>
+            </div>
+             <div class="event-info">
+                <label for="text">Žánr</label>
+            </div>
+             <div class="event-info">
+                <label for="text">Datum konání:</label>
+            </div>
+             <div class="event-info">
+                <label for="text">Čas konání:</label>
+            </div>
+            <div class="event-info">
+                <label for="text">Vstupné:</label>
+            </div>
+            <div class="event-info">
+                <label for="text">Web pro koupi vstupenek:</label>
+            </div>
+            <div class="event-info">
+                <label for="text">Název místa konání:</label>
+            </div>
+            <div class="event-info">
+                <label for="text">Adresa místa konání:</label>
+            </div>
+            <div class="event-info">
+                <label for="text">Web místa konání:</label>
+            </div>
+        </article>
+    </div>
+</body>
+</html>
