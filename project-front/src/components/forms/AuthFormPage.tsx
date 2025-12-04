@@ -1,4 +1,4 @@
-import SignUpForm from "./signup";
+import SignUpForm from "./Signup";
 import LogInForm from "./Login";
 import '../../styles/forms.css'
 
