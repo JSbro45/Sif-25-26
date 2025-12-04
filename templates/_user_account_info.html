@@ -1,0 +1,117 @@
+<!-- /c:/Users/katka/Documents/Sif-25-26/project-front/templates/user_account_info.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User Profile</title>
+    <style>
+        :root { 
+            --accent:#080d3a;
+            --muted:#6b7280;
+            --card:#fff;
+            --bg:#f3f4f6;
+         }
+        *{ 
+            box-sizing:border-box
+        } 
+        body {font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+            color:#111;
+            background:var(--bg);  
+            margin:0;
+            padding:32px
+        }
+        .container {max-width:900px;
+            margin:0 auto
+        }
+        .card {background:var(--card);
+            border-radius:12px;
+            padding:20px;
+            box-shadow:0 1px 2px rgba(0,0,0,0.05);
+            margin-bottom:16px;
+        }
+        .profile-header {display:flex;
+            gap:20px;
+        }
+        .avatar {width:96px;
+            height:96px;
+            border-radius:50%;
+            object-fit:cover;
+            border:2px solid #e6e7eb;
+        }
+        .name {margin:0
+        }
+        .handle {color:var(--muted);
+            margin-top:6px
+        }
+        .meta {color:var(--muted);
+            font-size:0.95rem;
+        }
+        .actions {margin-top:12px;
+            display:flex;
+            gap:8px;
+            flex-wrap:wrap;
+        }
+        .btn {padding:8px 12px;
+            border-radius:8px;
+            border:1px solid transparent;
+            background:var(--accent);
+            color:#fff;
+            text-decoration:none;
+            font-weight:600;
+        }
+        .btn.secondary {background:#fff;
+            border-color:#e5e7eb;
+            color:#111;
+        }
+        .grid  {grid-template-columns:1fr 320px;
+            gap:16px;
+            margin-top:16px;
+        }
+        .info dt {font-weight:700
+        }
+        .info dd {margin:0 0 12px 0;
+            color:var(--muted); 
+        }
+        .bio {white-space:pre-wrap;
+            color:#111; 
+        }
+        .activities ul {list-style:none;padding:0;margin:0}
+        .activities li {padding:10px;border-radius:8px;border:1px solid #f1f5f9;margin-bottom:8px;background:#fff}
+        @media (max-width:720px){ .grid{grid-template-columns:1fr} .avatar{width:76px;height:76px} }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile card -->
+        <section class="card profile-header" aria-labelledby="profile-name">
+            <img class="avatar" src="insertpng" alt="Pfp uživatele" />
+            <div>
+                <h1 id="profile-name" class="name">Název/Jméno</h1>
+                <div class="handle">...</div>
+                <div class="meta">...</div>
+                <div class="actions">
+                    <a class="btn" href="/account/edit">Editovat</a>
+                    <a class="btn secondary" href="/logout">Odhlásit se</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid">
+            <!-- bio -->
+            <div>
+                <section class="card">
+                    <h2 style="margin-top:0">O pořadateli</h2>
+                    <p class="bio">O pořadateli....</p>
+                </section>
+            </div>
+             <div>
+                <section class="card">
+                    <h2 style="margin-top:0">Změnit údaje</h2>
+                    <button type="submit" class="btn" aria-pressed="true" onclick="location.href='user_changing_signup.html'">Změnit zde</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
