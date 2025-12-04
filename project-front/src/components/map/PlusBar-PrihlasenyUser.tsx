@@ -1,4 +1,3 @@
-import '../../javascript/plusBar.js/*'
 
 export default function PlusBarPU() {
     return (
