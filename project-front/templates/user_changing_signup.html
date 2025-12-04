@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalFest - Login</title>
-    <style>
+    <title>LocalFest - Sign in </title>
+      <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -14,7 +14,7 @@
             margin: 0;
             background: linear-gradient(135deg, #165810 0%, #1234cf 100%);
         }
-        .login-container {
+        .signin-container {
             background: white;
             padding: 40px;
             border-radius: 8px;
@@ -22,7 +22,7 @@
             width: 100%;
             max-width: 400px;
         }
-        h1 {
+        h1, p {
             text-align: center;
             color: #080d3a;
             margin-bottom: 30px;
@@ -69,24 +69,27 @@
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Přihlásit se <br> jako pořadatel</h1>
-        <p style="color: #071347; font-weight: bold; text-align: center;">Nemáte účet? <a href="signin_form.html">Zaregistrovat se</a></p>
+    <div class="signin-container">
+        <h1>Změnit údaje</h1>
+        <p>Přepište své údaje níže a potvrďte změny:</p>
         <form>
             <div class="form-group">
                 <label for="email">Email:<a style="color: darkred;"><b>*</b></a></label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Heslo:<a style="color: darkred;"><b>*</b></a></label>
-                <input type="password" id="password" name="password" required>
+                <label for="phone-number">Tel. číslo:<a style="color: darkred;"><b>*</b></a></label>
+                <input type="tel" id="phone-number" name="phone-number" required>
             </div>
-            <button type="submit">Přihlásit se</button>
+            <div class="form-group" id="passwrd">
+                <label for="password">Heslo:<a style="color: darkred;"><b>*</b></a></label>
+                <input type="password" id="password" name="password" minlength="8" required>
+            </div>
+            <button type="submit">Potvrdit změny</button>
         </form>
     </div>
 
     <script>
-        
     </script>
 </body>
 </html>

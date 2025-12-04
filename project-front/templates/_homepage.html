@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocalFest</title>
-
     <!--                      CSSKO                      -->
 
     <style>
@@ -19,7 +18,7 @@
             align-items:center;
             justify-content:space-between;
             padding:1rem;
-            background:#f8f9fa;
+            background: linear-gradient(135deg, #d2f5cf 0%, #d4ecff 100%);
             border-bottom:1px solid #e5e5e5;
         }
         #logo_header {
@@ -29,16 +28,24 @@
         }
         .links_header {
             margin:0 0.5rem;
-            color:#555;
+            color:#102157;
             text-decoration:none;
+            font-weight: bold;
         }
         .login_singin {
             margin-left:1rem;
             padding:0.4rem 0.75rem;
-            background:#007bff;
-            color:#fff;
+            background:#102157;
+            color:#d4ecff;
             border-radius:4px;
             text-decoration:none;
+            font-weight: bold;
+            border: 2px solid #102157;
+        }
+        #signin {
+            background-color: #d4ecff;
+            color: #102157;
+            border: 2px solid #102157;
         }
     </style>
 
@@ -49,22 +56,30 @@
     <header>
         <div id="logo_header">
             <img src="/static/logo.png" alt="LocalFest logo" style="height:40px;width:40px;object-fit:contain;">
-            <a href="/" style="text-decoration:none;color:#333;font-weight:700;font-size:1.25rem;">LocalFest</a>
+            <a href="/" style="text-decoration:none;color:#165810;font-weight:700;font-size:50px;font-weight: bolder;">LocalFest</a>
         </div>
         <nav>
-            <a href="/" class="links_header">Home</a>
-            <a href="/events" class="links_header">Events</a>
-            <a href="/about" class="links_header">About</a>
-            <a href="/contact" class="links_header">Contact</a>
-            <a href="/login" class="login_singin">Log in</a>
+            <a href="_homepage.html" class="links_header">Domů</a>
+            <a href="project_info_o_nas.html" class="links_header">O nás</a>
+            <a href="login_form.html" class="login_singin">Přihlásit se</a>
+            <a href="signin_form.html" class="login_singin" id="signin">Zaregistrovat se</a>
         </nav>
     </header>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is the main landing page of the website.</p>
-    
-    <!--                      JAVASCRIPT                       -->
-    <script>
+        <h1>Homepage</h1>
+        <p>paragraph</p>
 
+
+    <div id="map" style="height: 400px; width: 100%; margin: 1rem 0;"></div>
+    
+    <footer style="background-color: #102157; color: #d4ecff; text-align: center; padding: 1rem; position: relative; bottom: 0; width: 100%;">
+        <p>&copy; 2025 LocalFest. All rights reserved.</p>
+        <a href="privacy_policy.html" style="color: #d4ecff; text-decoration: none;">Privacy Policy</a> | 
+        <a href="terms_of_service.html" style="color: #d4ecff; text-decoration: none;">Terms of Service</a>
+    </footer>
+
+    <!--                      JAVASCRIPT                       -->
+
+    <script> 
     </script>
 </body>
 </html>
