@@ -9,9 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "docker": "^1.0.0",
+    "@prisma/client": "^7.1.0",
+    "@prisma/internals": "^7.1.0",
+    "docker": "^0.2.14",
     "leaflet": "^1.9.4",
-    "next": "16.0.5",
+    "next": "^16.0.10",
     "react": "^19.0.0-rc.1",
     "react-dom": "^19.0.0-rc.1",
     "react-leaflet": "^5.0.0-rc.2"
