@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
-import { MapAttributes } from '../../map-attrib'
+import { MapAttributes } from '../../../lib/map-attrib'
 import '../../../styles/map.css'
 
 type MapType = 'page' | 'embed'

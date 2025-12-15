@@ -1,28 +1,7 @@
-
 services:
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
->>>>>>> prisma-setup
-  app:
-    build:
-      context: .
-    image: next-js-test 
-    ports:
-      - "3000:3000"
-
-
-<<<<<<< HEAD
-=======
   db:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
-    
-
-      
->>>>>>> Stashed changes
-=======
->>>>>>> prisma-setup
