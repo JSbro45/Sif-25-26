@@ -1,0 +1,74 @@
+@import './map.css';
+
+.home-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: block;
+}
+
+header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1rem;
+    background: linear-gradient(135deg, #d2f5cf 0%, #d4ecff 100%);
+    border-bottom:1px solid #e5e5e5;
+}
+
+#logo_header {
+    display:flex;
+    align-items:center;
+    gap:0.75rem;
+}
+
+.logo{
+    height:40px;
+    width:40px;
+    object-fit:contain;
+}
+
+.links_header {
+    margin:0 0.5rem;
+    color:#102157;
+    text-decoration:none;
+    font-weight: bold;
+}
+
+.login_singup {
+    margin-left:1rem;
+    padding:0.4rem 0.75rem;
+    background:#102157;
+    color:#d4ecff;
+    border-radius:4px;
+    text-decoration:none;
+    font-weight: bold;
+    border: 2px solid #102157;
+}
+
+#signin {
+    background-color: #d4ecff;
+    color: #102157;
+    border: 2px solid #102157;
+}
+
+.search-container{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--box);
+    border-radius:999px;
+    padding:10px 14px;
+    width:420px;
+    max-width:100%;
+    box-shadow:0 6px 18px rgba(10, 18, 63, 0.486);
+    border:3px solid #05549f;
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  vertical-align: middle;
+}

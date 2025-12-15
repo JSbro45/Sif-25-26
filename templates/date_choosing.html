@@ -1,0 +1,36 @@
+Sem klidně piš random poznámky k templatum...
+
+-> date_choosing.html 
+   Původní (kdyby byl problém s inputem):
+        select {
+            width: 200px;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        select:hover {
+            border-color: #999;
+        }
+        select:focus {
+            outline: none;
+            border-color:lightsteelblue;
+        }
+
+        <select id="date-select">
+            <option value="">Vyber datum</option>
+        </select>
+     <script>
+        const select = document.getElementById('date-select');
+        const today = new Date();
+        for (let i = 0; i < 175; i++) {
+            const date = new Date(today);
+            date.setDate(today.getDate() + i);
+            const option = document.createElement('option');
+            option.value = date.toISOString().split('T')[0];
+            option.textContent = date.toLocaleDateString('cs-CZ', {weekday: 'short', month: 'short', day: 'numeric'});
+            select.appendChild(option);
+        }
+     </script>
