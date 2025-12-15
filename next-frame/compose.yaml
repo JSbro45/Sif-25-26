@@ -1,6 +1,9 @@
 
 services:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> prisma-setup
   app:
     build:
       context: .
@@ -9,6 +12,7 @@ services:
       - "3000:3000"
 
 
+<<<<<<< HEAD
 =======
   db:
     image: postgres:latest
@@ -20,3 +24,5 @@ services:
 
       
 >>>>>>> Stashed changes
+=======
+>>>>>>> prisma-setup
