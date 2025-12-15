@@ -1,0 +1,67 @@
+
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  name            String
+  email           String   @unique
+  password        String
+  verification    Boolean  @default(false) // User verification status
+  events          Event[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([email])
+}
+
+model Event {
+  id             Int      @id @default(autoincrement())
+  name           String
+  description    String?
+  date_time      DateTime
+  location       Json?
+  photos         Json?
+  hostUserId     Int
+  hostUser       User @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
+  eventPerformers EventPerformer[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([hostUserId])
+}
+
+model Performer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  description String?
+  photos    Json?
+  events    EventPerformer[]
+
+  @@index([name])
+}
+
+model EventPerformer {
+  eventId   Int
+  event     Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  performerId Int
+  performer Performer @relation(fields: [performerId], references: [id], onDelete: Cascade)
+
+  @@id([eventId, performerId])
+}
+
+model Address {
+  id          Int      @id @default(autoincrement())
+  placeName   String?
+  postalCode  String?
+  coords      Float[]  // [latitude, longitude]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
