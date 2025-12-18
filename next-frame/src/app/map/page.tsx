@@ -1,4 +1,4 @@
-import MapModule from './components/MapModel'
+import MapModule from './components/MapModule'
 import EventView from './components/EventView'
 import '../styles/map.css'
 
