@@ -1,6 +1,6 @@
 //import { useState } from 'react'
 import Header from "./components/Header";
-import MapModule from '../map/components/MapModule'
+import MapModule from '../map/components/MapModule';
 import '../styles/home.css'
 
 
