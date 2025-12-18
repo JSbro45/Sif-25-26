@@ -1,9 +1,14 @@
-import MapModule from './components/MapModule'
+import MapModule from './components/MapModel'
+import EventView from './components/EventView'
 import '../styles/map.css'
 
 
 export default function MapPage() {
   return (
-        <MapModule map_type='page'/>
+    <main>
+      <MapModule map_type='page'/>
+      <EventView></EventView>
+
+    </main>
   )
 }
