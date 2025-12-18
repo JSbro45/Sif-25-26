@@ -1,17 +1,12 @@
 //import { useState } from 'react'
-import Header  from "./Header";
-import MapModule from '../map/Map'
-import '../../styles/home.css'
-import Map from '../map/Map'
-import Footer from "./Footer";
-import Header  from "./components/Header";
+import Header from "./components/Header";
 import MapModule from '../map/components/MapModule'
 import '../styles/home.css'
 
 
 export default function HomePage() {
     return (
-        <><main>
+        <main>
             <Header />
 
             <div>
@@ -24,6 +19,6 @@ export default function HomePage() {
                 <p>Klikněte na mapu níže a začněte objevovat hudební akce ve vašem okolí!</p>
             </div>
             <MapModule map_type='embed'/>
-        </div>
+        </main>
     )
 }
