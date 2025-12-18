@@ -5,7 +5,7 @@ import '../../styles/home.css'
 import Map from '../map/Map'
 import Footer from "./Footer";
 import Header  from "./components/Header";
-import MapModule from '../map/components/MapModule'
+import MapModule from '../map/components/MapModel'
 import '../styles/home.css'
 
 

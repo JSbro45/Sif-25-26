@@ -1,5 +1,5 @@
 import { FormInputBox } from "../auth/components/FormInput"
-import MapModule from "../map/components/MapModule"
+import MapModule from "../map/components/MapModel"
 
 
 export default function AddEventForm() {

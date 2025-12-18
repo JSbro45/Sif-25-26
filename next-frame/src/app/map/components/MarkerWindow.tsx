@@ -8,7 +8,7 @@ export default function MarkerWindow({pos,evt}: {pos: [number,number], evt: stri
         iconSize: [80, 80],
     });
     return (
-        <div className="marker">
+        <div className="marker" onDoubleClick={(ev) => {}}>
             <Marker position={pos} icon={icon}>
                 <Popup>
                     <ul className="event-thumbnail">

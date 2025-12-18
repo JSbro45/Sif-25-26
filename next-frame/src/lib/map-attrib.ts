@@ -1,3 +1,5 @@
+
+
 export class MapAttributes{
     public tileLayers: {[key: string]: string[]};
     public markers: {coords: [number, number], event: string, email: string}[];
