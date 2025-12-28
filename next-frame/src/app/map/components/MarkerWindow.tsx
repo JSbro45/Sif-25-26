@@ -17,7 +17,11 @@ export default function MarkerWindow({pos,evt, time}: {pos: [number,number], evt
                         </li>
                         <li> 
                             <span className="time"> <b className="n"> time: </b>
+<<<<<<< HEAD
                                 <time dateTime={time.toISOString()}> { time.toLocaleString() } </time> 
+=======
+                                <time dateTime={time.toISOString()}> {time.toLocaleString()} </time> 
+>>>>>>> main
                             </span> 
                         </li>
                     </ul>
@@ -26,6 +30,9 @@ export default function MarkerWindow({pos,evt, time}: {pos: [number,number], evt
         </div>
     )
 }
+<<<<<<< HEAD
 
 /*
 */
+=======
+>>>>>>> main
