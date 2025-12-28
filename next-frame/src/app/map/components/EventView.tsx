@@ -1,9 +1,23 @@
 
+interface props {
+    eventName: string;
+    eventImage: string;
+    eventOrganizer: string;
+    eventLink: string;
+    eventGenre: string;
+    eventDate: string;
+    eventTime: string;
+    eventPrice: string;
+    eventTicketLink: string;
+    eventLocationName: string;
+    eventLocationAddress: string;
+    eventLocationWebsite: string;
+}
+
 export default function EventView() {
     return (
-        <div className="wrapper">
-        <article className="text-container" role="region" aria-label="Event description">
-            <h1>Název koncertu</h1>
+        <section className="wrapper">
+            <h1>Název koncertu: </h1>
             <img src="path/to/image.jpg" alt="Koncert_Foto" style={{maxWidth:"100%", height:"auto", marginBottom:"12px"}} />
             <p className="meta">Jméno pořadatele</p>
             <div className="event-info">
@@ -33,7 +47,6 @@ export default function EventView() {
             <div className="event-info">
                 <label htmlFor="text">Web místa konání:</label>
             </div>
-        </article>
-    </div>
+    </section>
     )
 }

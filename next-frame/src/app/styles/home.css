@@ -1,5 +1,10 @@
 @import './map.css';
 
+main{
+    background-color: #d4ecff;
+}
+
+
 .home-page {
     font-family: Arial, sans-serif;
     margin: 0;
