@@ -16,10 +16,10 @@ export default function AddEventForm() {
                     <FormInputBox label="Datum a čas:" type="datetime-local" id="evt-datetime" required={true} />
                     <FormInputBox label="Místo konání:" type="text" id="evt-loc" required={true} />
                     <FormInputBox label="Adresa místa konání:" type="text" id="evt-address" required={true} />
-                    <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={true} />
+                    <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} />
                     <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} />
-                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={true} />
-                    <button type="submit">Přidat</button>
+                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} />
+                    <button type="submit"> Přidat </button>
                 </form>
             </section>
             <section>

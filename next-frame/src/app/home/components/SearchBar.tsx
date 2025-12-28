@@ -7,7 +7,7 @@ export default function SearchBar() {
                 <circle cx="11" cy="11" r="6" stroke="#05549f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
             <input className="search-input" type="search" name="q"  aria-label="Search"></input>
-            <button className="search-button" type="submit" aria-label="Submit search">
+            <button className="search-button" type="submit" aria-label="Hledat">
                 Hledat
             </button>
         </form>
