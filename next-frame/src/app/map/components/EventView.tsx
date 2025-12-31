@@ -1,3 +1,4 @@
+import '../../styles/eventview.css'
 
 export default function EventView() {
     return (
