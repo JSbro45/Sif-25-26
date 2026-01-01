@@ -1,5 +1,10 @@
 @import './map.css';
 
+main{
+    background-color: #d4ecff;
+}
+
+
 .home-page {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -38,9 +43,7 @@ header {
 
 .login_singup {
     margin-left:1rem;
-    padding:0.4rem 0.75rem;
-    background:#102157;
-    color:#d4ecff;
+    padding:0.5em 1em;
     border-radius:4px;
     text-decoration:none;
     font-weight: bold;
