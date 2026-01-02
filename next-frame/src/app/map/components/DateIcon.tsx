@@ -1,3 +1,4 @@
+import '../../styles/dateicon.css'
 
 export default function DateIcon() {
     return (

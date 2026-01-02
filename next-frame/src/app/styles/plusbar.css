@@ -26,8 +26,8 @@ body{
 }
 
 .round-btn{
-    width:56px;
-    height:56px;
+    width:80px;
+    height:80px;
     border-radius:50%;
     border:0;
     background:#102157;
@@ -38,7 +38,7 @@ body{
     cursor:pointer;
     box-shadow: var(--shadow);
     font-weight:600;
-    font-size:18px;
+    font-size:60px;
     transition:transform .12s ease;
 }
 .round-btn:active{ transform:scale(.98); }

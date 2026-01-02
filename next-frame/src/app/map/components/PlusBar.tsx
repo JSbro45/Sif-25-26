@@ -1,9 +1,11 @@
 import '../../styles/plusbar.css'
+import '../../javascript/plusbar.js'
 
 export default function PlusBar({signedIn}: {signedIn: boolean}) {
     return (
+        <>
         <div className="dropdown">
-        <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "xx-large", color:"#d4ecff"}}>
+        <button className="round-btn" id="ddToggle" title="Open menu" style={{color:"#d4ecff"}}>
             +
         </button>
         {
@@ -20,5 +22,7 @@ export default function PlusBar({signedIn}: {signedIn: boolean}) {
                 </div>
         }
         </div>
+        <script src="../javascript/plusbar.js"></script>
+        </>
     )
 }
