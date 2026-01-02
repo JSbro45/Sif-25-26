@@ -1,4 +1,4 @@
-function buttonOnClick(){
+export function buttonOnClick(){
             const btn = document.getElementById('ddToggle');
             const menu = document.getElementById('ddMenu');
 

@@ -22,7 +22,6 @@ export default function PlusBar({signedIn}: {signedIn: boolean}) {
                 </div>
         }
         </div>
-        <script src="../javascript/plusbar.js"></script>
         </>
     )
 }
