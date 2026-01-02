@@ -1,3 +1,95 @@
 .dropdown{
     margin-right: 20px;
+    padding-left: 1750px;
+    height: 100px;
+    width: 100px;
+    position:relative;
+    display:inline-block;
+}
+
+/* uprava z templates */
+
+:root{
+    --accent:#102157;
+    --bg:#fff;
+    --shadow: 0 6px 18px rgba(37,99,235,0.14);
+    --radius:12px;
+}
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:#f7f9fc;
+}
+
+.round-btn{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    border:0;
+    background:#102157;
+    color:#102157;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow: var(--shadow);
+    font-weight:600;
+    font-size:18px;
+    transition:transform .12s ease;
+}
+.round-btn:active{ transform:scale(.98); }
+
+.menu{
+    position:absolute;
+    right:0;
+    top: calc(100% + 10px);
+    background-color:#d4ecff;
+    border-radius:var(--radius);
+    box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+    min-width:180px;
+    padding:6px;
+    transform-origin:top right;
+    transform: translateY(-8px) scale(.98);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+    z-index:40;
+    border: #102157 2px solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.menu.show{
+    transform: translateY(0) scale(1);
+    opacity:1;
+    pointer-events:auto;
+}
+
+.menu a{
+    display:block;
+    padding:10px 14px;
+    color:#102157;
+    text-decoration:none;
+    border-radius:8px;
+    font-size: 20px;
+}
+.menu a:hover{
+    background:#75a0c9;
+    color: #d4ecff;
+}
+
+/* small caret icon */
+.caret{
+    width:0; height:0;
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-bottom:8px solid var(--bg);
+    position:absolute;
+    right:20px;
+    top:-6px;
+    filter:drop-shadow(0 1px 0 rgba(0,0,0,0.03));
+    display:none; 
 }

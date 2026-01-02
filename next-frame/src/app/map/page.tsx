@@ -10,8 +10,8 @@ export default function MapPage() {
     <main>
       <Header/>
       <MapModule map_type='page'/>
-      <EventView></EventView>
       <PlusBar signedIn={false}></PlusBar>
+      <EventView></EventView>
     </main>
   )
 }
