@@ -1,5 +1,5 @@
 import MapModule from './components/MapModule'
-import EventView from './components/EventView'
+// import EventView from './components/EventView'
 import Header from '../home/components/Header'
 import PlusBar from './components/PlusBar'
 import DateIcon from './components/DateIcon'
@@ -15,7 +15,6 @@ export default function MapPage() {
       <PlusBar signedIn={false}></PlusBar>
       <SearchBar></SearchBar>
       <DateIcon></DateIcon>
-      <EventView></EventView>
     </main>
   )
 }
