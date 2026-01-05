@@ -16,16 +16,16 @@ export default function Header() {
     return (
         <header>
             <div id="logo_header">
-            <Image src="/static/logo.png" width={40} height={40} alt="LocalFest logo" /> {/*style="height:40px;width:40px;object-fit:contain;"*/}
+            <img src="/static/logo.png"  alt="LocalFest logo" /> {/*style="height:40px;width:40px;object-fit:contain;"*/}
             <Link href="/home"> <h1>LocalFest.cz</h1> </Link>
             </div>
             <SearchBar />
             <nav>
                 <Link href="/events" className="links_header"> Eventy </Link>
-                <Link href="/o_nas" className="links_header"> O Nás </Link>
-                <Link href="/kontakt" className="links_header"> Kontakty </Link>
-                <Link href="/login" className="login_singup"> Přihlásit se </Link>
-                <Link href="/signup" className="login_singup"> Zaregistrovat se </Link>
+                <Link href="/home/about" className="links_header"> O Nás </Link>
+                <Link href="/home/kontakt" className="links_header"> Kontakty </Link>
+                <Link href="/auth/login" className="login_singup"> Přihlásit se </Link>
+                <Link href="/auth/signup" className="login_singup"> Zaregistrovat se </Link>
             </nav>
         </header>
     )
