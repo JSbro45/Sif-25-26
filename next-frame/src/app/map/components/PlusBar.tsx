@@ -1,3 +1,5 @@
+import '../../styles/plusbar.css'
+
 export default function PlusBar({signedIn}: {signedIn: boolean}) {
     return (
         <div className="dropdown">
@@ -16,10 +18,7 @@ export default function PlusBar({signedIn}: {signedIn: boolean}) {
                     <p>Přidávat piny můžete jen jako pořadatel, chcete se zaregistrovat? <button type='submit'><a href='signin_form'>Zaregistrovat se</a></button></p>
                     <a href="project_info_o_nas.html" role="menuitem">O nás</a>
                 </div>
-            
         }
-
-
-    </div>
+        </div>
     )
 }

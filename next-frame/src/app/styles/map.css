@@ -1,8 +1,10 @@
 .page-map {
   position: absolute;
-  width:100%;
+  width:105%;
   height:100%;
   z-index: -1;
+  margin-left: -60px;
+  margin-top: -20px;
 }
 
 .embed-map {

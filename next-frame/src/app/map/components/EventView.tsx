@@ -1,3 +1,4 @@
+import '../../styles/eventview.css'
 
 interface props {
     eventName: string;
