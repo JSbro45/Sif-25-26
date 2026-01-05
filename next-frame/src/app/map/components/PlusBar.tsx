@@ -1,11 +1,12 @@
 import '../../styles/plusbar.css'
+import Link from 'next/link'
 
 export default function PlusBar({signedIn}: {signedIn: boolean}) {
     return (
         <div className="dropdown">
-        <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "xx-large", color:"#d4ecff"}}>
-            +
-        </button>
+            <Link>
+                <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "xx-large", color:"#d4ecff"}}> + </button>
+            </Link>
         {
             signedIn? /*if signedIn*/
                 <div className="menu" id="ddMenu" role="menu">
