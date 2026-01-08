@@ -15,7 +15,6 @@ export default function HomePage() {
             <p>Pokud chcete svůj koncert zařadit do naší databáze, můžete tak učinit prostřednictvím vytvoření účtu pro pořadatele. Stačí kliknout na tlačítko "Zaregistrovat se" v pravém horním rohu.</p>
             <p>Pro jakékoliv dotazy či připomínky nás neváhejte kontaktovat prostřednictvím sekce "O nás". Rádi vám pomůžeme!</p>
             <p>Klikněte na mapu níže a začněte objevovat hudební akce ve vašem okolí!</p>
-            <MapModule map_type='embed'/>
         </PageWrapper>
     )
 }

@@ -20,7 +20,9 @@ export default function MapModule({ map_type }: {map_type: MapType}) {
         />
         {
           mapAtt.markers.map((mark, key) => (
-            <MarkerWindow key={key} pos={mark.coords} evt={mark.event} time={mark.time} />
+            <div onDoubleClick={(ev) => {}}>
+              <MarkerWindow key={key} pos={mark.coords} evt={mark.event} time={mark.time} />
+            </div>
           ))
         }
       </MapContainer>
