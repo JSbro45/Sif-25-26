@@ -1,8 +1,9 @@
 "use client";
+import '../../styles/popup.css'
 
 import { useState } from "react";
 import ClosePopUp from "./ClosePopUp";
-import EventView from "./EventView";
+import { popup } from "leaflet";
 
 export default function EventPopUp() {
     const [showPopup, setShowPopup] = useState(false);
@@ -10,7 +11,6 @@ export default function EventPopUp() {
         <div className="event-popup">
             <button onClick={() => setShowPopup(true)}>EVT</button>
             <ClosePopUp trigger={showPopup} setTrigger={setShowPopup}>
-                <EventView></EventView>
             </ClosePopUp>
         </div>
     );
