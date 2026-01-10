@@ -9,7 +9,6 @@ export default function MarkerWindow({pos,evt, time}: {pos: [number,number], evt
     });
 
     return (
-        <div className="marker" onDoubleClick={(ev) => {}}>
             <Marker position={pos} icon={icon}>
                 <Popup>
                     <ul className="event-thumbnail">
@@ -24,6 +23,5 @@ export default function MarkerWindow({pos,evt, time}: {pos: [number,number], evt
                     </ul>
                 </Popup>
             </Marker>
-        </div>
     )
 }
