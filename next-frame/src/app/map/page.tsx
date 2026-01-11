@@ -11,7 +11,7 @@ import EventView from './components/EventView'
 
 
 export default function MapPage() {
-  const selectedRef = useRef<{ event:any; pos:any; } | null>(null)
+  const selectedRef = useRef<{ event:string; pos:[number, number]; } | null>(null)
   const [viewEvent, setViewEvent] = useState(false)
 
   return (

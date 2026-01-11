@@ -2,6 +2,9 @@ import '../../styles/eventview.css'
 
 interface props {
     eventName: string;
+}
+
+interface un_ness {
     eventImage: string;
     eventOrganizer: string;
     eventLink: string;
@@ -13,9 +16,9 @@ interface props {
     eventLocationName: string;
     eventLocationAddress: string;
     eventLocationWebsite: string;
-}
+ } 
 
-export default function EventView() {
+export default function EventView(props: props) {
     return (
         <section className="wrapper">
             <h1>Název koncertu: </h1>

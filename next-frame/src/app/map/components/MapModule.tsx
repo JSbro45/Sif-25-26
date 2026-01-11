@@ -5,12 +5,7 @@ import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MapAttributes } from '../../../lib/map-attrib'
 
-export default function MapModule({
-  map_type,
-  onMarkerClick
-}: {
-  map_type: 'page' | 'embed'
-  onMarkerClick?: (payload: { event: any; pos: any; time?: string }) => void
+export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page' | 'embed' , onMarkerClick?: (payload: { event: string; pos: [number, number] }) => void
 }) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   const mapAtt = new MapAttributes()
