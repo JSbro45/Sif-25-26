@@ -2,6 +2,9 @@ import '../../styles/eventview.css'
 
 interface props {
     eventName: string;
+}
+
+interface un_ness {
     eventImage: string;
     eventOrganizer: string;
     eventLink: string;
@@ -13,11 +16,11 @@ interface props {
     eventLocationName: string;
     eventLocationAddress: string;
     eventLocationWebsite: string;
-}
+ } 
 
-export default function EventView() {
+export default function EventView(props: props) {
     return (
-        <section className="wrapper">
+        <section className="evt-view">
             <h1>Název koncertu: </h1>
             <img src="path/to/image.jpg" alt="Koncert_Foto" style={{maxWidth:"100%", height:"auto", marginBottom:"12px"}} />
             <p className="meta">Jméno pořadatele</p>
