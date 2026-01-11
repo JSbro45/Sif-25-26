@@ -5,12 +5,16 @@ import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MapAttributes } from '../../../lib/map-attrib'
 
-type MapType = 'page' | 'embed'
-
-export default function MapModule({ map_type }: {map_type: MapType}) {
+export default function MapModule({
+  map_type,
+  onMarkerClick
+}: {
+  map_type: 'page' | 'embed'
+  onMarkerClick?: (payload: { event: any; pos: any; time?: string }) => void
+}) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   const mapAtt = new MapAttributes()
-  
+
   return (
     <div className={ map_type + '-map'}>
       <MapContainer center={[50,15]} zoom={12} scrollWheelZoom={true}>
@@ -20,12 +24,17 @@ export default function MapModule({ map_type }: {map_type: MapType}) {
         />
         {
           mapAtt.markers.map((mark, key) => (
-            <div onDoubleClick={(ev) => {}}>
-              <MarkerWindow key={key} pos={mark.coords} evt={mark.event} time={mark.time} />
+            <div onClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords })}>
+            <MarkerWindow
+              key={key}
+              pos={mark.coords}
+              evt={mark.event}
+              time={mark.time}
+            />
             </div>
           ))
         }
       </MapContainer>
-  </div>
+    </div>
   )
 }
