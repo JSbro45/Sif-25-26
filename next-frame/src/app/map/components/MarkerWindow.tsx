@@ -6,14 +6,14 @@ import type { LatLngExpression } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
 
-export default function MarkerWindow({ pos, evt, time, onClick }: { pos: LatLngExpression, evt: any, time?: string, onClick?: () => void }) {
+export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngExpression, evt: any, time: Date, dbClick?: () => void }) {
     const icon = new Icon({
         iconUrl: '/map-icon.svg',
         iconSize: [80, 80],
     });
 
     return (
-        <Marker position={pos} icon={icon} eventHandlers={{ click: () => onClick && onClick() }}>
+        <Marker position={pos} icon={icon} eventHandlers={{ dblclick: () => dbClick && dbClick() }}>
             <Popup>
                 <ul className="event-thumbnail">
                     <li>

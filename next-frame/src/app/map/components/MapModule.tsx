@@ -4,8 +4,9 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MapAttributes } from '../../../lib/map-attrib'
+import { LatLngExpression } from 'leaflet';
 
-export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page' | 'embed' , onMarkerClick?: (payload: { event: string; pos: [number, number] }) => void
+export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page' | 'embed' , onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void
 }) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   const mapAtt = new MapAttributes()
@@ -19,12 +20,13 @@ export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page
         />
         {
           mapAtt.markers.map((mark, key) => (
-            <div onClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords })}>
+            <div onClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}>
             <MarkerWindow
               key={key}
               pos={mark.coords}
               evt={mark.event}
               time={mark.time}
+              dbClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}
             />
             </div>
           ))
