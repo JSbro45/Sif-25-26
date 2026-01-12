@@ -1,7 +1,13 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client"
 }
+
 
 datasource db {
     provider = "postgresql"
@@ -14,50 +20,38 @@ model User {
   email           String   @unique
   password        String    // For OAuth users
   verification    Boolean  @default(false) // User verification status
-  events          Event[]  
+  //events          Event[]  
   createdAt       DateTime @default(now())
 
   @@index([email])
 }
+
 
 model Event {
   id              Int @id @default(autoincrement())
   name            String
   description     String?
   date_time       DateTime
-  photos          Json?
-  hostUserId      Int
-  hostUser        User @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
-  eventPerformers EventPerformer[]
+  photos          String[]
+  //hostUserId      Int 
+  genres          String[]
+  //hostUser        User @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
+  //performers      String[]
   createdAt       DateTime @default(now())
+  latitude        Float
+  longitude       Float
+  //addressId       Int?
+  //address         Address? @relation(fields: [addressId], references: [id], onDelete: SetNull)
 
-  @@index([hostUserId])
-}
-
-model Performer {
-  id            Int  @id @default(autoincrement())
-  name          String
-  description   String?
-  photos        Json?
-  events        EventPerformer[]
-
-  @@index([name])
-}
-
-model EventPerformer {
-  eventId     Int
-  event       Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
-  performerId Int
-  performer   Performer @relation(fields: [performerId], references: [id], onDelete: Cascade)
-
-  @@id([eventId, performerId])
+  //@@index([hostUserId])
 }
 
 model Address {
   id          Int      @id @default(autoincrement())
   placeName   String?
   postalCode  String?
-  coords      Float[]  // [latitude, longitude]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  lat         Float  // latitude
+  lng         Float  // longitude
+  //events      Event[]
+
 }
