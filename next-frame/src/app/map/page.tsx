@@ -30,7 +30,12 @@ export default function MapPage() {
             }}
           />
         </div>
-        {(viewEvent && selectedRef.current)?(<EventView eventName={selectedRef.current.event}/>): null}
+        {(viewEvent && selectedRef.current)?(
+          <EventView
+            eventName={selectedRef.current.event}
+            onClose={() => setViewEvent(false)}
+          />
+        ): null}
       </main>
     </>
   )
