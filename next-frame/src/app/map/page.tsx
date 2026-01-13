@@ -19,7 +19,7 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
-          <PlusBar signedIn={false}></PlusBar>
+          <PlusBar signedIn={true}></PlusBar>
           <SearchBar></SearchBar>
           <DateIcon></DateIcon>
           <MapModule
@@ -30,7 +30,12 @@ export default function MapPage() {
             }}
           />
         </div>
-        {(viewEvent && selectedRef.current)?(<EventView eventName={selectedRef.current.event}/>): null}
+        {(viewEvent && selectedRef.current)?(
+          <EventView
+            eventName={selectedRef.current.event}
+            onClose={() => setViewEvent(false)}
+          />
+        ): null}
       </main>
     </>
   )
