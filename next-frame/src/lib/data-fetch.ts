@@ -2,6 +2,7 @@ import { LatLngTuple } from 'leaflet';
 import { prisma } from './db';
 
 
+
 export async function getPins(timespan: { start: Date; end: Date }, genre_list: string[] ) {
     const pins = await prisma.event.findMany({
         where: {
@@ -31,11 +32,11 @@ export async function setEventPin(eventName: string, hostId: number, date_time: 
             name:        eventName,
             //hostUserId:  hostId,
             date_time:   date_time,
-            genres:      genre_list,
+            genres:      genre_list, // Removed because 'genres' is not a valid property
             latitude:    location[0],
-            longitude:   location[1],
-
-
+            longitude:   location[1]
         }
     })
 }
+
+

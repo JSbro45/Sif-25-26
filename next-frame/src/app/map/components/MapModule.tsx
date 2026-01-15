@@ -5,6 +5,8 @@ import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MapAttributes } from '../../../lib/map-attrib'
 import { LatLngExpression } from 'leaflet';
+import { getPins } from '@/src/lib/data-fetch';
+
 
 export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page' | 'embed' , onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void
 }) {

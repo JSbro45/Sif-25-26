@@ -1,14 +1,18 @@
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 
+const createPin = () => {
+    return null;
+}
 
 export default function AddEventForm() {
+
     return (
         <div>
             <section className="add-evt-container">
                 <h1>Přidat Akci</h1>
                 <form>
-                    <FormInputBox label="Název akce:" type="text" id="evt-name" required={true} />
+                    <FormInputBox label="Název akce:" type="text" id="evt-name" required={true} value={value} />
                     <FormInputBox label="Foto:" type="file" id="evt-photo" required={true} />
                     <FormInputBox label="Popis akce:" type="text" id="evt-desc" required={true} />
                     <FormInputBox label="Odkaz na stránky/youtube/atd. interpreta:" type="text" id="evt-link" required={true} />
