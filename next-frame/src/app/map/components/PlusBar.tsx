@@ -5,8 +5,8 @@ export default function PlusBar({signedIn}: {signedIn: boolean}) {
     return (
         <>
         <div className="dropdown">
-            <Link href="/add_event">
-                <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "xx-large", color:"#d4ecff"}}> + </button>
+            <Link href="/add_event" className='link-in-btn'>
+                <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "60px", color:"#d4ecff"}}> + </button>
             </Link>
         {
             signedIn? /*if signedIn*/

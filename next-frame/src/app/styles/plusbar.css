@@ -1,6 +1,6 @@
 .dropdown{
     margin-right: 20px;
-    padding-left: 1750px;
+    padding-left: 800px;
     height: 100px;
     width: 100px;
     position:relative;
@@ -37,10 +37,19 @@ body{
     justify-content:center;
     cursor:pointer;
     box-shadow: var(--shadow);
-    font-weight:600;
-    font-size:60px;
+    font-weight: 600;
     transition:transform .12s ease;
 }
+
+.link-in-btn:link{ 
+    text-decoration: none;
+    color: #d4ecff;
+ }
+
+.link-in-btn:hover{text-decoration: none;}
+.link-in-btn:active{text-decoration: none;}
+.link-in-btn:visited{text-decoration: none;}
+
 .round-btn:active{ transform:scale(.98); }
 
 .menu{

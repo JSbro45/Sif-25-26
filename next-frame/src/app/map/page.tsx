@@ -19,9 +19,6 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
-          <PlusBar signedIn={true}></PlusBar>
-          <SearchBar></SearchBar>
-          <DateIcon></DateIcon>
           <MapModule
             map_type='page'
             onMarkerClick={(payload) => {
@@ -29,6 +26,9 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
+          <DateIcon></DateIcon>
+          <SearchBar></SearchBar>
+          <PlusBar signedIn={true}></PlusBar>
         </div>
         {(viewEvent && selectedRef.current)?(
           <EventView
