@@ -1,29 +1,52 @@
+import { useRef } from "react";
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 
-const createPin = () => {
+const createPin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const newPin = {
+        name: refs.name.current?.value,
+        photo: refs.photo.current?.files?.[0],
+        desc: refs.desc.current?.value,
+        link: refs.link.current?.value,
+        genre: refs.genre.current?.value,
+        date: refs.date.current?.value,
+        web: refs.web.current?.value,
+        address: refs.address.current?.value,
+    };
+    console.log(newPin);
     return null;
 }
 
 export default function AddEventForm() {
+    
+    const refs = {
+        'name' : useRef<HTMLInputElement>(null),
+        'photo' : useRef<HTMLInputElement>(null),
+        'desc' : useRef<HTMLInputElement>(null),
+        'link' : useRef<HTMLInputElement>(null),
+        'genre' : useRef<HTMLInputElement>(null),
+        'date' : useRef<HTMLInputElement>(null),
+        'web' : useRef<HTMLInputElement>(null),
+        'address' : useRef<HTMLInputElement>(null),
+    }
 
     return (
         <div>
             <section className="add-evt-container">
                 <h1>Přidat Akci</h1>
                 <form>
-                    <FormInputBox label="Název akce:" type="text" id="evt-name" required={true} value={value} />
-                    <FormInputBox label="Foto:" type="file" id="evt-photo" required={true} />
-                    <FormInputBox label="Popis akce:" type="text" id="evt-desc" required={true} />
-                    <FormInputBox label="Odkaz na stránky/youtube/atd. interpreta:" type="text" id="evt-link" required={true} />
-                    <FormInputBox label="Žánr:" type="text" id="evt-genre" required={true} />
-                    <FormInputBox label="Datum a čas:" type="datetime-local" id="evt-datetime" required={true} />
-                    <FormInputBox label="Místo konání:" type="text" id="evt-loc" required={true} />
-                    <FormInputBox label="Adresa místa konání:" type="text" id="evt-address" required={true} />
-                    <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} />
-                    <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} />
-                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} />
-                    <button type="submit"> Přidat </button>
+                    <FormInputBox label="Název akce:" type="text" id="evt-name" required={true} value={refs.name.current?.value} />
+                    <FormInputBox label="Foto:" type="file" id="evt-photo" required={true} value={refs.photo.current?.value} />
+                    <FormInputBox label="Popis akce:" type="text" id="evt-desc" required={true} value={refs.desc.current?.value} />
+                    <FormInputBox label="Odkaz na stránky/youtube/atd. interpreta:" type="text" id="evt-link" required={true} value={refs.link.current?.value} />
+                    <FormInputBox label="Žánr:" type="text" id="evt-genre" required={true} value={refs.genre.current?.value} />
+                    <FormInputBox label="Datum a čas:" type="datetime-local" id="evt-datetime" required={true} value={refs.date.current?.value} />
+                    <FormInputBox label="Adresa místa konání:" type="text" id="evt-address" required={true} value={refs.address.current?.value} />
+                    <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} value={refs.web.current?.value} />
+                    <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={(useRef<HTMLInputElement>(null)).current?.value} />
+                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={(useRef<HTMLInputElement>(null)).current?.value} />
+                    <button type="submit" onClick={createPin()}> Přidat </button>
                 </form>
             </section>
             <section>
