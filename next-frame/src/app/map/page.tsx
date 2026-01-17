@@ -26,9 +26,9 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
-          <DateIcon></DateIcon>
-          <SearchBar></SearchBar>
           <PlusBar signedIn={true}></PlusBar>
+          <SearchBar></SearchBar>
+          <DateIcon></DateIcon>
         </div>
         {(viewEvent && selectedRef.current)?(
           <EventView
