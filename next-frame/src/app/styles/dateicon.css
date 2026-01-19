@@ -1,16 +1,17 @@
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+       
+/* uprava z templates */     
+        
         .date-container {
+            position: fixed;
+            align-items: left;
+            top: 20px;
+            left: 20px;
             background: white;
             width: 200px;
             padding: 1rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 10;
         }
         label {
             display: block;

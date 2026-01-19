@@ -13,7 +13,7 @@ export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngE
     });
 
     return (
-        <Marker position={pos} icon={icon} eventHandlers={{ dblclick: () => dbClick && dbClick() }}>
+        <Marker position={pos} icon={icon} eventHandlers={{ click: () => dbClick && dbClick() }}>
             <Popup>
                 <ul className="event-thumbnail">
                     <li>

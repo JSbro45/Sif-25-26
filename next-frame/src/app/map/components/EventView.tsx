@@ -2,6 +2,7 @@ import '../../styles/eventview.css'
 
 interface props {
     eventName: string;
+    onClose: () => void;
 }
 
 interface un_ness {
@@ -20,7 +21,15 @@ interface un_ness {
 
 export default function EventView(props: props) {
     return (
-        <section className="evt-view">
+        <section className="evt-view" style={{position: 'relative'}}>
+            <button
+                className='x-btn'
+                onClick={props.onClose}
+            >
+                x
+            </button>
+
+            <div className="evt-text">
             <h1>Název koncertu: </h1>
             <img src="path/to/image.jpg" alt="Koncert_Foto" style={{maxWidth:"100%", height:"auto", marginBottom:"12px"}} />
             <p className="meta">Jméno pořadatele</p>
@@ -50,6 +59,7 @@ export default function EventView(props: props) {
             </div>
             <div className="event-info">
                 <label htmlFor="text">Web místa konání:</label>
+            </div>
             </div>
     </section>
     )

@@ -1,6 +1,7 @@
 .dropdown{
     margin-right: 20px;
-    padding-left: 1750px;
+    margin-top: -200px;
+    margin-left: 1250px;
     height: 100px;
     width: 100px;
     position:relative;
@@ -11,18 +12,8 @@
 
 :root{
     --accent:#102157;
-    --bg:#fff;
     --shadow: 0 6px 18px rgba(37,99,235,0.14);
     --radius:12px;
-}
-body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    background:#f7f9fc;
 }
 
 .round-btn{
@@ -37,10 +28,20 @@ body{
     justify-content:center;
     cursor:pointer;
     box-shadow: var(--shadow);
-    font-weight:600;
-    font-size:60px;
+    font-weight: 600;
     transition:transform .12s ease;
+    z-index: 13;
 }
+
+.link-in-btn:link{ 
+    text-decoration: none;
+    color: #d4ecff;
+ }
+
+.link-in-btn:hover{text-decoration: none;}
+.link-in-btn:active{text-decoration: none;}
+.link-in-btn:visited{text-decoration: none;}
+
 .round-btn:active{ transform:scale(.98); }
 
 .menu{
@@ -86,7 +87,7 @@ body{
     width:0; height:0;
     border-left:6px solid transparent;
     border-right:6px solid transparent;
-    border-bottom:8px solid var(--bg);
+    border-bottom:8px solid #fff;
     position:absolute;
     right:20px;
     top:-6px;

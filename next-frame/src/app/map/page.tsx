@@ -30,8 +30,16 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
+          <PlusBar signedIn={true}></PlusBar>
+          <SearchBar></SearchBar>
+          <DateIcon></DateIcon>
         </div>
-        {(viewEvent && selectedRef.current)?(<EventView eventName={selectedRef.current.event}/>): null}
+        {(viewEvent && selectedRef.current)?(
+          <EventView
+            eventName={selectedRef.current.event}
+            onClose={() => setViewEvent(false)}
+          />
+        ): null}
       </main>
     </>
   )
