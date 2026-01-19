@@ -2,6 +2,6 @@ services:
   db:
     image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: database_password
     ports:
       - "5432:5432"

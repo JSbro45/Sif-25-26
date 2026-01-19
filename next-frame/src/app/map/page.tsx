@@ -19,6 +19,10 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
+          <Header/>
+          <PlusBar signedIn={false}></PlusBar>
+          <SearchBar></SearchBar>
+          <DateIcon></DateIcon>
           <MapModule
             map_type='page'
             onMarkerClick={(payload) => {
