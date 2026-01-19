@@ -1,24 +1,21 @@
+.search-container{
+    margin-top: 20px;
+}
+
 
 /* uprava z templates */
 
 :root{
-    --bg:#f6f8fa;
     --box:#d4ecff;
     --accent:#102157;
     --muted:#75a0c9;
 }
-.center{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-}
+
 .search-container{
     position: fixed;
-    bottom: 20px;
+    top: 5px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-145%);
     display:flex;
     align-items:center;
     gap:8px;

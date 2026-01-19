@@ -26,8 +26,10 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
-          <PlusBar signedIn={true}></PlusBar>
-          <SearchBar></SearchBar>
+          <div className='first-row'>
+           <PlusBar signedIn={true}></PlusBar>
+           <SearchBar></SearchBar>
+          </div>
           <DateIcon></DateIcon>
         </div>
         {(viewEvent && selectedRef.current)?(
