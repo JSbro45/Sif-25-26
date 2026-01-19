@@ -1,25 +1,25 @@
 import { useRef } from "react";
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
+import { setEventPin } from "@/src/lib/data-fetch";
 
-const createPin = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| null }) => {
     const newPin = {
-        name: refs.name.current?.value,
-        photo: refs.photo.current?.files?.[0],
-        desc: refs.desc.current?.value,
-        link: refs.link.current?.value,
-        genre: refs.genre.current?.value,
-        date: refs.date.current?.value,
-        web: refs.web.current?.value,
-        address: refs.address.current?.value,
+        name: refSet.name.current?.value,
+        photo: refSet.photo.current?.files?.[0],
+        desc: refSet.desc.current?.value,
+        link: refSet.link.current?.value,
+        genre: refSet.genre.current?.value,
+        date: refSet.date.current?.value,
+        web: refSet.web.current?.value,
+        address: refSet.address.current?.value,
     };
     console.log(newPin);
-    return null;
+    return setEventPin(newPin);
 }
 
 export default function AddEventForm() {
-    
+
     const refs = {
         'name' : useRef<HTMLInputElement>(null),
         'photo' : useRef<HTMLInputElement>(null),
@@ -46,7 +46,7 @@ export default function AddEventForm() {
                     <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} value={refs.web.current?.value} />
                     <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={(useRef<HTMLInputElement>(null)).current?.value} />
                     <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={(useRef<HTMLInputElement>(null)).current?.value} />
-                    <button type="submit" onClick={createPin()}> Přidat </button>
+                    <button type="submit" onClick={createPin(refs)}> Přidat </button>
                 </form>
             </section>
             <section>

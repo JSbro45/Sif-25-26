@@ -25,16 +25,25 @@ export async function getPins(timespan: { start: Date; end: Date }, genre_list: 
     return pins;
 }
 
-export async function setEventPin(eventName: string, hostId: number, date_time: Date, genre_list: string[], location: LatLngTuple) {
+interface EventPin {
+    name: string;
+    //hostUserId: number;
+    date_time: Date;
+    genres: string[];
+    latitude: number;
+    longitude: number;
+}
+
+export async function setEventPin(evt_data: {eventName: string, /*hostId: number,*/ date_time: Date, genre_list: string[], location: LatLngTuple}) {
 
     const event = await prisma.event.create({
         data: {
-            name:        eventName,
+            name:        evt_data.eventName,
             //hostUserId:  hostId,
-            date_time:   date_time,
-            genres:      genre_list, // Removed because 'genres' is not a valid property
-            latitude:    location[0],
-            longitude:   location[1]
+            date_time:   evt_data.date_time,
+            genres:      evt_data.genre_list, 
+            latitude:    evt_data.location[0],
+            longitude:   evt_data.location[1]
         }
     })
 }

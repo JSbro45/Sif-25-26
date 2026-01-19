@@ -19,6 +19,7 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
+          <Header/>
           <PlusBar signedIn={false}></PlusBar>
           <SearchBar></SearchBar>
           <DateIcon></DateIcon>
