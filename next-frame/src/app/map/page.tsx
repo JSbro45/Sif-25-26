@@ -30,11 +30,11 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
-          <div className='first-row'>
-           <PlusBar signedIn={true}></PlusBar>
            <SearchBar></SearchBar>
-          </div>
-          <DateIcon></DateIcon>
+           <DateIcon></DateIcon>
+           <div className='plus-bar-container'>
+           <PlusBar signedIn={true}></PlusBar>
+           </div>
         </div>
         {(viewEvent && selectedRef.current)?(
           <EventView
