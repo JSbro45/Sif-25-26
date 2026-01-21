@@ -1,4 +1,6 @@
-import { useRef } from "react";
+"use client"
+
+import React, { useRef } from "react"
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 import { setEventPin } from "@/src/lib/data-fetch";
