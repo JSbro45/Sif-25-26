@@ -48,4 +48,23 @@ export default function MapModule() {
     )
 }
 
+
+
+ Popup component z leafletu:
+
+
+            <Popup>
+                <ul className="event-thumbnail">
+                    <li>
+                        <span className="event"> <b className="n"> event: </b> { evt } </span>
+                    </li>
+                    <li>
+                        <span className="time"> <b className="n"> time: </b>
+                            <time dateTime={time.toISOString()}> { time.toLocaleString() } </time>
+                        </span>
+                    </li>
+                </ul>
+            </Popup>
+
+
 ```

@@ -8,6 +8,5 @@ export default function DateIcon() {
             <input type="date" id="date-select" name="date-select" />
         </form>
         </div>
-
     )
 }
