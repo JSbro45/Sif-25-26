@@ -9,7 +9,7 @@ import '../../styles/map.css'
 export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngExpression, evt: any, time: Date, dbClick?: () => void }) {
     const icon = new Icon({
         iconUrl: '/map-icon.svg',
-        iconSize: [80, 80],
+        iconSize: [60, 60],
     });
 
     return (
