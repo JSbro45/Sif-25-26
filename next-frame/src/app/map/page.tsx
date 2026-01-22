@@ -7,11 +7,12 @@ import DateIcon from './components/DateIcon'
 import SearchBar from './components/SearchBar'
 import EventView from './components/EventView'
 import { LatLngExpression } from 'leaflet';
+import { MarkerProps } from '../../lib/map-ents';
 import '../styles/map.css'
 
 
 export default function MapPage() {
-  const selectedRef = useRef<{ event:string; pos:LatLngExpression; time: Date } | null>(null)
+  const selectedRef = useRef<MarkerProps | null>(null)
   const [viewEvent, setViewEvent] = useState(false)
 
   return (
@@ -20,9 +21,8 @@ export default function MapPage() {
       <main>
         <div>
           <Header/>
-          <PlusBar signedIn={false}></PlusBar>
-          <SearchBar></SearchBar>
-          <DateIcon></DateIcon>
+          <PlusBar signedIn={false}/>
+          <SearchBar/>
           <MapModule
             map_type='page'
             onMarkerClick={(payload) => {
@@ -30,9 +30,9 @@ export default function MapPage() {
               setViewEvent(true) // triggers render to show EventView
             }}
           />
-          <PlusBar signedIn={true}></PlusBar>
-          <SearchBar></SearchBar>
-          <DateIcon></DateIcon>
+          <PlusBar signedIn={true}/>
+          <SearchBar/>
+          <DateIcon/>
         </div>
         {(viewEvent && selectedRef.current)?(
           <EventView

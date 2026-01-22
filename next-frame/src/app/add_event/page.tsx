@@ -3,6 +3,7 @@ import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 import { setEventPin } from "@/src/lib/data-fetch";
 
+
 const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| null }) => {
     const newPin = {
         name: refSet.name.current?.value,
@@ -14,8 +15,7 @@ const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| n
         web: refSet.web.current?.value,
         address: refSet.address.current?.value,
     };
-    console.log(newPin);
-    return setEventPin(newPin);
+    setEventPin(newPin);
 }
 
 export default function AddEventForm() {
@@ -46,7 +46,7 @@ export default function AddEventForm() {
                     <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} value={refs.web.current?.value} />
                     <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={(useRef<HTMLInputElement>(null)).current?.value} />
                     <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={(useRef<HTMLInputElement>(null)).current?.value} />
-                    <button type="submit" onClick={createPin(refs)}> Přidat </button>
+                    <button type="submit" onClick={ev =>  createPin(refs)}> Přidat </button>
                 </form>
             </section>
             <section>

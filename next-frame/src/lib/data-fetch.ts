@@ -21,17 +21,28 @@ export async function getPins(timespan: { start: Date; end: Date }, genre_list: 
             ]
         }
     })
+    pins.forEach(pin  => (pin.location = [pin.latitude, pin.longitude] as LatLngTuple));
     
     return pins;
 }
+
 
 interface EventPin {
     name: string;
     //hostUserId: number;
     date_time: Date;
-    genres: string[];
-    latitude: number;
-    longitude: number;
+    genreList: string[];
+    coords: LatLngTuple;
+}
+
+class EventPinClass implements EventPin {
+    constructor(
+        public name: string,
+        //public hostUserId: number,
+        public date_time: Date,
+        public genreList: string[],
+        public coords: LatLngTuple
+    ) {}
 }
 
 export async function setEventPin(evt_data: {eventName: string, /*hostId: number,*/ date_time: Date, genre_list: string[], location: LatLngTuple}) {
