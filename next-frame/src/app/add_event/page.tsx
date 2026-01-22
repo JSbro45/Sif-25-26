@@ -2,6 +2,8 @@ import { useRef } from "react";
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 import { setEventPin } from "@/src/lib/data-fetch";
+import { MarkerEntity } from "@/src/lib/map-ents";
+import { Marker, MarkerProps } from "react-leaflet";
 
 
 const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| null }) => {
@@ -20,16 +22,7 @@ const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| n
 
 export default function AddEventForm() {
 
-    const refs = {
-        'name' : useRef<HTMLInputElement>(null),
-        'photo' : useRef<HTMLInputElement>(null),
-        'desc' : useRef<HTMLInputElement>(null),
-        'link' : useRef<HTMLInputElement>(null),
-        'genre' : useRef<HTMLInputElement>(null),
-        'date' : useRef<HTMLInputElement>(null),
-        'web' : useRef<HTMLInputElement>(null),
-        'address' : useRef<HTMLInputElement>(null),
-    }
+    
 
     return (
         <div>

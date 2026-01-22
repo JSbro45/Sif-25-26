@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^7.3.0",
-    "@prisma/internals": "^7.1.0",
+    "@prisma/internals": "^7.3.0",
     "docker": "^0.2.14",
     "leaflet": "^1.9.4",
     "next": "^16.0.10",
@@ -27,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
+    "prisma": "^7.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
