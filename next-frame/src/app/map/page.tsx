@@ -7,7 +7,7 @@ import DateIcon from './components/DateIcon'
 import SearchBar from './components/SearchBar'
 import EventView from './components/EventView'
 import { LatLngExpression } from 'leaflet';
-import { MarkerProps } from '../../lib/map-ents';
+import { MarkerProps, MarkerEntity } from '../../lib/map-ents';
 import '../styles/map.css'
 
 

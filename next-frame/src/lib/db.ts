@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
+import { PrismaClient } from '@prisma/client'
 
 const prismaCl = () => new PrismaClient(); 
 // No need to pass the url or provider, it's read from prisma.config.t

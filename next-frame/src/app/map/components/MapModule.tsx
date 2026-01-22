@@ -23,6 +23,11 @@ export default function MapModule({ map_type, onMarkerClick, markers}: {
           {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00')}
       ]);
 
+  const colorChange = () => {
+    
+    console.log('Color changed');
+  }
+
   return (
     <div className={ map_type + '-map'}>
       <MapContainer center={[50,15]} zoom={12} scrollWheelZoom={true}>
@@ -32,15 +37,13 @@ export default function MapModule({ map_type, onMarkerClick, markers}: {
         />
         {
           mapEntities.markers.map((mark, key) => (
-            <div onClick={() => onMarkerClick && onMarkerClick({ event: mark.event, coords: mark.coords, time: mark.time })}>
-            <MarkerWindow
-              key={key}
-              pos={mark.coords}
-              evt={mark.event}
-              time={mark.time}
-              dbClick={() => onMarkerClick && onMarkerClick({ event: mark.event, coords: mark.coords, time: mark.time })}
-            />
-            </div>
+              <MarkerWindow
+                key={key}
+                pos={mark.coords}
+                evt={mark.event}
+                time={mark.time}
+                dbClick={() => { return onMarkerClick && onMarkerClick({ event: mark.event, coords: mark.coords, time: mark.time })}}
+              />
           ))
         }
       </MapContainer>

@@ -3,25 +3,31 @@ import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
 
 
-export interface MarkerProps {
-    coords: LatLngTuple;
-    event: string;
-    time: Date;
-}
+const M = {
+    'coords': [0, 0],
+    'event': '',
+    'time': new Date()
+} as {
+    'coords': LatLngTuple,
+     'event': string,
+      'time': Date
+};
+
+export type MarkerProps = typeof M;
+
+
 
 
 export class MarkerEntity {
-    constructor(public MarkerProps: MarkerProps[]
-    ) {
-    }
+    constructor(public coords: LatLngTuple, public event: string, public time: Date) {}
 }
-console.log(MarkerEntity.prototype);
 
 
-export class MapEntities extends MarkerEntity {
+
+export class MapEntities {
+
     public tileLayers: {[key: string]: [string, string, string]};
     constructor(public markers: MarkerProps[]) {
-        super(markers);
         const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
         this.tileLayers = {
             'basic': [
