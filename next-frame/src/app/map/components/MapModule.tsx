@@ -28,7 +28,7 @@ export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page
               pos={mark.coords}
               evt={mark.event}
               time={mark.time}
-              dbClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}
+              clicker={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}
             />
             </div>
           ))

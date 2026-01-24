@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
 
-export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngExpression, evt: any, time: Date, dbClick?: () => void }) {
+export default function MarkerWindow({ pos, evt, time, clicker }: { pos: LatLngExpression, evt: any, time: Date, clicker?: () => void }) {
     const [isActive, setIsActive] = useState(false);
     const markerRef = useRef<any>(null);
 
@@ -38,7 +38,7 @@ export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngE
             eventHandlers={{ click: (e) => {
                 e.originalEvent.stopPropagation();
                 setIsActive(!isActive);
-                dbClick?.();
+                clicker?.();
             }}}
         />
     )
