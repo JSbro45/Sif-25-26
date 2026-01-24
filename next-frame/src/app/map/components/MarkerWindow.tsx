@@ -1,7 +1,7 @@
 'use client';
 
 import { Icon } from "leaflet";
-import { Marker, Popup } from "react-leaflet";
+import { Marker } from "react-leaflet";
 import type { LatLngExpression } from 'leaflet'
 import { useState, useEffect, useRef } from "react";
 import 'leaflet/dist/leaflet.css'
@@ -11,48 +11,35 @@ export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngE
     const [isActive, setIsActive] = useState(false);
     const markerRef = useRef<any>(null);
 
-    const defaultIcon = new Icon({
-        iconUrl: '/map-icon.svg',
-        iconSize: [60, 60],
-    });
-
-    const activeIcon = new Icon({
-        iconUrl: '/map-icon-active.png',
-        iconSize: [80, 85],
-    });
-
-    const handleMarkerClick = (e: any) => {
-        e.originalEvent.stopPropagation();
-        setIsActive(!isActive);
-        dbClick && dbClick();
+    const icons = {
+        default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
+        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })
     };
 
     useEffect(() => {
+        const map = markerRef.current?._map;
+        if (!map) return;
+
         const handleMapClick = (e: any) => {
-            // Only deactivate if clicking outside this marker
-            if (markerRef.current && !markerRef.current._container?.contains(e.originalEvent.target)) {
+            if (!markerRef.current?._container?.contains(e.originalEvent.target)) {
                 setIsActive(false);
             }
         };
 
-        if (markerRef.current) {
-            const map = markerRef.current._map;
-            if (map) {
-                map.on('click', handleMapClick);
-                return () => {
-                    map.off('click', handleMapClick);
-                };
-            }
-        }
+        map.on('click', handleMapClick);
+        return () => map.off('click', handleMapClick);
     }, []);
 
     return (
         <Marker 
             ref={markerRef}
             position={pos} 
-            icon={isActive ? activeIcon : defaultIcon} 
-            eventHandlers={{ click: handleMarkerClick }}
-        >
-        </Marker>
+            icon={isActive ? icons.active : icons.default}
+            eventHandlers={{ click: (e) => {
+                e.originalEvent.stopPropagation();
+                setIsActive(!isActive);
+                dbClick?.();
+            }}}
+        />
     )
 }

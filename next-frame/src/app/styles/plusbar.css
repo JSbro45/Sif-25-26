@@ -21,7 +21,7 @@
     box-shadow: var(--shadow);
     font-weight: 600;
     transition:transform .12s ease;
-    z-index: 13;
+    z-index: 30;
 }
 
 .link-in-btn:link{ 

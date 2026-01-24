@@ -32,6 +32,8 @@ export default function MapPage() {
           />
            <SearchBar></SearchBar>
            <DateIcon></DateIcon>
+
+      <div className='evtview-plusbar'>
            <div className='plus-bar-container'>
            <PlusBar signedIn={true}></PlusBar>
            </div>
@@ -42,6 +44,7 @@ export default function MapPage() {
             onClose={() => setViewEvent(false)}
           />
         ): null}
+      </div>
       </main>
     </>
   )
