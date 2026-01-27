@@ -6,9 +6,9 @@
 /* uprava z templates */
 
 :root{
-    --box:#d4ecff;
-    --accent:#102157;
-    --muted:#75a0c9;
+    --box:#ffffff;
+    --accent:#1b8007;
+    --muted:#dfdfdf;
 }
 
 .search-container{
@@ -24,8 +24,7 @@
     padding:10px 14px;
     width:420px;
     max-width:100%;
-    box-shadow:0 6px 18px rgba(10, 18, 63, 0.486);
-    border:3px solid #05549f;
+    box-shadow:0 6px 18px rgba(94, 67, 67, 0.486);
     z-index: 10;
 }
             .search-input{
@@ -33,14 +32,21 @@
                 outline:0;
                 background:transparent;
                 font-size:16px;
-                color:#05549f;
+                color:var(--muted);
                 flex:1;
                 padding:6px 8px;
             }
             .search-input::placeholder{color:var(--muted);}
+            .search-input::-webkit-search-cancel-button{
+                height:50px;
+                width:50px;
+                background:var(--muted);
+                border-radius:999px;
+                cursor:pointer;
+            }
             .search-button{
                 border:0;
-                background: #05549f;
+                background:var(--accent);
                 color:#fff;
                 padding:8px 12px;
                 border-radius:999px;
@@ -51,8 +57,8 @@
                 font-weight:600;
             }
             .icon{
-                width:16px;
-                height:16px;
+                width:20px;
+                height:20px;
                 display:inline-block;
                 vertical-align:middle;
                 color: var(--accent);

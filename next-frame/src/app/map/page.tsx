@@ -33,7 +33,7 @@ export default function MapPage() {
            <SearchBar></SearchBar>
            <DateIcon></DateIcon>
 
-      <div className='evtview-plusbar'>
+      <div className='evtview-plusbar' data-event-open={viewEvent}>
            <div className='plus-bar-container'>
            <PlusBar signedIn={true}></PlusBar>
            </div>

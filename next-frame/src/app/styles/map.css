@@ -55,11 +55,13 @@
   position: fixed;
   z-index: 11;
   padding: 10px;
+  transition: right 0.3s ease;
 }
 
-.evtview-plusbar {
-  
+.evtview-plusbar[data-event-open="true"] .plus-bar-container{
+  right: 500px;
 }
+
 
 
 
