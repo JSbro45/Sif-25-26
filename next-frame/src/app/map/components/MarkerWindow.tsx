@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
 
-export default function MarkerWindow({ pos, evt, time, clicker }: { pos: LatLngExpression, evt: any, time: Date, clicker?: () => void }) {
+export default function MarkerWindow({ pos, evt, time, clicker, isActiveMarker, onActiveChange }: { pos: LatLngExpression, evt: any, time: Date, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
     const [isActive, setIsActive] = useState(false);
     const markerRef = useRef<any>(null);
 
@@ -17,18 +17,22 @@ export default function MarkerWindow({ pos, evt, time, clicker }: { pos: LatLngE
     };
 
     useEffect(() => {
+        setIsActive(isActiveMarker || false);
+    }, [isActiveMarker]);
+
+    useEffect(() => {
         const map = markerRef.current?._map;
         if (!map) return;
 
         const handleMapClick = (e: any) => {
             if (!markerRef.current?._container?.contains(e.originalEvent.target)) {
-                setIsActive(false);
+                onActiveChange?.(false);
             }
         };
 
         map.on('click', handleMapClick);
         return () => map.off('click', handleMapClick);
-    }, []);
+    }, [onActiveChange]);
 
     return (
         <Marker 
@@ -37,7 +41,7 @@ export default function MarkerWindow({ pos, evt, time, clicker }: { pos: LatLngE
             icon={isActive ? icons.active : icons.default}
             eventHandlers={{ click: (e) => {
                 e.originalEvent.stopPropagation();
-                setIsActive(!isActive);
+                onActiveChange?.(!isActive);
                 clicker?.();
             }}}
         />

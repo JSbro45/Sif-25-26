@@ -12,7 +12,7 @@ import '../styles/map.css'
 
 export default function MapPage() {
   const selectedRef = useRef<{ event:string; pos:LatLngExpression; time: Date } | null>(null)
-  const [viewEvent, setViewEvent] = useState(false)
+  const [activeMarkerEvent, setActiveMarkerEvent] = useState<string | null>(null)
 
   return (
     <>
@@ -25,23 +25,24 @@ export default function MapPage() {
           <DateIcon></DateIcon>
           <MapModule
             map_type='page'
+            activeMarkerEvent={activeMarkerEvent}
             onMarkerClick={(payload) => {
               selectedRef.current = payload
-              setViewEvent(true) // triggers render to show EventView
             }}
+            onMarkerActiveChange={setActiveMarkerEvent}
           />
            <SearchBar></SearchBar>
            <DateIcon></DateIcon>
 
-      <div className='evtview-plusbar' data-event-open={viewEvent}>
+      <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
            <div className='plus-bar-container'>
            <PlusBar signedIn={true}></PlusBar>
            </div>
         </div>
-        {(viewEvent && selectedRef.current)?(
+        {(activeMarkerEvent && selectedRef.current)?(
           <EventView
             eventName={selectedRef.current.event}
-            onClose={() => setViewEvent(false)}
+            onClose={() => setActiveMarkerEvent(null)}
           />
         ): null}
       </div>

@@ -8,8 +8,7 @@ import { LatLngExpression } from 'leaflet';
 import { getPins } from '@/src/lib/data-fetch';
 
 
-export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page' | 'embed' , onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void
-}) {
+export default function MapModule({ map_type, onMarkerClick, activeMarkerEvent, onMarkerActiveChange }: { map_type: 'page' | 'embed', onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void, activeMarkerEvent?: string | null, onMarkerActiveChange?: (event: string | null) => void }) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   const mapAtt = new MapAttributes()
 
@@ -22,15 +21,17 @@ export default function MapModule({ map_type, onMarkerClick }: { map_type: 'page
         />
         {
           mapAtt.markers.map((mark, key) => (
-            <div onClick={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}>
             <MarkerWindow
               key={key}
               pos={mark.coords}
               evt={mark.event}
               time={mark.time}
-              clicker={() => onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time })}
+              isActiveMarker={activeMarkerEvent === mark.event}
+              onActiveChange={(active) => {
+                onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time });
+                onMarkerActiveChange?.(active ? mark.event : null);
+              }}
             />
-            </div>
           ))
         }
       </MapContainer>
