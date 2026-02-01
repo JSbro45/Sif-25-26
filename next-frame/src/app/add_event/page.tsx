@@ -2,27 +2,27 @@ import { useRef } from "react";
 import { FormInputBox } from "../auth/components/FormInput"
 import MapModule from "../map/components/MapModule"
 import { setEventPin } from "@/src/lib/data-fetch";
-import { MarkerEntity } from "@/src/lib/map-ents";
-import { Marker, MarkerProps } from "react-leaflet";
+import { MarkerProps, PropTemplate } from "@/src/lib/map-ents";
+import { Marker } from "react-leaflet";
 
 
 const createPin = (refSet: { [key: string]: React.RefObject<HTMLInputElement>| null }) => {
-    const newPin = {
-        name: refSet.name.current?.value,
-        photo: refSet.photo.current?.files?.[0],
-        desc: refSet.desc.current?.value,
-        link: refSet.link.current?.value,
-        genre: refSet.genre.current?.value,
-        date: refSet.date.current?.value,
-        web: refSet.web.current?.value,
-        address: refSet.address.current?.value,
-    };
-    setEventPin(newPin);
+    for (const key in refSet) {
+
 }
 
 export default function AddEventForm() {
+    const refs = {
+        name: useRef<HTMLInputElement>(null),
+        photo: useRef<HTMLInputElement>(null),
+        desc: useRef<HTMLInputElement>(null),
+        link: useRef<HTMLInputElement>(null),
+        genre: useRef<HTMLInputElement>(null),
+        date: useRef<HTMLInputElement>(null),
+        web: useRef<HTMLInputElement>(null),
+        address: useRef<HTMLInputElement>(null),
+    };
 
-    
 
     return (
         <div>
@@ -37,8 +37,8 @@ export default function AddEventForm() {
                     <FormInputBox label="Datum a čas:" type="datetime-local" id="evt-datetime" required={true} value={refs.date.current?.value} />
                     <FormInputBox label="Adresa místa konání:" type="text" id="evt-address" required={true} value={refs.address.current?.value} />
                     <FormInputBox label="Web místa konání:" type="text" id="evt-website" required={false} value={refs.web.current?.value} />
-                    <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={(useRef<HTMLInputElement>(null)).current?.value} />
-                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={(useRef<HTMLInputElement>(null)).current?.value} />
+                    <FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={refs.ticketPrice.current?.value} />
+                    <FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={refs.ticketWebsite.current?.value} />
                     <button type="submit" onClick={ev =>  createPin(refs)}> Přidat </button>
                 </form>
             </section>

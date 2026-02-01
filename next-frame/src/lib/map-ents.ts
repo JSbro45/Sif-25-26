@@ -3,24 +3,42 @@ import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
 
 
-const M = {
-    'coords': [0, 0],
-    'event': '',
-    'time': new Date()
-} as {
-    'coords': LatLngTuple,
-     'event': string,
-      'time': Date
-};
-
-export type MarkerProps = typeof M;
-
-
-
-
-export class MarkerEntity {
-    constructor(public coords: LatLngTuple, public event: string, public time: Date) {}
+export class EventTemplate {
+    coords: LatLngTuple = [0, 0];
+    event: string = '';
+    time: Date = new Date();
+    description: string = '';
+    genre: string[] = [];
+    website: string|null = null;
+    photo: string[] = []
+    address: string = '';
+    ticketPrice: string|null = null
+    ticketWebsite: string|null = null
 }
+
+/*
+    name: useRef<HTMLInputElement>(null),
+    photo: useRef<HTMLInputElement>(null),
+    desc: useRef<HTMLInputElement>(null),
+    link: useRef<HTMLInputElement>(null),
+    genre: useRef<HTMLInputElement>(null),
+    date: useRef<HTMLInputElement>(null),
+    web: useRef<HTMLInputElement>(null),
+    address: useRef<HTMLInputElement>(null),
+*/
+
+
+const template = new EventTemplate();
+
+export type MarkerProps = typeof template;
+type ToFunc<T> = {
+  [K in keyof T]: () => T[K]
+}
+for (const key of keys<MarkerProps>()) {
+  const func = () => template[key];
+}
+
+type MarkerPropsFunc = ToFunc<MarkerProps>;
 
 
 
