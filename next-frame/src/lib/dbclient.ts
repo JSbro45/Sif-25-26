@@ -1,8 +1,7 @@
 import { PrismaClient } from './generated/prisma/client';
 
-const prismaCl = () => {
-  return new PrismaClient()
-}
+const prismaCl = new PrismaClient()
+
 
 declare global {
   var prismaGlobal: ReturnType<typeof prismaCl> | undefined;

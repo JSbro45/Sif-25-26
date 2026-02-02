@@ -18,9 +18,9 @@ export default function MapModule({ map_type, onMarkerClick, markers}: {
   const mapEntities = markers ? 
     new MapEntities(markers) : 
     new MapEntities([
-          {coords:[50,15], event:'rockfest', time: new Date('2024-07-20T18:30:00'), template: 'default'},
-          {coords:[49.612,14.48], event:'jazzfest', time: new Date('2024-07-20T20:30:00'), template: 'default'},
-          {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00'), template: 'default'}
+          {coords:[50,15], event:'rockfest', time: new Date('2024-07-20T18:30:00')},
+          {coords:[49.612,14.48], event:'jazzfest', time: new Date('2024-07-20T20:30:00')},
+          {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00')}
       ])
 
   const colorChange = () => {

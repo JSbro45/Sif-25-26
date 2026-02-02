@@ -15,7 +15,8 @@ export class EventTemplate {
     address: string = '';
     ticketPrice: string|null = null
     ticketWebsite: string|null = null
-}*/
+    */
+}
 
 
 
@@ -31,8 +32,9 @@ type ToFunc<T> = {
   [K in keyof T]: () => T[K]
 }
 
+obj = {} as {[key : keyof MarkerProps]: ReactuseRef};
 for (const key of keys<MarkerProps>()) {
-  const func = () => template[key];
+  object.
 }
 
 type MarkerPropsFunc = ToFunc<MarkerProps>;
