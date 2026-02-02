@@ -3,7 +3,7 @@
 import { Icon } from "leaflet";
 import { Marker } from "react-leaflet";
 import type { LatLngExpression } from 'leaflet'
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
 
@@ -14,8 +14,8 @@ export default function MarkerWindow({ pos, evt, time, clicker, isActiveMarker, 
         default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
         active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })
     };
-    
-    // Swichování mezi jednotlivými markery 
+
+    // Switchování mezi jednotlivými markery 
     useEffect(() => {
         if (markerRef.current) {
             markerRef.current.setIcon(isActiveMarker ? icons.active : icons.default);

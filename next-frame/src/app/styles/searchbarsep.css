@@ -14,8 +14,7 @@
 .search-container{
     position: fixed;
     top: 5px;
-    left: 50%;
-    transform: translateX(-145%);
+    left: 20px;
     display:flex;
     align-items:center;
     gap:8px;
