@@ -7,6 +7,7 @@ export class EventTemplate {
     coords: LatLngTuple = [0, 0];
     event: string = '';
     time: Date = new Date();
+    /*
     description: string = '';
     genre: string[] = [];
     website: string|null = null;
@@ -14,26 +15,22 @@ export class EventTemplate {
     address: string = '';
     ticketPrice: string|null = null
     ticketWebsite: string|null = null
+}*/
+
+
+
+const template = new EventTemplate() as object;
+
+type toInterface<T> = {
+  [K in keyof T]: T[K]
 }
 
-/*
-    name: useRef<HTMLInputElement>(null),
-    photo: useRef<HTMLInputElement>(null),
-    desc: useRef<HTMLInputElement>(null),
-    link: useRef<HTMLInputElement>(null),
-    genre: useRef<HTMLInputElement>(null),
-    date: useRef<HTMLInputElement>(null),
-    web: useRef<HTMLInputElement>(null),
-    address: useRef<HTMLInputElement>(null),
-*/
+export type MarkerProps = toInterface<EventTemplate>;
 
-
-const template = new EventTemplate();
-
-export type MarkerProps = typeof template;
 type ToFunc<T> = {
   [K in keyof T]: () => T[K]
 }
+
 for (const key of keys<MarkerProps>()) {
   const func = () => template[key];
 }

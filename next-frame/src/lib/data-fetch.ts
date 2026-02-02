@@ -1,5 +1,5 @@
 import { LatLngTuple } from 'leaflet';
-import { prisma } from './db';
+import { prisma } from './dbclient';
 
 
 
