@@ -1,3 +1,32 @@
-.wrapper{
-    display: flex;
+.evt-text{
+  padding-left: 25px;
+  padding-right: 15px;
+  padding-top: 15px;
+  font-size: 26px;
+}
+
+.x-btn{
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  padding: 4px 8px;
+  cursor: pointer;
+  color:darkred;
+  background: transparent;
+  border: none;
+  height: 50px;
+  width: 50px;
+  font-weight: bold;
+}
+
+.x-svg{
+  width: 30px;
+  height: 30px;
+}
+
+.evt-img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
 }

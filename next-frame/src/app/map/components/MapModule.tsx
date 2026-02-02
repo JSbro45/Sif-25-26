@@ -7,12 +7,7 @@ import { MapEntities, MarkerProps } from '../../../lib/map-ents'
 import { getPins } from '@/src/lib/data-fetch';
 
 
-export default function MapModule({ map_type, onMarkerClick, markers}: { 
-    map_type : 'page' | 'embed' , 
-    onMarkerClick?: (payload: MarkerProps) => void, 
-    markers?: MarkerProps[]
-  }) {
-
+export default function MapModule({ map_type, onMarkerClick, activeMarkerEvent, onMarkerActiveChange }: { map_type: 'page' | 'embed', onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void, activeMarkerEvent?: string | null, onMarkerActiveChange?: (event: string | null) => void }) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
   
   const mapEntities = markers ? 
@@ -36,14 +31,18 @@ export default function MapModule({ map_type, onMarkerClick, markers}: {
           url={`https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`}
         />
         {
-          mapEntities.markers.map((mark, key) => (
-              <MarkerWindow
-                key={key}
-                pos={mark.coords}
-                evt={mark.event}
-                time={mark.time}
-                dbClick={() => { return onMarkerClick && onMarkerClick({ event: mark.event, coords: mark.coords, time: mark.time })}}
-              />
+          mapAtt.markers.map((mark, key) => (
+            <MarkerWindow
+              key={key}
+              pos={mark.coords}
+              evt={mark.event}
+              time={mark.time}
+              isActiveMarker={activeMarkerEvent === mark.event}
+              onActiveChange={(active) => {
+                onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time });
+                onMarkerActiveChange?.(active ? mark.event : null);
+              }}
+            />
           ))
         }
       </MapContainer>

@@ -1,31 +1,52 @@
 'use client';
 
 import { Icon } from "leaflet";
-import { Marker, Popup } from "react-leaflet";
+import { Marker } from "react-leaflet";
 import type { LatLngExpression } from 'leaflet'
+import { useEffect, useRef, useState } from "react";
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
 
-export default function MarkerWindow({ pos, evt, time, dbClick }: { pos: LatLngExpression, evt: any, time: Date, dbClick?: () => void }) {
-    const icon = new Icon({
-        iconUrl: '/map-icon.svg',
-        iconSize: [40, 40],
-    });
+export default function MarkerWindow({ pos, evt, time, clicker, isActiveMarker, onActiveChange }: { pos: LatLngExpression, evt: any, time: Date, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
+    const markerRef = useRef<any>(null);
+
+    const icons = {
+        default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
+        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })
+    };
+
+    // Switchování mezi jednotlivými markery 
+    useEffect(() => {
+        if (markerRef.current) {
+            markerRef.current.setIcon(isActiveMarker ? icons.active : icons.default);
+        }
+    }, [isActiveMarker]);
+
+    // Map tracking pro zavření markeru kliknutím mimo něj
+    useEffect(() => {
+        const map = markerRef.current?._map;
+        if (!map) return;
+
+        const handleMapClick = (e: any) => {
+            if (!markerRef.current?._container?.contains(e.originalEvent.target)) {
+                onActiveChange?.(false);
+            }
+        };
+
+        map.on('click', handleMapClick);
+        return () => map.off('click', handleMapClick);
+    }, [onActiveChange]);
 
     return (
-        <Marker position={pos} icon={icon} eventHandlers={{ click: () => dbClick && dbClick() }}>
-            <Popup>
-                <ul className="event-thumbnail">
-                    <li>
-                        <span className="event"> <b className="n"> event: </b> { evt } </span>
-                    </li>
-                    <li>
-                        <span className="time"> <b className="n"> time: </b>
-                            <time dateTime={time.toISOString()}> { time.toLocaleString() } </time>
-                        </span>
-                    </li>
-                </ul>
-            </Popup>
-        </Marker>
+        <Marker 
+            ref={markerRef}
+            position={pos} 
+            icon={isActiveMarker ? icons.active : icons.default}
+            eventHandlers={{ click: (e) => {
+                e.originalEvent.stopPropagation();
+                onActiveChange?.(!isActiveMarker);
+                clicker?.();
+            }}}
+        />
     )
 }

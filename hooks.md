@@ -17,24 +17,38 @@ function Number() {
     </>
   )
 }
-```
-- useEffect - provede tzv. side effect (=data fetching, DOM updating, timers)
 
-```
-function Timer() {
-  const [count, setCount] = useState(0);
+- useEffect - provede tzv. side effect (=data fetching, DOM updating, timers
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  });
+import React, { useState, useEffect } from 'react';
 
-  return < h 1 >I've rendered {count} times!< / h 1 >;
+function UserList() {
+const [users, setUsers] = useState([]);
+
+useEffect(() => {
+// Fetch runs only once due to empty dependency array
+fetch('https://random-data-api.com/api/v2/users?size=5')
+.then(res => res.json())
+.then(data => setUsers(data))
+.catch(err => console.error('Error fetching users:', err));
+}, []);
+
+return (
+<div>
+<h 2>Random Users</h 2>
+<ul>
+{users.map(user => (
+<li key={user.id}>{user.first_name} {user.last_name}</li>
+))}
+</ul>
+</div>
+ );
 }
 ```
 
-- useRef - get funkce, doslova referencuje
+export default UserList;
+
+- useRef - get funkce, doslova referencuje, !nedělá re-render -> tracking the previous render or storing a value that doesnt cause a re-render
 
 - useReducer - něco jako useState, ale když máš víc dat, které potřebuješ změnit
 

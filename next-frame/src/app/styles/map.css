@@ -19,33 +19,32 @@
 
 .evt-view{
   position: fixed;
-  border: 4px solid #000000;
-  background-color: rgba(240, 248, 255, 0.5);
-  z-index: 20;
-  height: 600px;
-  width: 400px;
-  margin-left: 60px;
-  margin-top: -250px;
+  border: 6px solid #ac0000;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 30;
+  height: 100%;
+  width: 450px;
+  top: -5px;
+  right: 0 ;
 }
 
-.evt-text{
-  padding-left: 25px;
-  padding-right: 15px;
-  padding-top: -15px;
-  font-size: 22px;
+.plus-bar-container{
+  display: flex;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+  z-index: 11;
+  padding: 10px;
+  transition: right 0.3s ease;
 }
 
-.x-btn{
-  position: absolute;
-  right: 6px;
-  top: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  font-size: 30px;
-  font-weight: bold;
+.evtview-plusbar[data-event-open="true"] .plus-bar-container{
+  right: 500px;
 }
+
+
 
 
 
