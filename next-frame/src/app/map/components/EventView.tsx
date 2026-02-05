@@ -35,6 +35,8 @@ export default function EventView(props: props) {
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
                 <p className="meta">Jméno pořadatele</p>
+
+            <div className="event-info-cont">
              <div className="event-info">
                 <label htmlFor="text">Odkaz na interpreta:</label>
              </div>
@@ -62,6 +64,7 @@ export default function EventView(props: props) {
              <div className="event-info">
                 <label htmlFor="text">Web místa konání:</label>
              </div>
+            </div>
             </div>
     </section>
     )
