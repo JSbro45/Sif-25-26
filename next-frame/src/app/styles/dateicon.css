@@ -24,8 +24,9 @@
         }
         .date-label {
             display: block;
+            margin-top: -3px;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: bold;
             color: #0e5f04;
         }
         .date-input {

@@ -19,6 +19,11 @@
   font-weight: bold;
 }
 
+.x-btn:hover{
+  background: rgb(194, 194, 194, 0.8);
+  border-radius: 20px;
+}
+
 .x-svg{
   width: 30px;
   height: 30px;
@@ -30,16 +35,52 @@
   align-items: center;
   margin-top: -20px;
   background-color: #c5c5c5;
-  height: 100px;
+  height: 130px;
   border-radius: 15px;
 }
 
 .meta{
   font-size: 19px;
   color: rgba(85, 85, 85, 0.8);
+  margin-top: 5px;
   margin-bottom: 25px;
   padding-left: 10px;
   font-weight: bold;
+}
+
+.meta-link{
+  text-decoration: none;
+  color: #bb9903;
+}
+.meta-link:hover{
+  color: #8d7404;
+}
+
+.meta2{
+  font-size: 19px;
+  color:rgba(85, 85, 85, 0.8);
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.meta2-btn{
+  margin-left: 10px;
+  background: linear-gradient(to right, #bb3d03, #8f0505);
+  color: yellow;
+  border: darkred 2px solid;
+  border-radius: 50px;
+  font-weight: bold;
+  height: 40px;
+  width: 90px;
+}
+
+.zakl-info{
+  font-size: 25px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-top: -5px;
+  color: white;
+  text-decoration: underline;
 }
 
 .event-info{
@@ -54,7 +95,7 @@
   color: white;
   font-weight: bold;
   border-radius: 30px;
-  height: 350px;
+  height: 370px;
   margin-top: -10px;
   display: flex;
   flex-direction: column;
@@ -63,6 +104,12 @@
 
 .nazev-koncertu{
   color: darkred;
-  font-weight: bold;
+  font-size: 45px;
   margin-top: -5px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
+
+
