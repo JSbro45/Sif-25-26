@@ -49,22 +49,18 @@ export default function MapModule() {
 }
 
 
-
- Popup component z leafletu:
-
-
-            <Popup>
-                <ul className="event-thumbnail">
-                    <li>
-                        <span className="event"> <b className="n"> event: </b> { evt } </span>
-                    </li>
-                    <li>
-                        <span className="time"> <b className="n"> time: </b>
-                            <time dateTime={time.toISOString()}> { time.toLocaleString() } </time>
-                        </span>
-                    </li>
-                </ul>
-            </Popup>
-
+- ### CSS
+    - homepage
+    - event list stránka
+    - o nás
+    - přehled o účtu
+- ### interface pro lokální databázi
+    - zbývá dořešit strukturu dat +    
+- ### interface pro Geokodování (mapy.cz)
++ ### chytré vyhledávání
++ ### rozšíření
+    - stránky pro učinkující + úprava databáze
+    - normální uživatelé + přidávání recenzí + úprava databáze
+    + spolupráce s bandzone = další interface :( 
 
 ```
