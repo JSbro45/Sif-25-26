@@ -28,26 +28,6 @@ __Funkce:__
 > - neustálá aktualizace dat 
 > (- hledání místa - vyhledá konkrétní sál na mapě)
 
-https://www.youtube.com/watch?v=c7ptpvp1CYw
-
-
-
-
-```
-import { MapContainer, TileLayer } from 'react-leaflet' 
-
-export default function MapModule() {
-    const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
-    return (
-    <MapContainer center={[50,15]} zoom={12} scrollWheelZoom={false}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=$+{API_KEY}"
-            />
-    </MapContainer>
-    )
-}
-
 
 - ### CSS
     - homepage
