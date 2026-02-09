@@ -34,7 +34,9 @@ export default function EventView(props: props) {
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
-                <p className="meta">Jméno pořadatele</p>
+                <p className="meta">Pořadatel: <a href='' className='meta-link'>Pořadatel</a></p>               
+            <div className="event-info-cont">
+             <h3 className='zakl-info'>Základní údaje:</h3>
              <div className="event-info">
                 <label htmlFor="text">Odkaz na interpreta:</label>
              </div>
@@ -62,6 +64,10 @@ export default function EventView(props: props) {
              <div className="event-info">
                 <label htmlFor="text">Web místa konání:</label>
              </div>
+            </div>
+               <p className='meta2'> Podrobnější údaje naleznete zde: 
+               <button className='meta2-btn'>Zjistit více</button>
+               </p>
             </div>
     </section>
     )
