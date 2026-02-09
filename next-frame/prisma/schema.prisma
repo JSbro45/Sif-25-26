@@ -15,13 +15,19 @@ datasource db {
 }
 
 
+enum Role {
+  HOST
+  USER
+}
+
 model User {
   id              Int      @id @default(autoincrement())
+  role            Role?     @default(HOST)
   name            String
   email           String   @unique
   password        String    // For OAuth users
   verification    Boolean  @default(false) // User verification status
-  //events          Event[]  
+  events          Event[]  @relation("events")
   createdAt       DateTime @default(now())
 
   @@index([email])
@@ -34,25 +40,28 @@ model Event {
   description     String?
   date_time       DateTime
   photos          String[]
-  //hostUserId      Int 
   genres          String[]
-  //hostUser        User @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
-  //performers      String[]
   createdAt       DateTime @default(now())
   latitude        Float
   longitude       Float
+  hostUserId      Int 
+  hostUser        User @relation("events", fields: [hostUserId], references: [id], onDelete: Cascade)
+  //performers      String[]
   //addressId       Int?
   //address         Address? @relation(fields: [addressId], references: [id], onDelete: SetNull)
 
-  //@@index([hostUserId])
+  @@index([hostUserId])
+  @@index([date_time])
+  @@index([genres])
 }
 
+/*
 model Address {
   id          Int      @id @default(autoincrement())
-  placeName   String?
-  postalCode  String?
+  placeName   String
+  postalCode  Int 
   lat         Float  // latitude
   lng         Float  // longitude
   //events      Event[]
 
-}
+}*/

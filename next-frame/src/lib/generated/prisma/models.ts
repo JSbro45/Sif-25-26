@@ -10,5 +10,4 @@
  */
 export type * from './models/User'
 export type * from './models/Event'
-export type * from './models/Address'
 export type * from './commonInputTypes'

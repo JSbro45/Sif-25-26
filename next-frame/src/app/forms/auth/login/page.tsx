@@ -1,4 +1,4 @@
-import { FormInputBox } from "../components/FormInput"
+import { FormInputBox } from "../../components/FormInput"
 import '../../styles/forms.css'
 
 export default function LogInForm() {

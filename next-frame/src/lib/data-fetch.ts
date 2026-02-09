@@ -45,12 +45,11 @@ class EventPinClass implements EventPin {
     ) {}
 }
 
-export async function setEventPin(evt_data: {eventName: string, /*hostId: number,*/ date_time: Date, genre_list: string[], location: LatLngTuple}) {
-
+export async function setEventPin(evt_data: {eventName: string, hostId: number, date_time: Date, genre_list: string[], location: LatLngTuple}) {
     const event = await prisma.event.create({
         data: {
             name:        evt_data.eventName,
-            //hostUserId:  hostId,
+            hostUserId:  evt_data.hostId,
             date_time:   evt_data.date_time,
             genres:      evt_data.genre_list, 
             latitude:    evt_data.location[0],

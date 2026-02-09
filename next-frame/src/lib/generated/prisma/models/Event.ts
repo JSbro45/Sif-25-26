@@ -30,12 +30,14 @@ export type EventAvgAggregateOutputType = {
   id: number | null
   latitude: number | null
   longitude: number | null
+  hostUserId: number | null
 }
 
 export type EventSumAggregateOutputType = {
   id: number | null
   latitude: number | null
   longitude: number | null
+  hostUserId: number | null
 }
 
 export type EventMinAggregateOutputType = {
@@ -46,6 +48,7 @@ export type EventMinAggregateOutputType = {
   createdAt: Date | null
   latitude: number | null
   longitude: number | null
+  hostUserId: number | null
 }
 
 export type EventMaxAggregateOutputType = {
@@ -56,6 +59,7 @@ export type EventMaxAggregateOutputType = {
   createdAt: Date | null
   latitude: number | null
   longitude: number | null
+  hostUserId: number | null
 }
 
 export type EventCountAggregateOutputType = {
@@ -68,6 +72,7 @@ export type EventCountAggregateOutputType = {
   createdAt: number
   latitude: number
   longitude: number
+  hostUserId: number
   _all: number
 }
 
@@ -76,12 +81,14 @@ export type EventAvgAggregateInputType = {
   id?: true
   latitude?: true
   longitude?: true
+  hostUserId?: true
 }
 
 export type EventSumAggregateInputType = {
   id?: true
   latitude?: true
   longitude?: true
+  hostUserId?: true
 }
 
 export type EventMinAggregateInputType = {
@@ -92,6 +99,7 @@ export type EventMinAggregateInputType = {
   createdAt?: true
   latitude?: true
   longitude?: true
+  hostUserId?: true
 }
 
 export type EventMaxAggregateInputType = {
@@ -102,6 +110,7 @@ export type EventMaxAggregateInputType = {
   createdAt?: true
   latitude?: true
   longitude?: true
+  hostUserId?: true
 }
 
 export type EventCountAggregateInputType = {
@@ -114,6 +123,7 @@ export type EventCountAggregateInputType = {
   createdAt?: true
   latitude?: true
   longitude?: true
+  hostUserId?: true
   _all?: true
 }
 
@@ -213,6 +223,7 @@ export type EventGroupByOutputType = {
   createdAt: Date
   latitude: number
   longitude: number
+  hostUserId: number
   _count: EventCountAggregateOutputType | null
   _avg: EventAvgAggregateOutputType | null
   _sum: EventSumAggregateOutputType | null
@@ -248,6 +259,8 @@ export type EventWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
   latitude?: Prisma.FloatFilter<"Event"> | number
   longitude?: Prisma.FloatFilter<"Event"> | number
+  hostUserId?: Prisma.IntFilter<"Event"> | number
+  hostUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type EventOrderByWithRelationInput = {
@@ -260,6 +273,8 @@ export type EventOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
+  hostUser?: Prisma.UserOrderByWithRelationInput
 }
 
 export type EventWhereUniqueInput = Prisma.AtLeast<{
@@ -275,6 +290,8 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
   latitude?: Prisma.FloatFilter<"Event"> | number
   longitude?: Prisma.FloatFilter<"Event"> | number
+  hostUserId?: Prisma.IntFilter<"Event"> | number
+  hostUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
 export type EventOrderByWithAggregationInput = {
@@ -287,6 +304,7 @@ export type EventOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
   _count?: Prisma.EventCountOrderByAggregateInput
   _avg?: Prisma.EventAvgOrderByAggregateInput
   _max?: Prisma.EventMaxOrderByAggregateInput
@@ -307,6 +325,7 @@ export type EventScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Event"> | Date | string
   latitude?: Prisma.FloatWithAggregatesFilter<"Event"> | number
   longitude?: Prisma.FloatWithAggregatesFilter<"Event"> | number
+  hostUserId?: Prisma.IntWithAggregatesFilter<"Event"> | number
 }
 
 export type EventCreateInput = {
@@ -318,6 +337,7 @@ export type EventCreateInput = {
   createdAt?: Date | string
   latitude: number
   longitude: number
+  hostUser: Prisma.UserCreateNestedOneWithoutEventsInput
 }
 
 export type EventUncheckedCreateInput = {
@@ -330,6 +350,7 @@ export type EventUncheckedCreateInput = {
   createdAt?: Date | string
   latitude: number
   longitude: number
+  hostUserId: number
 }
 
 export type EventUpdateInput = {
@@ -341,6 +362,7 @@ export type EventUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  hostUser?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
 }
 
 export type EventUncheckedUpdateInput = {
@@ -353,6 +375,7 @@ export type EventUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  hostUserId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type EventCreateManyInput = {
@@ -365,6 +388,7 @@ export type EventCreateManyInput = {
   createdAt?: Date | string
   latitude: number
   longitude: number
+  hostUserId: number
 }
 
 export type EventUpdateManyMutationInput = {
@@ -388,6 +412,17 @@ export type EventUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  hostUserId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type EventListRelationFilter = {
+  every?: Prisma.EventWhereInput
+  some?: Prisma.EventWhereInput
+  none?: Prisma.EventWhereInput
+}
+
+export type EventOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -408,12 +443,14 @@ export type EventCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
 }
 
 export type EventAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
 }
 
 export type EventMaxOrderByAggregateInput = {
@@ -424,6 +461,7 @@ export type EventMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
 }
 
 export type EventMinOrderByAggregateInput = {
@@ -434,12 +472,56 @@ export type EventMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
 }
 
 export type EventSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  hostUserId?: Prisma.SortOrder
+}
+
+export type EventCreateNestedManyWithoutHostUserInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput> | Prisma.EventCreateWithoutHostUserInput[] | Prisma.EventUncheckedCreateWithoutHostUserInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutHostUserInput | Prisma.EventCreateOrConnectWithoutHostUserInput[]
+  createMany?: Prisma.EventCreateManyHostUserInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUncheckedCreateNestedManyWithoutHostUserInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput> | Prisma.EventCreateWithoutHostUserInput[] | Prisma.EventUncheckedCreateWithoutHostUserInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutHostUserInput | Prisma.EventCreateOrConnectWithoutHostUserInput[]
+  createMany?: Prisma.EventCreateManyHostUserInputEnvelope
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+}
+
+export type EventUpdateManyWithoutHostUserNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput> | Prisma.EventCreateWithoutHostUserInput[] | Prisma.EventUncheckedCreateWithoutHostUserInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutHostUserInput | Prisma.EventCreateOrConnectWithoutHostUserInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutHostUserInput | Prisma.EventUpsertWithWhereUniqueWithoutHostUserInput[]
+  createMany?: Prisma.EventCreateManyHostUserInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutHostUserInput | Prisma.EventUpdateWithWhereUniqueWithoutHostUserInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutHostUserInput | Prisma.EventUpdateManyWithWhereWithoutHostUserInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+}
+
+export type EventUncheckedUpdateManyWithoutHostUserNestedInput = {
+  create?: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput> | Prisma.EventCreateWithoutHostUserInput[] | Prisma.EventUncheckedCreateWithoutHostUserInput[]
+  connectOrCreate?: Prisma.EventCreateOrConnectWithoutHostUserInput | Prisma.EventCreateOrConnectWithoutHostUserInput[]
+  upsert?: Prisma.EventUpsertWithWhereUniqueWithoutHostUserInput | Prisma.EventUpsertWithWhereUniqueWithoutHostUserInput[]
+  createMany?: Prisma.EventCreateManyHostUserInputEnvelope
+  set?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  disconnect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  delete?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  connect?: Prisma.EventWhereUniqueInput | Prisma.EventWhereUniqueInput[]
+  update?: Prisma.EventUpdateWithWhereUniqueWithoutHostUserInput | Prisma.EventUpdateWithWhereUniqueWithoutHostUserInput[]
+  updateMany?: Prisma.EventUpdateManyWithWhereWithoutHostUserInput | Prisma.EventUpdateManyWithWhereWithoutHostUserInput[]
+  deleteMany?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
 }
 
 export type EventCreatephotosInput = {
@@ -472,6 +554,118 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type EventCreateWithoutHostUserInput = {
+  name: string
+  description?: string | null
+  date_time: Date | string
+  photos?: Prisma.EventCreatephotosInput | string[]
+  genres?: Prisma.EventCreategenresInput | string[]
+  createdAt?: Date | string
+  latitude: number
+  longitude: number
+}
+
+export type EventUncheckedCreateWithoutHostUserInput = {
+  id?: number
+  name: string
+  description?: string | null
+  date_time: Date | string
+  photos?: Prisma.EventCreatephotosInput | string[]
+  genres?: Prisma.EventCreategenresInput | string[]
+  createdAt?: Date | string
+  latitude: number
+  longitude: number
+}
+
+export type EventCreateOrConnectWithoutHostUserInput = {
+  where: Prisma.EventWhereUniqueInput
+  create: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput>
+}
+
+export type EventCreateManyHostUserInputEnvelope = {
+  data: Prisma.EventCreateManyHostUserInput | Prisma.EventCreateManyHostUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type EventUpsertWithWhereUniqueWithoutHostUserInput = {
+  where: Prisma.EventWhereUniqueInput
+  update: Prisma.XOR<Prisma.EventUpdateWithoutHostUserInput, Prisma.EventUncheckedUpdateWithoutHostUserInput>
+  create: Prisma.XOR<Prisma.EventCreateWithoutHostUserInput, Prisma.EventUncheckedCreateWithoutHostUserInput>
+}
+
+export type EventUpdateWithWhereUniqueWithoutHostUserInput = {
+  where: Prisma.EventWhereUniqueInput
+  data: Prisma.XOR<Prisma.EventUpdateWithoutHostUserInput, Prisma.EventUncheckedUpdateWithoutHostUserInput>
+}
+
+export type EventUpdateManyWithWhereWithoutHostUserInput = {
+  where: Prisma.EventScalarWhereInput
+  data: Prisma.XOR<Prisma.EventUpdateManyMutationInput, Prisma.EventUncheckedUpdateManyWithoutHostUserInput>
+}
+
+export type EventScalarWhereInput = {
+  AND?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+  OR?: Prisma.EventScalarWhereInput[]
+  NOT?: Prisma.EventScalarWhereInput | Prisma.EventScalarWhereInput[]
+  id?: Prisma.IntFilter<"Event"> | number
+  name?: Prisma.StringFilter<"Event"> | string
+  description?: Prisma.StringNullableFilter<"Event"> | string | null
+  date_time?: Prisma.DateTimeFilter<"Event"> | Date | string
+  photos?: Prisma.StringNullableListFilter<"Event">
+  genres?: Prisma.StringNullableListFilter<"Event">
+  createdAt?: Prisma.DateTimeFilter<"Event"> | Date | string
+  latitude?: Prisma.FloatFilter<"Event"> | number
+  longitude?: Prisma.FloatFilter<"Event"> | number
+  hostUserId?: Prisma.IntFilter<"Event"> | number
+}
+
+export type EventCreateManyHostUserInput = {
+  id?: number
+  name: string
+  description?: string | null
+  date_time: Date | string
+  photos?: Prisma.EventCreatephotosInput | string[]
+  genres?: Prisma.EventCreategenresInput | string[]
+  createdAt?: Date | string
+  latitude: number
+  longitude: number
+}
+
+export type EventUpdateWithoutHostUserInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.EventUpdatephotosInput | string[]
+  genres?: Prisma.EventUpdategenresInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+}
+
+export type EventUncheckedUpdateWithoutHostUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.EventUpdatephotosInput | string[]
+  genres?: Prisma.EventUpdategenresInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+}
+
+export type EventUncheckedUpdateManyWithoutHostUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  date_time?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  photos?: Prisma.EventUpdatephotosInput | string[]
+  genres?: Prisma.EventUpdategenresInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+}
+
 
 
 export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -484,6 +678,8 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAt?: boolean
   latitude?: boolean
   longitude?: boolean
+  hostUserId?: boolean
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["event"]>
 
 export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -496,6 +692,8 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   latitude?: boolean
   longitude?: boolean
+  hostUserId?: boolean
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["event"]>
 
 export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -508,6 +706,8 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   latitude?: boolean
   longitude?: boolean
+  hostUserId?: boolean
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["event"]>
 
 export type EventSelectScalar = {
@@ -520,13 +720,25 @@ export type EventSelectScalar = {
   createdAt?: boolean
   latitude?: boolean
   longitude?: boolean
+  hostUserId?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "date_time" | "photos" | "genres" | "createdAt" | "latitude" | "longitude", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "date_time" | "photos" | "genres" | "createdAt" | "latitude" | "longitude" | "hostUserId", ExtArgs["result"]["event"]>
+export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type EventIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
+export type EventIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  hostUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+}
 
 export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Event"
-  objects: {}
+  objects: {
+    hostUser: Prisma.$UserPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
@@ -537,6 +749,7 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     createdAt: Date
     latitude: number
     longitude: number
+    hostUserId: number
   }, ExtArgs["result"]["event"]>
   composites: {}
 }
@@ -931,6 +1144,7 @@ readonly fields: EventFieldRefs;
  */
 export interface Prisma__EventClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  hostUser<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -969,6 +1183,7 @@ export interface EventFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Event", 'DateTime'>
   readonly latitude: Prisma.FieldRef<"Event", 'Float'>
   readonly longitude: Prisma.FieldRef<"Event", 'Float'>
+  readonly hostUserId: Prisma.FieldRef<"Event", 'Int'>
 }
     
 
@@ -985,6 +1200,10 @@ export type EventFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
   /**
    * Filter, which Event to fetch.
    */
@@ -1004,6 +1223,10 @@ export type EventFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  /**
    * Filter, which Event to fetch.
    */
   where: Prisma.EventWhereUniqueInput
@@ -1021,6 +1244,10 @@ export type EventFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
   /**
    * Filter, which Event to fetch.
    */
@@ -1070,6 +1297,10 @@ export type EventFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  /**
    * Filter, which Event to fetch.
    */
   where?: Prisma.EventWhereInput
@@ -1118,6 +1349,10 @@ export type EventFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  /**
    * Filter, which Events to fetch.
    */
   where?: Prisma.EventWhereInput
@@ -1161,6 +1396,10 @@ export type EventCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  /**
    * The data needed to create a Event.
    */
   data: Prisma.XOR<Prisma.EventCreateInput, Prisma.EventUncheckedCreateInput>
@@ -1194,6 +1433,10 @@ export type EventCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    */
   data: Prisma.EventCreateManyInput | Prisma.EventCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1208,6 +1451,10 @@ export type EventUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
   /**
    * The data needed to update a Event.
    */
@@ -1260,6 +1507,10 @@ export type EventUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many Events to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1274,6 +1525,10 @@ export type EventUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
   /**
    * The filter to search for the Event to update in case it exists.
    */
@@ -1300,6 +1555,10 @@ export type EventDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
   /**
    * Filter which Event to delete.
    */
@@ -1332,4 +1591,8 @@ export type EventDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Event
    */
   omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
 }

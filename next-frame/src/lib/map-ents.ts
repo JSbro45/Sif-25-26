@@ -4,6 +4,7 @@ import{ keys } from 'ts-transformer-keys';
 
 
 export class EventTemplate {
+  
     coords: LatLngTuple = [0, 0];
     event: string = '';
     time: Date = new Date();
@@ -20,7 +21,7 @@ export class EventTemplate {
 
 
 
-const template = new EventTemplate() as object;
+export const template = new EventTemplate() as MarkerProps;
 
 type toInterface<T> = {
   [K in keyof T]: T[K]
@@ -28,14 +29,11 @@ type toInterface<T> = {
 
 export type MarkerProps = toInterface<EventTemplate>;
 
+
 type ToFunc<T> = {
-  [K in keyof T]: () => T[K]
+    [K in keyof T]: () => T[K]
 }
 
-obj = {} as {[key : keyof MarkerProps]: ReactuseRef};
-for (const key of keys<MarkerProps>()) {
-  object.
-}
 
 type MarkerPropsFunc = ToFunc<MarkerProps>;
 

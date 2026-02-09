@@ -52,8 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Event: 'Event',
-  Address: 'Address'
+  Event: 'Event'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,6 +73,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
+  role: 'role',
   name: 'name',
   email: 'email',
   password: 'password',
@@ -93,21 +93,11 @@ export const EventScalarFieldEnum = {
   genres: 'genres',
   createdAt: 'createdAt',
   latitude: 'latitude',
-  longitude: 'longitude'
+  longitude: 'longitude',
+  hostUserId: 'hostUserId'
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
-
-
-export const AddressScalarFieldEnum = {
-  id: 'id',
-  placeName: 'placeName',
-  postalCode: 'postalCode',
-  lat: 'lat',
-  lng: 'lng'
-} as const
-
-export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
 
 
 export const SortOrder = {
