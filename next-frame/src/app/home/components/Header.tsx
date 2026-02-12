@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import '../../styles/header.css'
 
 const SearchBar = () => 
     <form className="search-container" role="search" action="#">
@@ -14,13 +14,13 @@ const SearchBar = () =>
 
 export default function Header() {
     return (
-        <header>
+        <header className="header">
             <div id="logo_header">
             <img src="/static/logo.png"  alt="LocalFest logo" /> {/*style="height:40px;width:40px;object-fit:contain;"*/}
             <Link href="/home"> <h1>LocalFest.cz</h1> </Link>
             </div>
             <SearchBar />
-            <nav>
+            <nav className="nav">
                 <Link href="/events" className="links_header"> Eventy </Link>
                 <Link href="/home/about" className="links_header"> O Nás </Link>
                 <Link href="/home/kontakt" className="links_header"> Kontakty </Link>

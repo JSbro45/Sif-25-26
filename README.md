@@ -28,43 +28,19 @@ __Funkce:__
 > - neustálá aktualizace dat 
 > (- hledání místa - vyhledá konkrétní sál na mapě)
 
-https://www.youtube.com/watch?v=c7ptpvp1CYw
 
-
-
-
-```
-import { MapContainer, TileLayer } from 'react-leaflet' 
-
-export default function MapModule() {
-    const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
-    return (
-    <MapContainer center={[50,15]} zoom={12} scrollWheelZoom={false}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=$+{API_KEY}"
-            />
-    </MapContainer>
-    )
-}
-
-
-
- Popup component z leafletu:
-
-
-            <Popup>
-                <ul className="event-thumbnail">
-                    <li>
-                        <span className="event"> <b className="n"> event: </b> { evt } </span>
-                    </li>
-                    <li>
-                        <span className="time"> <b className="n"> time: </b>
-                            <time dateTime={time.toISOString()}> { time.toLocaleString() } </time>
-                        </span>
-                    </li>
-                </ul>
-            </Popup>
-
+- ### CSS
+    - homepage
+    - event list stránka
+    - o nás
+    - přehled o účtu
+- ### interface pro lokální databázi
+    - zbývá dořešit strukturu dat +    
+- ### interface pro Geokodování (mapy.cz)
++ ### chytré vyhledávání
++ ### rozšíření
+    - stránky pro učinkující + úprava databáze
+    - normální uživatelé + přidávání recenzí + úprava databáze
+    + spolupráce s bandzone = další interface :( 
 
 ```

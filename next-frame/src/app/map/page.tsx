@@ -24,6 +24,10 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
+          <Header/>
+          <PlusBar signedIn={false} />
+          <SearchBar />
+          <DateIcon />
           <MapModule
             map_type='page'
             markers={[getPins() as unknown as MarkerProps]}
@@ -33,10 +37,7 @@ export default function MapPage() {
             }}
             onMarkerActiveChange={setActiveMarkerEvent}
           />
-           <SearchBar ref={searchRef} onSearch={handleSearch} />
-           <DateIcon ref={dateRef} onDateChange={handleDateChange} />
-
-      <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
+        <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
            <div className='plus-bar-container'>
            <PlusBar signedIn={true}></PlusBar>
            </div>

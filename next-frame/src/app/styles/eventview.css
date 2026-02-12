@@ -11,7 +11,7 @@
   top: 14px;
   padding: 4px 8px;
   cursor: pointer;
-  color:darkred;
+  color:rgba(175, 50, 0, 0.8);
   background: transparent;
   border: none;
   height: 50px;
@@ -91,7 +91,7 @@
 }
 
 .event-info-cont{
-  background-color: rgba(139, 0, 0, 0.8);
+  background-color: rgba(163, 6, 6, 0.8);
   color: white;
   font-weight: bold;
   border-radius: 30px;
@@ -103,7 +103,7 @@
 }
 
 .nazev-koncertu{
-  color: darkred;
+  color: rgba(175, 50, 0, 0.8);
   font-size: 45px;
   margin-top: -5px;
   font-weight: bold;

@@ -1,9 +1,9 @@
-
+import '../../styles/footer.css'
 
 export default function Footer() {
     return (
-       <footer>
-        <p>&copy; 2025 LocalFest. All rights reserved.</p>
-    </footer>
+       <footer className="footer">
+        <p className="footer-text">&copy; 2025 LocalFest. All rights reserved.</p>
+        </footer>
     )
 }
