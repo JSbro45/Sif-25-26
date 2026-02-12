@@ -7,32 +7,34 @@ import DateIcon from './components/DateIcon'
 import SearchBar from './components/SearchBar'
 import EventView from './components/EventView'
 import { LatLngExpression } from 'leaflet';
-import { MarkerProps, MarkerEntity } from '../../lib/map-ents';
+import { MarkerProps } from '../../lib/map-ents';
 import '../styles/map.css'
+import { get } from 'http';
 
 
 export default function MapPage() {
-  const selectedRef = useRef<{ event:string; pos:LatLngExpression; time: Date } | null>(null)
+  const selectedRef = useRef<MarkerProps | null>(null)
+  const dateRef = useRef<string | null>(null)
+  const searchRef = useRef<string | null>(null)
   const [activeMarkerEvent, setActiveMarkerEvent] = useState<string | null>(null)
+  const [pinFilter, setPinFilter] = useState<{date?: string, search?: string}>({})
 
   return (
     <>
       <Header/>
       <main>
         <div>
-          <Header/>
-          <PlusBar signedIn={false}/>
-          <SearchBar/>
           <MapModule
             map_type='page'
+            markers={[getPins() as unknown as MarkerProps]}
             activeMarkerEvent={activeMarkerEvent}
-            onMarkerClick={(payload) => {
+            onMarkerClick={(payload: MarkerProps) => {
               selectedRef.current = payload
             }}
             onMarkerActiveChange={setActiveMarkerEvent}
           />
-           <SearchBar></SearchBar>
-           <DateIcon></DateIcon>
+           <SearchBar ref={searchRef} onSearch={handleSearch} />
+           <DateIcon ref={dateRef} onDateChange={handleDateChange} />
 
       <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
            <div className='plus-bar-container'>

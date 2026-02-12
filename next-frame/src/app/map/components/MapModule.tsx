@@ -8,23 +8,21 @@ import { getPins } from '@/src/lib/data-fetch';
 import { LatLngTuple } from 'leaflet';
 
 
-export default function MapModule({ map_type, markers, onMarkerClick, activeMarkerEvent, onMarkerActiveChange }: {
+export default function MapModule({ map_type, markers, onMarkerClick, activeMarkerEvent, onMarkerActiveChange } : {
     map_type: 'page' | 'embed',
     markers : MarkerProps[], 
     onMarkerClick?: (payload: MarkerProps) => void, 
     activeMarkerEvent?: string | null, 
     onMarkerActiveChange?: (event: string | null) => void 
 }) {
-    const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
-    const mapEntities = markers ? 
-      new MapEntities(markers) : 
-      new MapEntities([
-            {coords:[50,15], event:'rockfest', time: new Date('2024-07-20T18:30:00')},
-            {coords:[49.612,14.48], event:'jazzfest', time: new Date('2024-07-20T20:30:00')},
-            {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00')}
-        ])
-    const colorChange = () => {
-    console.log('Color changed');
+  const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
+
+  if (markers!) {
+    markers = [
+      {coords:[50,15], event:'rockfest', time: new Date('2024-07-20T18:30:00')},
+      {coords:[49.612,14.48], event:'jazzfest', time: new Date('2024-07-20T20:30:00')},
+      {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00')}
+    ]
   }
 
   return (
@@ -35,7 +33,7 @@ export default function MapModule({ map_type, markers, onMarkerClick, activeMark
           url={`https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`}
         />
         {
-          markers.map((mark, key) => 
+          markers?.map((mark, key) => 
             <MarkerWindow
               key={key}
               evtInfo={mark}
