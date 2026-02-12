@@ -19,10 +19,9 @@ export default function MapPage() {
       <Header/>
       <main>
         <div>
-          <Header/>
-          <PlusBar signedIn={false}></PlusBar>
-          <SearchBar></SearchBar>
-          <DateIcon></DateIcon>
+          <PlusBar signedIn={false} />
+          <SearchBar />
+          <DateIcon />
           <MapModule
             map_type='page'
             activeMarkerEvent={activeMarkerEvent}
@@ -31,10 +30,7 @@ export default function MapPage() {
             }}
             onMarkerActiveChange={setActiveMarkerEvent}
           />
-           <SearchBar></SearchBar>
-           <DateIcon></DateIcon>
-
-      <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
+        <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
            <div className='plus-bar-container'>
            <PlusBar signedIn={true}></PlusBar>
            </div>
