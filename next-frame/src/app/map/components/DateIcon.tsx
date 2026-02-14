@@ -7,8 +7,6 @@ export default function DateIcon() {
             <label className='date-label' htmlFor="date-select"><b>Datum:</b></label>
             <input className="date-input" type="date" id="date-select" name="date-select" />
             <br/>
-            <label className='date-label' htmlFor="date-select"><b>Datum:</b></label>
-            <input className="date-input" type="date" id="date-select" name="date-select" />
         </form>
         </div>
     )
