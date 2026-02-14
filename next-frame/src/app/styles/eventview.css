@@ -124,10 +124,13 @@
   color: white;
   font-weight: bold;
   border-radius: 30px;
-  height: 350px;
+  height: 380px;
   margin-top: -10px;
   padding-top: 20px;
 }
 
+.evt-icons{
+  margin-right: 10px;
+}
 
 

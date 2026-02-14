@@ -39,28 +39,28 @@ export default function EventView(props: props) {
             <div className="event-info-cont">
              <h3 className='zakl-info'>Základní info:</h3>
              <div className="event-info">
-                <p><img src="/icons/global.png" alt='odkaz' height={10} width={10}></img> Odkaz na interpreta</p>
+                <p><img src="/icons/global.png" alt='odkaz' height={20} width={20} className='evt-icons'></img> Odkaz na interpreta</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/quaver.png" alt='quaver' height={10} width={10}></img> Žánr</p>
+                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> Žánr</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/calendar.png" alt='calendar_icon' height={10} width={10}></img>Datum a čas konání</p>
+                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img>Datum a čas konání</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/money.png" alt='money' height={10} width={10}></img>Vstupné</p>
+                <p><img src="/icons/money.png" alt='money' height={20} width={20} className='evt-icons'></img>Vstupné</p>
              </div>
              <div className="event-info">
-                <p>Web pro koupi vstupenek</p>
+                <p><img src="/icons/tickets_web.png" alt='money' height={20} width={20} className='evt-icons'></img>Web pro koupi vstupenek</p>
              </div>
              <div className="event-info">
-                <p>Název místa konání</p>
+                <p><img src="/icons/pin_name.png" alt='money' height={20} width={20} className='evt-icons'></img>Název místa konání</p>
              </div>
              <div className="event-info">
-                <p><img src="pin.png" alt='pin_mista' height={10} width={10}></img>Adresa místa konání</p>
+                <p><img src="/icons/pin.png" alt='pin_mista' height={20} width={20} className='evt-icons'></img>Adresa místa konání</p>
              </div>
              <div className="event-info">
-                <p>Web místa konání</p>
+                <p><img src="/icons/pin_web.png" alt='money' height={20} width={20} className='evt-icons'></img>Web místa konání</p>
              </div>
             </div>
                <p className='line-break2'></p>
