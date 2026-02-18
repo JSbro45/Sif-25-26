@@ -1,36 +1,23 @@
 import '../../styles/eventview.css'
+import { MarkerProps } from '../../../lib/map-types';
 
 interface props {
-    eventName: string;
+    event: MarkerProps;
     onClose: () => void;
 }
 
-interface un_ness {
-    eventImage: string;
-    eventOrganizer: string;
-    eventLink: string;
-    eventGenre: string;
-    eventDate: string;
-    eventTime: string;
-    eventPrice: string;
-    eventTicketLink: string;
-    eventLocationName: string;
-    eventLocationAddress: string;
-    eventLocationWebsite: string;
- } 
-
-export default function EventView(props: props) {
+export default function EventView({event, onClose}: props) {
     return (
         <section className="evt-view">
             <button
                 className='x-btn'
-                onClick={props.onClose}
+                onClick={onClose}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="x-svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'>{props.eventName}</h1>
+                <h1 className='nazev-koncertu'>{event.name}</h1>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>

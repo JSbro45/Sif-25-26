@@ -1,7 +1,7 @@
 
 import { FormInputBox } from "../components/FormInput"
 import MapModule from "../../map/components/MapModule"
-import { MarkerProps, template, EventTemplate } from "@/src/lib/map-ents";
+import { MarkerProps, template, EventTemplate } from "@/src/lib/map-types";
 import { ValueOf } from "next/dist/shared/lib/constants";
 // import { useRef } from "react";
 import { SubmitButton } from "../components/SubmitButton";

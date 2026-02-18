@@ -1,6 +1,6 @@
 import '../../styles/searchbarsep.css'
 
-export default function SearchBar() {
+export default function SearchBar({ ref, onSubmit, isLoading }: { ref?: React.Ref<HTMLInputElement>, onSubmit?: () => void, isLoading?: boolean }) {
     return (
         <form className="search-container" role="search" action="#" method="get" >
             <svg className="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">

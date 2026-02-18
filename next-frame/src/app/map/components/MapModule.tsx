@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
-import { MapEntities, MarkerProps } from '../../../lib/map-ents'
+import { MapEntities, MarkerProps } from '../../../lib/map-types'
 import { getPins } from '@/src/lib/data-fetch';
 import { LatLngTuple } from 'leaflet';
 

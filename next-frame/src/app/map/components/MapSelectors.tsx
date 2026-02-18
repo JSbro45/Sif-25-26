@@ -1,37 +1,74 @@
+'use client'
+
 import MapModule from "./MapModule";
-import SearchBar from "./SearchBar";
+import SearchBar from "../../home/components/SearchBar";
 import DateIcon from "./DateIcon";
 import PlusBar from "./PlusBar";
 import EventView from "./EventView";
 import { useRef, useState } from "react";
-import { MarkerProps } from "../../../lib/map-ents";
+import { MarkerProps } from "../../../lib/map-types";
+import { type } from "os";
 
-export default function MapAndSelectors() {  
+
+
+export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] | Promise<MarkerProps[]> }) {
+  const [markers, setMarkers] = useState<MarkerProps[]>([])
   const [activeMarkerEvent, setActiveMarkerEvent] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
   const selectedRef = useRef<MarkerProps | null>(null)
+  const searchRef = useRef<string>('')
+  const dateRef = useRef<string>('')
+  if (typeof initialMarkers == 'object' || typeof initialMarkers == 'string') {
+    setMarkers( initialMarkers as MarkerProps[] )
+  }
+  /*
+  const handleSearch = async () => {
+    setIsLoading(true)
+    try {
+      const newMarkers = await onSearch({
+        search: searchRef.current,
+        date: dateRef.current
+      })
+      setMarkers(newMarkers)
+    } catch (error) {
+      console.error('Search failed:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }*/
+
   return (
-  <div>
+    <>{/*
+      <SearchBar
+        ref={searchRef}
+        onSubmit={handleSearch}
+        isLoading={isLoading}
+      />
+      <DateIcon
+        ref={dateRef}
+        onSubmit={handleSearch}
+       />*/}
       <MapModule
         map_type='page'
-        markers={[]}
+        markers={markers}
         activeMarkerEvent={activeMarkerEvent}
         onMarkerClick={(payload: MarkerProps) => {
-          selectedRef.current = payload
+           selectedRef.current = payload 
         }}
         onMarkerActiveChange={setActiveMarkerEvent}
       />
-      <SearchBar></SearchBar>
-      <DateIcon></DateIcon>
-      <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
-           <div className='plus-bar-container'>
-           <PlusBar signedIn={true}></PlusBar>
-           </div>
+      <div className='evtview-plusbar' data-event-open={activeMarkerEvent ? true : false}>
+        <div className='plus-bar-container'>
+          <PlusBar signedIn={true} />
         </div>
-        {(activeMarkerEvent && selectedRef.current)?(
-          <EventView
-            eventName={selectedRef.current.event}
-            onClose={() => setActiveMarkerEvent(null)}
-          />
-        ): null}
-        </div>)
+      </div>
+      {(activeMarkerEvent && selectedRef.current) ? (
+        <EventView
+          event={selectedRef.current}
+          onClose={() => setActiveMarkerEvent(null)}
+        />
+      ) : null}
+    </>
+  )
 }

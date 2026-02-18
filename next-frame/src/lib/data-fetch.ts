@@ -1,49 +1,39 @@
 import { LatLngTuple } from 'leaflet';
 import { prisma } from './dbclient';
+import {  } from './map-types';  
+import { MarkerProps } from './map-types';
+import { Event, User } from './generated/prisma/client';
 
 
-
-export async function getPins(timespan: { start: Date; end: Date }, genre_list: string[] ) {
-    const pins = await prisma.event.findMany({
+export async function getPins(timespan: { start: Date; end: Date } , genre_list: string[]) {
+    const events = await prisma.event.findMany({
         where: {
             AND: [
                 {
                     date_time: {
-                        gte: timespan.start,
-                        lte: timespan.end
+                        gte: timespan?.start,
+                        lte: timespan?.end
                     }
                 },
-                {
+                genre_list.length?({
                     genres: {
                         hasSome: genre_list
                     }
-                }
+                }): {}
             ]
         }
-    })
-    pins.forEach(pin  => (pin.location = [pin.latitude, pin.longitude] as LatLngTuple));
+    }) as Event[];
+    const pins = events as unknown as MarkerProps[];
+    for (let p = 0; p < pins.length; p++) {
+        pins[p].coordinates = [events[p].latitude, events[p].longitude] as LatLngTuple;
+    }
+    
     
     return pins;
-}
+} 
 
 
-interface EventPin {
-    name: string;
-    //hostUserId: number;
-    date_time: Date;
-    genreList: string[];
-    coords: LatLngTuple;
-}
 
-class EventPinClass implements EventPin {
-    constructor(
-        public name: string,
-        //public hostUserId: number,
-        public date_time: Date,
-        public genreList: string[],
-        public coords: LatLngTuple
-    ) {}
-}
 
 export async function setEventPin(evt_data: {eventName: string, hostId: number, date_time: Date, genre_list: string[], location: LatLngTuple}) {
     const event = await prisma.event.create({
