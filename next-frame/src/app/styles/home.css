@@ -1,7 +1,7 @@
 @import './map.css';
 
 main{
-    background-color: #d4ecff;
+    background-color: #ffffff;
 }
 
 
@@ -11,24 +11,25 @@ main{
     padding: 0;
     background-color: #f4f4f4;
     display: block;
+    height: 100%;
+    width: 100%;
 }
 
-.search-container{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:var(--box);
-    border-radius:999px;
-    padding:10px 14px;
-    width:420px;
-    max-width:100%;
-    box-shadow:0 6px 18px rgba(10, 18, 63, 0.486);
-    border:3px solid #05549f;
+.page-section {
+    padding: 5px 20px 5px 20px;
+    font-weight: bold;
 }
 
-.icon {
-  width: 2em;
-  height: 2em;
-  display: inline-block;
-  vertical-align: middle;
+.subtitle {
+    color: #1b8007;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-weight: bold;
+}
+
+.map-contain-home{
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
 }
