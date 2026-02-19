@@ -16,7 +16,6 @@ export default function MapPage() {
 
   return (
     <>
-      <Header/>
       <main>
         <div>
           <PlusBar signedIn={false} />
