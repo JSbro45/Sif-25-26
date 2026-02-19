@@ -17,41 +17,40 @@ export default function EventView({event, onClose}: props) {
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'>{event.name}</h1>
+                <h1 className='nazev-koncertu'>{props.eventName}</h1>
+                <p className='line-break'></p>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
                 <p className="meta">Pořadatel: <a href='' className='meta-link'>Pořadatel</a></p>               
             <div className="event-info-cont">
-             <h3 className='zakl-info'>Základní údaje:</h3>
+             <h3 className='zakl-info'>Základní info:</h3>
              <div className="event-info">
-                <label htmlFor="text">Odkaz na interpreta:</label>
+                <p><img src="/icons/global.png" alt='odkaz' height={20} width={20} className='evt-icons'></img> Odkaz na interpreta</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Žánr</label>
+                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> Žánr</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Datum konání:</label>
+                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img>Datum a čas konání</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Čas konání:</label>
+                <p><img src="/icons/money.png" alt='money' height={20} width={20} className='evt-icons'></img>Vstupné</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Vstupné:</label>
+                <p><img src="/icons/tickets_web.png" alt='money' height={20} width={20} className='evt-icons'></img>Web pro koupi vstupenek</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Web pro koupi vstupenek:</label>
+                <p><img src="/icons/pin_name.png" alt='money' height={20} width={20} className='evt-icons'></img>Název místa konání</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Název místa konání:</label>
+                <p><img src="/icons/pin.png" alt='pin_mista' height={20} width={20} className='evt-icons'></img>Adresa místa konání</p>
              </div>
              <div className="event-info">
-                <label htmlFor="text">Adresa místa konání:</label>
-             </div>
-             <div className="event-info">
-                <label htmlFor="text">Web místa konání:</label>
+                <p><img src="/icons/pin_web.png" alt='money' height={20} width={20} className='evt-icons'></img>Web místa konání</p>
              </div>
             </div>
+               <p className='line-break2'></p>
                <p className='meta2'> Podrobnější údaje naleznete zde: 
                <button className='meta2-btn'>Zjistit více</button>
                </p>
@@ -59,3 +58,12 @@ export default function EventView({event, onClose}: props) {
     </section>
     )
 }
+
+// <a href="https://www.flaticon.com/free-icons/location" title="location icons">Location icons created by kmg design - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/pencil" title="pencil icons">Pencil icons created by Pixel perfect - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by kosonicon - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/credential" title="credential icons">Credential icons created by meaicon - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/global" title="global icons">Global icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/global" title="global icons">Global icons created by Vectors Tank - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/song" title="song icons">Song icons created by Freepik - Flaticon</a>
