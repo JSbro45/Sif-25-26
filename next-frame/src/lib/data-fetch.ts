@@ -23,11 +23,11 @@ export async function getPins(timespan: { start: Date; end: Date } , genre_list:
             ]
         }
     }) as Event[];
+
     const pins = events as unknown as MarkerProps[];
     for (let p = 0; p < pins.length; p++) {
         pins[p].coordinates = [events[p].latitude, events[p].longitude] as LatLngTuple;
     }
-    
     
     return pins;
 } 
