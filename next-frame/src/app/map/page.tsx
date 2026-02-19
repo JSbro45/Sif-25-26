@@ -2,7 +2,7 @@
 import Header from '../home/components/Header'
 import MapAndSelectors from './components/MapSelectors';
 import { getPins } from '../../lib/data-fetch';
-import { safeFetch } from '../../lib/safe-fetch'
+import safeFetch from '../../lib/safe-fetch'
 import { MarkerProps } from '../../lib/map-types';
 import '../styles/map.css'
 

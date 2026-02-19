@@ -1,4 +1,6 @@
-export async function safeFetch<T>(
+
+
+export default async function safeFetch<T>(
   fetchFn: () => Promise<T>,
   fallback: T
 ): Promise<T> {

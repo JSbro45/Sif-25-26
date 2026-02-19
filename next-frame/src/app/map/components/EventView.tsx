@@ -1,12 +1,9 @@
 import '../../styles/eventview.css'
 import { MarkerProps } from '../../../lib/map-types';
 
-interface props {
-    event: MarkerProps;
-    onClose: () => void;
-}
 
-export default function EventView({event, onClose}: props) {
+
+export default function EventView({event, onClose}: {event: MarkerProps, onClose: () => void}) {
     return (
         <section className="evt-view">
             <button
@@ -17,7 +14,7 @@ export default function EventView({event, onClose}: props) {
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'>{props.eventName}</h1>
+                <h1 className='nazev-koncertu'>{event.name}</h1>
                 <p className='line-break'></p>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
