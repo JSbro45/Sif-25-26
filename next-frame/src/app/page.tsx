@@ -2,10 +2,12 @@
 //import { redirect, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { getPins } from '../lib/data-fetch'
+import { time } from 'node:console'
 
 
 export default function Default() {
     //const router = useRouter()
+    
     const pins = async () => await getPins({start: new Date("2025-01-01"), end: new Date('2026-30-05')}, []) 
     console.log(pins())
     return (
@@ -14,7 +16,7 @@ export default function Default() {
             {
                 Array.isArray(pins) ? (
                     pins.map(pin => (
-                        <div key={pin.id}>
+                        <div key={}>
                             <h3>{pin.title}</h3>
                             <p>{pin.description}</p>
                         </div>

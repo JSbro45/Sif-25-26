@@ -49,3 +49,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Event = Prisma.EventModel
+/**
+ * Model Address
+ * 
+ */
+export type Address = Prisma.AddressModel

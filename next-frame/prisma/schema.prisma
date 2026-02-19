@@ -55,7 +55,6 @@ model Event {
   @@index([genres])
 }
 
-/*
 model Address {
   id          Int      @id @default(autoincrement())
   placeName   String
@@ -64,4 +63,4 @@ model Address {
   lng         Float  // longitude
   //events      Event[]
 
-}*/
+}
