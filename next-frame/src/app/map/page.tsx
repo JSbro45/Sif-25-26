@@ -14,7 +14,6 @@ export default async function Page() {
   
   return (
     <>
-      <Header/>
       <main>
         <MapAndSelectors
           initialMarkers={initialMarkers}

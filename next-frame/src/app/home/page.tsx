@@ -10,7 +10,7 @@ export default function HomePage() {
         <PageWrapper> 
             <main>
                 <div>
-                    <h1>LocalFest</h1>
+                    <h1 className="subtitle">LocalFest</h1>
                     <section className="page-section">
                         <p>
                             Máte volný víkend a rádi byste zašli poznávat nové hudební skupiny a žánry? Těšíte se na koncert svého oblíbeného interpreta, ale nevíte žádné bližší informace? 
@@ -30,8 +30,10 @@ export default function HomePage() {
                         </p>
                     </section>
                 </div> 
+                <div className="map-contain-home">
                 <MapModule map_type='embed' />    
-                {/* zařiď ať je mapa napravo */}       
+                {/* zařiď ať je mapa napravo */}   
+                </div>    
             </main>
         </PageWrapper>
     )
