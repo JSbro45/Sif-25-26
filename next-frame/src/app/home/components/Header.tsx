@@ -8,7 +8,7 @@ export default function Header({}) {
     return (
         <header className="header">
             <div id="logo_header">
-                <img src="/static/logo.png"  alt="LocalFest logo" /> {/*style="height:40px;width:40px;object-fit:contain;"*/}
+                <img src="/public/logo.png"  alt="LocalFest logo" /> {/*style="height:40px;width:40px;object-fit:contain;"*/}
                 <Link href="/home"> <h1>LocalFest.cz</h1> </Link>
             </div>
             <SearchBar />

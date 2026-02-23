@@ -5,15 +5,6 @@ import { Event, User } from './generated/prisma/client';
 
 type Model = Event | User;
 
-type toInterface<T> = {
-  [K in keyof T]: T[K]
-}
-
-
-type ToFunc<T> = {
-    [K in keyof T]: () => T[K]
-}
-
 
 export type MarkerProps = Pick<Event,  'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId'> & { coordinates: LatLngTuple } 
 

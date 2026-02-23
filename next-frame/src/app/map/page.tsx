@@ -1,24 +1,28 @@
 
 import Header from '../home/components/Header'
 import MapAndSelectors from './components/MapSelectors';
-import { getPins } from '../../lib/data-fetch';
+import { getAllPins } from '../../lib/data-fetch';
 import safeFetch from '../../lib/safe-fetch'
 import { MarkerProps } from '../../lib/map-types';
 import '../styles/map.css'
 
 export default async function Page() {
   const initialMarkers = await safeFetch<MarkerProps[]>(
-    () => getPins({start: new Date('2024-01-01'), end: new Date('2026-12-12')}, []),
+    () => getAllPins(),
     []
   )
-  console.log('Initial markers:', initialMarkers)
-
+  
   return (
-    <main>
-      <MapAndSelectors
-        initialMarkers={initialMarkers}/*
-        onSearch={(params) => getPins(params)}*/
-      />
-    </main>
+    <>
+      <Header/>
+      <main>
+        <MapAndSelectors
+          initialMarkers={initialMarkers}
+          /*
+          onSearch={(params) => getPins(params)}
+          */
+        />
+      </main>
+    </>
   )
 }

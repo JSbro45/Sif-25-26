@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
-import { MapEntities, MarkerProps } from '../../../lib/map-types'
+import { MarkerProps } from '../../../lib/map-types'
 import { getPins } from '@/src/lib/data-fetch';
 import { LatLngTuple } from 'leaflet';
 
@@ -12,18 +12,11 @@ export default function MapModule({ map_type, markers, onMarkerClick, activeMark
     map_type: 'page' | 'embed',
     markers : MarkerProps[], 
     onMarkerClick?: (payload: MarkerProps) => void, 
-    activeMarkerEvent?: string | null, 
-    onMarkerActiveChange?: (event: string | null) => void 
+    activeMarkerEvent?: MarkerProps | null, 
+    onMarkerActiveChange?: (event: MarkerProps | null) => void 
 }) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
 
-  if (markers!) {
-    markers = [
-      {coords:[50,15], event:'rockfest', time: new Date('2024-07-20T18:30:00')},
-      {coords:[49.612,14.48], event:'jazzfest', time: new Date('2024-07-20T20:30:00')},
-      {coords:[49.24,15.701], event:'rockfest2', time: new Date('2024-07-20T19:30:00')}
-    ]
-  }
 
   return (
     <div className={ map_type + '-map'}>
@@ -37,10 +30,10 @@ export default function MapModule({ map_type, markers, onMarkerClick, activeMark
             <MarkerWindow
               key={key}
               evtInfo={mark}
-              isActiveMarker={activeMarkerEvent === mark.event}
+              isActiveMarker={activeMarkerEvent === mark}
               onActiveChange={(active) => {
                 onMarkerClick && onMarkerClick(mark);
-                onMarkerActiveChange?.(active ? mark.event : null);
+                onMarkerActiveChange?.(active ? mark : null);
               }}
             />
           )

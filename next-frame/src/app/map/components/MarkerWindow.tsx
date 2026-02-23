@@ -41,7 +41,7 @@ export default function MarkerWindow({ evtInfo, clicker, isActiveMarker, onActiv
     return (
         <Marker 
             ref={markerRef}
-            position={evtInfo.coords} 
+            position={evtInfo.coordinates} 
             icon={isActiveMarker ? icons.active : icons.default}
             eventHandlers={{ click: (e) => {
                 e.originalEvent.stopPropagation();

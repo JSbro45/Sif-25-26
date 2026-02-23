@@ -13,15 +13,14 @@ import { type } from "os";
 
 export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] | Promise<MarkerProps[]> }) {
   const [markers, setMarkers] = useState<MarkerProps[]>([])
-  const [activeMarkerEvent, setActiveMarkerEvent] = useState<string | null>(null)
+  const [activeMarkerEvent, setActiveMarkerEvent] = useState<MarkerProps | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const selectedRef = useRef<MarkerProps | null>(null)
   const searchRef = useRef<string>('')
   const dateRef = useRef<string>('')
-  if (typeof initialMarkers == 'object' || typeof initialMarkers == 'string') {
-    setMarkers( initialMarkers as MarkerProps[] )
-  }
+
+    console.log('Initial markers:', initialMarkers)
   /*
   const handleSearch = async () => {
     setIsLoading(true)
@@ -36,8 +35,8 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: Mar
     } finally {
       setIsLoading(false)
     }
-  }*/
-
+  }
+  */
   return (
     <>{/*
       <SearchBar
