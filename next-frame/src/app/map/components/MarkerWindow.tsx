@@ -10,7 +10,7 @@ import { MarkerProps } from "@/src/lib/map-types";
 
 export default function MarkerWindow({ evtInfo, clicker, isActiveMarker, onActiveChange }: { evtInfo: MarkerProps, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
     const markerRef = useRef<any>(null);
-
+    console.log('event:', evtInfo);
     const icons = {
         default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
         active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })

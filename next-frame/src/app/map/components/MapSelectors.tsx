@@ -11,8 +11,8 @@ import { type } from "os";
 
 
 
-export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] | Promise<MarkerProps[]> }) {
-  const [markers, setMarkers] = useState<MarkerProps[]>([])
+export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] }) {
+  const [markers, setMarkers] = useState<MarkerProps[]>(initialMarkers)
   const [activeMarkerEvent, setActiveMarkerEvent] = useState<MarkerProps | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 

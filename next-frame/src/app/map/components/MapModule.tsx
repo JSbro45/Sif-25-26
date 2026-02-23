@@ -26,6 +26,7 @@ export default function MapModule({ map_type, markers, onMarkerClick, activeMark
           url={`https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`}
         />
         {
+          
           markers?.map((mark, key) => 
             <MarkerWindow
               key={key}
