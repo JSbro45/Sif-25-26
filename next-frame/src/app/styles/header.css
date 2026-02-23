@@ -23,11 +23,12 @@
     object-fit:contain;
 }
 
-.title {
+#title {
     color: #ffffff;
     font-weight: bold;
     margin: 0;
-}
+    text-decoration: none;
+} 
 
 .links_header {
     margin:0 0.5rem;
@@ -36,7 +37,11 @@
     font-weight: bold;
 }
 
-.login_login {
+.links_header:hover {
+    color: #fbff00;
+}
+
+#login {
     margin-left:1rem;
     padding:0.5em 1em;
     border-radius:10px;
@@ -46,7 +51,11 @@
     color: #025c02;
 }
 
-.login_singup {
+#login:hover{
+    background:#dbfdd2;
+}
+
+#signup {
     margin-left:1rem;
     padding:0.5em 1em;
     border-radius:10px;
@@ -56,9 +65,10 @@
     color: #ffffff;
 }
 
-#signin {
-    background-color: #ffffff;
-    color: #336603;
+#signup:hover{
+    background:#ffffff;
+    color:#37bb03;
+    border:2px solid #37bb03 ;
 }
 
 /* Search bar styles */
