@@ -12,8 +12,7 @@ export default function EventView({event, onClose}: {event: MarkerProps, onClose
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'>{event.name}</h1>
-                <p className='line-break'></p>
+                <h1 className='nazev-koncertu'> {event.name} </h1>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
@@ -24,10 +23,10 @@ export default function EventView({event, onClose}: {event: MarkerProps, onClose
                 <p><img src="/icons/global.png" alt='odkaz' height={20} width={20} className='evt-icons'></img> Odkaz na interpreta</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> Žánr</p>
+                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> <i>{event.genres.join(', ')}</i></p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img>Datum a čas konání</p>
+                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img> {event.date_time.toString()} </p>
              </div>
              <div className="event-info">
                 <p><img src="/icons/money.png" alt='money' height={20} width={20} className='evt-icons'></img>Vstupné</p>
