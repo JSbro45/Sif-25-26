@@ -4,11 +4,10 @@ import MapModule from '../map/components/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
 
-
 export default function HomePage() {
     return (
         <PageWrapper> 
-            <main>
+            <div>
                 <div>
                     <h1 className="subtitle">LocalFest</h1>
                     <section className="page-section">
@@ -34,7 +33,7 @@ export default function HomePage() {
                 <MapModule map_type='embed' />    
                 {/* zařiď ať je mapa napravo */}   
                 </div>    
-            </main>
+            </div>
         </PageWrapper>
     )
 }

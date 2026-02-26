@@ -16,8 +16,7 @@ export default function Header() {
     return (
         <header className="header">
             <div id="logo_header">
-            <img src="../public/icons/next/logo.svg"  alt="LocalFest logo" className="logo"/> {/*style="height:40px;width:40px;object-fit:contain;"*/}
-            <Link href="/home" id="title"> <h1>LocalFest.cz</h1> </Link>
+                <img src="/logo-3.png"  alt="LocalFest logo" className="logo" style={{height:"100px",width:"300px"}}/> {/*style="height:40px;width:40px;object-fit:contain;"*/}
             </div>
             <SearchBar />
             <nav className="nav">
