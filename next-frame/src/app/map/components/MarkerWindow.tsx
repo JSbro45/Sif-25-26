@@ -13,7 +13,7 @@ export default function MarkerWindow({ evtInfo, clicker, isActiveMarker, onActiv
     console.log('event:', evtInfo);
     const icons = {
         default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
-        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })
+        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 80] })
     };
 
     // Switchování mezi jednotlivými markery 
