@@ -1,14 +1,16 @@
 .header {
     position: sticky;
-    top: 0;
+    margin-left: -20px;
+    margin-top: -10px;
     z-index: 3000;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     background: linear-gradient(135deg, #9e1111 0%, #ecb47f 100%);
     border-bottom:1px solid #cacaca;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 99%;
 }
 
 #logo_header {
@@ -48,11 +50,12 @@
     text-decoration:none;
     font-weight: bold;
     background: #ffffff;
-    color: #025c02;
+    color:#d6790f;
 }
 
 #login:hover{
-    background:#dbfdd2;
+    background:#fdf1d2;
+    color:#c98303;
 }
 
 #signup {
@@ -61,14 +64,14 @@
     border-radius:10px;
     text-decoration:none;
     font-weight: bold;
-    background:linear-gradient(to right, #37bb03,#025c02);
+    background: linear-gradient(to right, #ffee00, #8f8500); 
     color: #ffffff;
 }
 
 #signup:hover{
     background:#ffffff;
-    color:#37bb03;
-    border:2px solid #37bb03 ;
+    color:#b7c40a;
+    border:2px solid #b7c40a ;
 }
 
 /* Search bar styles */
@@ -105,7 +108,7 @@
             }
             .search-button{
                 border:0;
-                background:green;
+                background:rgb(196, 113, 5);
                 color:#ffffff;
                 padding:8px 12px;
                 border-radius:999px;
@@ -115,8 +118,8 @@
                 font-weight:600;
             }
             .icon{
-                width:20px;
-                height:20px;
+                width:10px;
+                height:10px;
                 display:inline-block;
                 vertical-align:middle;
             }

@@ -7,7 +7,7 @@ import PageWrapper from "./components/PageWrapper";
 export default function HomePage() {
     return (
         <PageWrapper> 
-            <div>
+            <div className="home-container">
                 <div>
                     <h1 className="subtitle">LocalFest</h1>
                     <section className="page-section">

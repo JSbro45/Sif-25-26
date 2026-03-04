@@ -4,12 +4,14 @@ import '../../styles/header.css'
 
 const SearchBar = () => 
     <form className="search-container" role="search" action="#">
-        <svg className="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21 21l-4.35-4.35" stroke="#025a09" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="11" cy="11" r="6" stroke="#025a09" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg className="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M21 21l-4.35-4.35" stroke="#cf7602" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <circle cx="11" cy="11" r="6" stroke="#cf7602" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         <input className="search-input" type="search" />
-        <button className="search-button" type="submit"> Hledat </button>
+        <button className="search-button" type="submit"> 
+            Hledat
+        </button>
     </form>
 
 export default function Header() {
