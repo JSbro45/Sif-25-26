@@ -30,7 +30,7 @@ export default function HomePage() {
                     </section>
                 </div> 
                 <div className="map-contain-home">
-                <MapModule map_type='embed' />    
+                <MapModule map_type='embed' markers={[]} />    
                 {/* zařiď ať je mapa napravo */}   
                 </div>    
             </div>

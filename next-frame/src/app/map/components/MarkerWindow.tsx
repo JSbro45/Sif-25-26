@@ -2,17 +2,18 @@
 
 import { Icon } from "leaflet";
 import { Marker } from "react-leaflet";
-import type { LatLngExpression } from 'leaflet'
+import type { LatLngExpression, LatLngTuple } from 'leaflet'
 import { useEffect, useRef, useState } from "react";
 import 'leaflet/dist/leaflet.css'
 import '../../styles/map.css'
+import { MarkerProps } from "@/src/lib/map-types";
 
-export default function MarkerWindow({ pos, evt, time, clicker, isActiveMarker, onActiveChange }: { pos: LatLngExpression, evt: any, time: Date, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
+export default function MarkerWindow({ evtInfo, clicker, isActiveMarker, onActiveChange }: { evtInfo: MarkerProps, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
     const markerRef = useRef<any>(null);
-
+    console.log('event:', evtInfo);
     const icons = {
         default: new Icon({ iconUrl: '/map-icon.svg', iconSize: [60, 60] }),
-        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 85] })
+        active: new Icon({ iconUrl: '/map-icon-active.png', iconSize: [80, 80] })
     };
 
     // Switchování mezi jednotlivými markery 
@@ -40,7 +41,7 @@ export default function MarkerWindow({ pos, evt, time, clicker, isActiveMarker, 
     return (
         <Marker 
             ref={markerRef}
-            position={pos} 
+            position={evtInfo.coordinates} 
             icon={isActiveMarker ? icons.active : icons.default}
             eventHandlers={{ click: (e) => {
                 e.originalEvent.stopPropagation();

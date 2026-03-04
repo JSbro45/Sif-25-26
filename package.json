@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ts-transformer-keys": "^0.4.4"
+  }
+}

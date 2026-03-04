@@ -1,8 +1,9 @@
-<h1>Hooks</h1>
+## Hooks
 > ulehčují změnu dat v aplikaci
 
 - useState - když se data změní, umožňuje rerender, základní hook
 
+```
 function Number() {
   const [number, setNumber] = useState("1");
 
@@ -43,6 +44,7 @@ return (
 </div>
  );
 }
+```
 
 export default UserList;
 
@@ -50,6 +52,6 @@ export default UserList;
 
 - useReducer - něco jako useState, ale když máš víc dat, které potřebuješ změnit
 
-<h2>Extra notes</h2>*for me*
+### Extra notes*for me*
 - useeffect budeme potřebovat na update dat v eventviewu
 - 

@@ -1,9 +1,9 @@
 
 import { FormInputBox } from "../components/FormInput"
 import MapModule from "../../map/components/MapModule"
-import { MarkerProps, template, EventTemplate } from "@/src/lib/map-ents";
+import { MarkerProps, template, EventTemplate } from "@/src/lib/map-types";
 import { ValueOf } from "next/dist/shared/lib/constants";
-import { useRef } from "react";
+// import { useRef } from "react";
 import { SubmitButton } from "../components/SubmitButton";
 
 
@@ -23,7 +23,7 @@ export default function AddEventForm() {
             <section className="add-evt-container">
                 <h1>Přidat Akci</h1>
                 <form>
-
+                    
                     <FormInputBox label="Název akce:" type="text" id="evt-name" required={true} value={refs.event} />
                     {/*<FormInputBox label="Foto:" type="file" id="evt-photo" required={true} value={refs.photo.current?.value} />
                     <FormInputBox label="Popis akce:" type="text" id="evt-desc" required={true} value={refs.desc.current?.value} />

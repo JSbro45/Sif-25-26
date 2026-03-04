@@ -1,37 +1,18 @@
 import '../../styles/eventview.css'
+import { MarkerProps } from '../../../lib/map-types';
 
-interface props {
-    eventName: string;
-    onClose: () => void;
-}
 
-interface un_ness {
-    eventImage: string;
-    eventOrganizer: string;
-    eventLink: string;
-    eventGenre: string;
-    eventDate: string;
-    eventTime: string;
-    eventPrice: string;
-    eventTicketLink: string;
-    eventLocationName: string;
-    eventLocationAddress: string;
-    eventLocationWebsite: string;
- } 
 
-export default function EventView(props: props) {
+export default function EventView({event, onClose}: {event: MarkerProps, onClose: () => void}) {
+   console.log('EventView received event:', event)
     return (
         <section className="evt-view">
-            <button
-                className='x-btn'
-                onClick={props.onClose}
-            >
+            <button className='x-btn' onClick={onClose}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="x-svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'>{props.eventName}</h1>
-                <p className='line-break'></p>
+                <h1 className='nazev-koncertu'> {event.name} </h1>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
@@ -42,10 +23,10 @@ export default function EventView(props: props) {
                 <p><img src="/icons/global.png" alt='odkaz' height={20} width={20} className='evt-icons'></img> Odkaz na interpreta</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> Žánr</p>
+                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> <i>{event.genres.join(', ')}</i></p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img>Datum a čas konání</p>
+                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img> {event.date_time.toString()} </p>
              </div>
              <div className="event-info">
                 <p><img src="/icons/money.png" alt='money' height={20} width={20} className='evt-icons'></img>Vstupné</p>

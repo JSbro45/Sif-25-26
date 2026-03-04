@@ -1,20 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import '../../styles/header.css'
+import SearchBar from "./SearchBar";
 
-const SearchBar = () => 
-    <form className="search-container" role="search" action="#">
-        <svg className="icon" viewBox="0 0 24 24" fill="none">
-            <path d="M21 21l-4.35-4.35" stroke="#cf7602" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <circle cx="11" cy="11" r="6" stroke="#cf7602" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        <input className="search-input" type="search" />
-        <button className="search-button" type="submit"> 
-            Hledat
-        </button>
-    </form>
-
-export default function Header() {
+export default function Header({}) {
     return (
         <header className="header">
             <div id="logo_header">

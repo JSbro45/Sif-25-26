@@ -3,14 +3,20 @@
 import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
-import { MapAttributes } from '../../../lib/map-attrib'
-import { LatLngExpression } from 'leaflet';
+import { MarkerProps } from '../../../lib/map-types'
 import { getPins } from '@/src/lib/data-fetch';
+import { LatLngTuple } from 'leaflet';
 
 
-export default function MapModule({ map_type, onMarkerClick, activeMarkerEvent, onMarkerActiveChange }: { map_type: 'page' | 'embed', onMarkerClick?: (payload: { event: string; pos: LatLngExpression, time: Date }) => void, activeMarkerEvent?: string | null, onMarkerActiveChange?: (event: string | null) => void }) {
+export default function MapModule({ map_type, markers, onMarkerClick, activeMarkerEvent, onMarkerActiveChange } : {
+    map_type: 'page' | 'embed',
+    markers : MarkerProps[], 
+    onMarkerClick?: (payload: MarkerProps) => void, 
+    activeMarkerEvent?: MarkerProps | null, 
+    onMarkerActiveChange?: (event: MarkerProps | null) => void 
+}) {
   const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
-  const mapAtt = new MapAttributes()
+
 
   return (
     <div className={ map_type + '-map'}>
@@ -20,19 +26,18 @@ export default function MapModule({ map_type, onMarkerClick, activeMarkerEvent, 
           url={`https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`}
         />
         {
-          mapAtt.markers.map((mark, key) => (
+          
+          markers?.map((mark, key) => 
             <MarkerWindow
               key={key}
-              pos={mark.coords}
-              evt={mark.event}
-              time={mark.time}
-              isActiveMarker={activeMarkerEvent === mark.event}
+              evtInfo={mark}
+              isActiveMarker={activeMarkerEvent === mark}
               onActiveChange={(active) => {
-                onMarkerClick && onMarkerClick({ event: mark.event, pos: mark.coords, time: mark.time });
-                onMarkerActiveChange?.(active ? mark.event : null);
+                onMarkerClick && onMarkerClick(mark);
+                onMarkerActiveChange?.(active ? mark : null);
               }}
             />
-          ))
+          )
         }
       </MapContainer>
     </div>

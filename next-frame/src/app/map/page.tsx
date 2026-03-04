@@ -1,46 +1,26 @@
-'use client';
-import { useRef, useState } from 'react';
-import MapModule from './components/MapModule'
+
 import Header from '../home/components/Header'
-import PlusBar from './components/PlusBar'
-import DateIcon from './components/DateIcon'
-import SearchBar from './components/SearchBar'
-import EventView from './components/EventView'
-import { LatLngExpression } from 'leaflet';
+import MapAndSelectors from './components/MapSelectors';
+import { getAllPins } from '../../lib/data-fetch';
+import safeFetch from '../../lib/safe-fetch'
+import { MarkerProps } from '../../lib/map-types';
 import '../styles/map.css'
 
-
-export default function MapPage() {
-  const selectedRef = useRef<{ event:string; pos:LatLngExpression; time: Date } | null>(null)
-  const [activeMarkerEvent, setActiveMarkerEvent] = useState<string | null>(null)
-
+export default async function Page() {
+  const initialMarkers = await safeFetch<MarkerProps[]>(
+    () => getAllPins(),
+    []
+  )
+  
   return (
     <>
       <main>
-        <div>
-          <PlusBar signedIn={false} />
-          <SearchBar />
-          <DateIcon />
-          <MapModule
-            map_type='page'
-            activeMarkerEvent={activeMarkerEvent}
-            onMarkerClick={(payload) => {
-              selectedRef.current = payload
-            }}
-            onMarkerActiveChange={setActiveMarkerEvent}
-          />
-        <div className='evtview-plusbar' data-event-open={activeMarkerEvent? true : false}>
-           <div className='plus-bar-container'>
-           <PlusBar signedIn={true}></PlusBar>
-           </div>
-        </div>
-        {(activeMarkerEvent && selectedRef.current)?(
-          <EventView
-            eventName={selectedRef.current.event}
-            onClose={() => setActiveMarkerEvent(null)}
-          />
-        ): null}
-      </div>
+        <MapAndSelectors
+          initialMarkers={initialMarkers}
+          /*
+          onSearch={(params) => getPins(params)}
+          */
+        />
       </main>
     </>
   )
