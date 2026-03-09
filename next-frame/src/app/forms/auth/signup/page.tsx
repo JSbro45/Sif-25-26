@@ -6,7 +6,8 @@ import { useRef } from "react"
 export default function SignUpForm() {
     const mapper = [
         new FormInputObject("Email:", "email", "email", true),
-        new FormInputObject("Heslo:", "password", "password", true)
+        new FormInputObject("Heslo:", "password", "password", true),
+        new FormInputObject("Jméno:", "name", "text", true)
     ]
     const formRef = useRef<HTMLFormElement | null>(null)
 
