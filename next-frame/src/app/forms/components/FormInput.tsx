@@ -1,8 +1,6 @@
 import React, { HTMLInputTypeAttribute } from "react";
 //import { SubmitButton } from "./SubmitButton";
 import '../../styles/forms.css'
-import { ValueOf } from "next/dist/shared/lib/constants";
-
 
 export class FormInputObject {
     constructor(
