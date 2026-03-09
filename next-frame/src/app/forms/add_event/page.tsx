@@ -10,14 +10,6 @@ import { SubmitButton } from "../components/SubmitButton";
 
 export default function AddEventForm() {
     
-    const propsToRefObject = () => {
-        const obj = template as { [K in keyof EventTemplate ]: React.RefObject<HTMLInputElement|null> | ValueOf<MarkerProps> };
-        for (const key of Object.keys(template) as (keyof EventTemplate)[]) {
-            obj[key] = useRef<HTMLInputElement>(null);
-        }
-        return obj as { [K in keyof MarkerProps]: React.RefObject<HTMLInputElement| null> };
-    }
-    const refs = propsToRefObject()
     return (
         <div>
             <section className="add-evt-container">
@@ -35,7 +27,6 @@ export default function AddEventForm() {
                     {/*<FormInputBox label="Vstupné:" type="text" id="evt-ticket-price" required={true} value={refs.ticketPrice.current?.value} />*/}
                     {/*<FormInputBox label="Web pro koupi vstupenek:" type="text" id="evt-ticket-website" required={false} value={refs.ticketWebsite.current?.value} />*/}
                     <div>
-                        <SubmitButton />
                     </div>
                 </form>
             </section>
