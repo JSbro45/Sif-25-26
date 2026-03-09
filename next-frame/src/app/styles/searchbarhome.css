@@ -1,0 +1,63 @@
+
+/* uprava z templates */
+
+:root{
+    --box:#ffffff;
+    --accent:#be770d;
+    --muted:#dfdfdf;
+}
+
+.search-container{
+    position: relative;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap:8px;
+    background: var(--box);
+    border-radius: 999px;
+    padding: 10px 14px;
+    width: 350px;
+    max-width: 100%;
+    box-shadow: 0 6px 18px rgba(94, 67, 67, 0.486);
+    z-index: 10;
+}
+            .search-input{
+                border:0;
+                outline:0;
+                background:transparent;
+                font-size:16px;
+                color:var(--muted);
+                flex:1;
+                padding:6px 8px;
+            }
+            .search-input::placeholder{color:var(--muted);}
+            .search-input::-webkit-search-cancel-button{
+                height:50px;
+                width:50px;
+                background:var(--muted);
+                border-radius:999px;
+                cursor:pointer;
+            }
+            .search-button{
+                border:0;
+                background:var(--accent);
+                color:#fff;
+                padding:8px 12px;
+                border-radius:999px;
+                cursor:pointer;
+                display:inline-flex;
+                align-items:center;
+                gap:8px;
+                font-weight:600;
+            }
+            .icon{
+                width:20px;
+                height:20px;
+                display:inline-block;
+                vertical-align:middle;
+                color: var(--accent);
+            }
+            @media(max-width:420px){
+                .search-container{padding:8px 10px}
+                .search-button{padding:7px 10px}
+            }

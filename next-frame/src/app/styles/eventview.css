@@ -85,7 +85,7 @@
 
 .meta2-btn{
   margin-left: 10px;
-  background: linear-gradient(to right, #37bb03,#025c02);
+  background: linear-gradient(to right, #bb3d03, #8f0505);
   color: yellow;
   border: none;
   border-radius: 50px;
@@ -96,7 +96,7 @@
 
 .meta2-btn:hover{
   margin-left: 10px;
-  background: linear-gradient(to right, #bb3d03, #8f0505);
+  background: linear-gradient(to right, #37bb03,#025c02);
   color: yellow;
   border: none;
   border-radius: 50px;

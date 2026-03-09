@@ -1,14 +1,16 @@
 .header {
     position: sticky;
-    top: 0;
-    z-index: 1000;
-    display:flex;
+    z-index: 3000;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    top: 0;
+    margin-top: -10px;
+    padding: 1.2rem;
     background: linear-gradient(135deg, #9e1111 0%, #ecb47f 100%);
     border-bottom:1px solid #cacaca;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
 #logo_header {
@@ -48,11 +50,12 @@
     text-decoration:none;
     font-weight: bold;
     background: #ffffff;
-    color: #025c02;
+    color:#d6790f;
 }
 
 #login:hover{
-    background:#dbfdd2;
+    background:#fdf1d2;
+    color:#c98303;
 }
 
 #signup {
@@ -61,66 +64,12 @@
     border-radius:10px;
     text-decoration:none;
     font-weight: bold;
-    background:linear-gradient(to right, #37bb03,#025c02);
+    background: linear-gradient(to right, #ffee00, #8f8500); 
     color: #ffffff;
 }
 
 #signup:hover{
     background:#ffffff;
-    color:#37bb03;
-    border:2px solid #37bb03 ;
+    color:#b7c40a;
+    border:2px solid #b7c40a ;
 }
-
-/* Search bar styles */
-
-.search-container{
-    display:flex;
-    align-items:center;
-    background:#ffffff;
-    border-radius:999px;
-    padding:10px 14px;
-    height: 25px;
-    width:270px;
-    max-width: 100%;
-    box-shadow:0 6px 18px rgba(0, 0, 0, 0.486);
-    z-index: 10;
-}
-
-            .search-input{
-                border:0;
-                outline:0;
-                background:transparent;
-                font-size:16px;
-                color:#888888;
-                flex:1;
-                padding:6px 8px;
-            }
-            .search-input::placeholder{color:#888888;}
-            .search-input::-webkit-search-cancel-button{
-                height:50px;
-                width:50px;
-                background:#888888;
-                border-radius:999px;
-                cursor:pointer;
-            }
-            .search-button{
-                border:0;
-                background:green;
-                color:#ffffff;
-                padding:8px 12px;
-                border-radius:999px;
-                cursor:pointer;
-                display:inline-flex;
-                align-items:center;
-                font-weight:600;
-            }
-            .icon{
-                width:20px;
-                height:20px;
-                display:inline-block;
-                vertical-align:middle;
-            }
-            @media(max-width:420px){
-                .search-container{padding:8px 10px}
-                .search-button{padding:7px 10px}
-            }
