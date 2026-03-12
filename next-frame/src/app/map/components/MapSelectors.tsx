@@ -9,7 +9,6 @@ import { useRef, useState } from "react";
 import { MarkerProps } from "../../../lib/map-types";
 
 
-
 export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] }) {
   const [markers, setMarkers] = useState<MarkerProps[]>(initialMarkers)
   const [activeMarkerEvent, setActiveMarkerEvent] = useState<MarkerProps | null>(null)
