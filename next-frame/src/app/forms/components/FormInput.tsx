@@ -8,20 +8,20 @@ export class FormInputObject {
         public type: HTMLInputTypeAttribute,
         public id: string,
         public required: boolean,
-        public value: React.RefObject<HTMLInputElement | null> | undefined = undefined
+        public ref: React.RefObject<HTMLInputElement | null> | undefined = undefined
     ) {}
 }
 
 
 const InputBox = ({ inputObject }: { inputObject: FormInputObject }) => (
     <div className="form-input-box">
-        <label> { inputObject.label } { inputObject.required? ( <a><b> * </b></a> ) : ( null ) } </label> 
+        <label htmlFor={inputObject.id}> { inputObject.label } { inputObject.required? ( <a><b> * </b></a> ) : ( '' ) } </label> 
         <input 
-            type={ inputObject.type } 
             id={ inputObject.id } 
             name={ inputObject.id } 
+            type={ inputObject.type } 
             required={ inputObject.required } 
-            onChange={ e => inputObject.value ? inputObject.value.current = e.target : null }
+            onChange={ e => inputObject.ref ? inputObject.ref.current = e.target : null }
         />
     </div>
 );
