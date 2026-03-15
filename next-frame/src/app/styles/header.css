@@ -23,6 +23,7 @@
     height:60px;
     width:60px;
     object-fit:contain;
+    margin-left: -10px;
 }
 
 #title {
@@ -50,26 +51,26 @@
     text-decoration:none;
     font-weight: bold;
     background: #ffffff;
-    color:#d6790f;
+    color:#027a02;
 }
 
 #login:hover{
     background:#fdf1d2;
-    color:#c98303;
+    color:#c94203;
 }
 
 #signup {
     margin-left:1rem;
-    padding:0.5em 1em;
+    padding:0.55em 1em;
     border-radius:10px;
     text-decoration:none;
     font-weight: bold;
-    background: linear-gradient(to right, #ffee00, #8f8500); 
+    background: linear-gradient(to right, #ff4800, #7c0707); 
     color: #ffffff;
+    margin-right: 25px;
 }
 
 #signup:hover{
-    background:#ffffff;
-    color:#b7c40a;
-    border:2px solid #b7c40a ;
+    background: linear-gradient(to right, #37bb03,#025c02);
+    color:#ffffff;
 }
