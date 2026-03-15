@@ -1,15 +1,23 @@
-import { FormInputBox } from "../../components/FormInput"
-import '../../styles/forms.css'
+'use client'
 
+import { FormComponent, FormInputObject } from "../../components/FormInput"
+import { useRef } from "react"
+
+ 
 export default function LogInForm() {
+    const mapper = [
+        new FormInputObject("Email:", "email", "email", true),
+        new FormInputObject("Heslo:", "password", "password", true)
+    ]
+    const formRef = useRef<HTMLFormElement | null>(null)
+
     return (
         <section className="login-container">
-            <h1>Přihlásit se <br/> jako pořadatel</h1>
-            <form>
-                <FormInputBox label="Email:" type="email" id="email" required={true} />
-                <FormInputBox label="Heslo:" type="password" id="password" required={true} />
-                <button type="submit">Přihlásit se</button>
-            </form>
+            <h1>Přihlaste se </h1> 
+            <h2> jako pořadatel </h2>
+            <FormComponent formMapper={mapper} refObject={formRef} execute={(obj) => {
+                    console.log(obj);
+            }}/>
         </section>
     )
 }

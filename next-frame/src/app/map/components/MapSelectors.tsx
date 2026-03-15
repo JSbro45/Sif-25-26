@@ -1,13 +1,12 @@
 'use client'
 
-import MapModule from "./MapModule";
+import MapModule from "./map/MapModule";
 import SearchBar from "../../home/components/SearchBar";
 import DateIcon from "./DateIcon";
 import PlusBar from "./PlusBar";
 import EventView from "./EventView";
 import { useRef, useState } from "react";
 import { MarkerProps } from "../../../lib/map-types";
-import { type } from "os";
 
 
 
