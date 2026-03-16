@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { getPins } from '../lib/data-fetch'
 import safeFetch from '../lib/safe-fetch'
-
+import { SignOutButton } from "@clerk/nextjs"
 
 
 export default function Default() {
@@ -13,6 +13,9 @@ export default function Default() {
     return (
         <div id='loading-screen'>
             <Image src="/logo.png" alt="redirect logo" width={size} height={size} onLoadingComplete={() => router.push('/map')} />
+            <SignOutButton>
+                Odhlásit se
+            </SignOutButton>
         </div>
-    )
+    )       
 }
