@@ -13,11 +13,21 @@ export default function Page() {
     
     const emailAddress = formData.get('email') as string
     const password = formData.get('password') as string
+    const confirmPass = formData.get('confirm-pass') as string
+    const name = { 
+      name: formData.get('name'),
+      surname: formData.get('surname')
+    }
+
+    if (password && confirmPass && password !== confirmPass) {
+      console.error('Passwords do not match')
+    }
 
     const { error } = await signUp.password({
       emailAddress,
       password,
     })
+
     if (error) {
       // See https://clerk.com/docs/guides/development/custom-flows/error-handling
       // for more info on error handling
@@ -59,8 +69,11 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
+    router.push('/')
     return null
   }
+
+  
 
   if (
     signUp.status === 'missing_requirements' &&
@@ -92,6 +105,16 @@ export default function Page() {
       <h2>jako pořadatel</h2>
       <form action={handleSubmit}>
         <div>
+          <label htmlFor="name">zadejte jméno</label>
+          <input id="name" type="text" name="name" />
+          {/*errors.fields.emailAddress && <p>{errors.fields.emailAddress.message}</p>*/}
+        </div>
+        <div>
+          <label htmlFor="surname">zadejte příjmení</label>
+          <input id="surname" type="text" name="surname" />
+          {/*errors.fields.emailAddress && <p>{errors.fields.emailAddress.message}</p>*/}
+        </div>
+        <div>
           <label htmlFor="email">zadejte emailovou adresu</label>
           <input id="email" type="email" name="email" />
           {/*errors.fields.emailAddress && <p>{errors.fields.emailAddress.message}</p>*/}
@@ -102,8 +125,8 @@ export default function Page() {
           {/*errors.fields.password && <p>{errors.fields.password.message}</p>*/}
         </div>
         <div>
-          <label htmlFor="password">potvrďte heslo</label>
-          <input id="password" type="password" name="password" />
+          <label htmlFor="confirm-pass">potvrďte heslo</label>
+          <input id="confirm-pass" type="password" name="confirm-pass" />
           {/*errors.fields.password && <p>{errors.fields.password.message}</p>*/}
         </div>
         <button type="submit" disabled={fetchStatus === 'fetching'}>
@@ -113,7 +136,6 @@ export default function Page() {
       {/* For your debugging purposes. You can just console.log errors, but we put them in the UI for convenience */
       /* errors && <p>{JSON.stringify(errors, null, 2)}</p> */
       /* Required for sign-up flows. Clerk's bot sign-up protection is enabled by default */}
-      <div id="clerk-captcha" />
     </section>
   )
 }
