@@ -28,7 +28,7 @@ export default function HomePage() {
                         </section>
                 <div className="map-text">
                         <section className="page-section">
-                            <p className="text2">
+                            <div className="text2">
                             <p style={{fontSize: 20 }}> 
                                 Klikněte na mapu níže a začněte objevovat hudební akce <br></br> ve vašem okolí!
                                 <br/> 
@@ -39,15 +39,17 @@ export default function HomePage() {
                                 <li>Pokud chcete svůj koncert zařadit do naší databáze, můžete tak učinit prostřednictvím vytvoření účtu pro pořadatele. 
                                 Stačí kliknout na tlačítko "Zaregistrovat se" na domovské stránce.</li>
                             </ul>
+                            <p>
                                 Pro jakékoliv dotazy či připomínky nás neváhejte <a href="/home/about"> kontaktovat </a> 
                             </p>
                             </div>
+                            
                         </section>
                     <div className="map-contain-home">
-                        <MapModule map_type='embed' markers={[]} onEmbedMapClick={() => router.push('/map')}/>    
-                    </div>
-                </div>    
-            </div>
+                        <MapModule map_type='embed' markers={[]} onEmbedMapClick={() => router.push('/map')}/>
+                    </div>    
+                </div>
+            </div>    
         </PageWrapper>
     )
 }
