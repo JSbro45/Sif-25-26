@@ -42,6 +42,7 @@ export default function HomePage() {
                             <p>
                                 Pro jakékoliv dotazy či připomínky nás neváhejte <a href="/home/about"> kontaktovat </a> 
                             </p>
+                            </div>
                         </section>
                             </div>
                     <div className="map-contain-home">
