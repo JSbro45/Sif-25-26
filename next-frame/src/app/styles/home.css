@@ -46,7 +46,6 @@
 }
 
 .map-contain-home{
-    position: block;
     display: flex;
     margin-top: 0;
 }

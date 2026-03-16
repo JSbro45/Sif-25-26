@@ -8,10 +8,8 @@
 }
 
 .embed-map {
-  max-width: 100rem;
-  min-width: 55rem;
-  max-height: 70rem;
-  min-height: 10rem;
+  width: 100%;
+  height: 100%;
 }
 
 .leaflet-container {
