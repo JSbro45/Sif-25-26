@@ -86,7 +86,7 @@ async function geocode(query) {
 
     console.log('geocode', json);
   ```
-  > ### následující kód propojuje geokód s frontendem (zobrazuje reálnou lokaci na mapě)
+  > ### následující kód propojuje geokód s frontendem (zobrazuje reálnou lokaci na mapě pomocí _MapLibre GL_)
   ```
     const source = map.getSource('markers');
     

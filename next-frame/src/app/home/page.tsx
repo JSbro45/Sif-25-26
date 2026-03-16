@@ -2,7 +2,7 @@
 
 //import { useState } from 'react'
 import Header from "./components/Header";
-import MapModule from '../map/components/MapModule';
+import MapModule from '../map/components/map/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
 import { useRouter } from 'next/navigation';
@@ -28,17 +28,18 @@ export default function HomePage() {
                         </section>
                 <div className="map-text">
                         <section className="page-section">
-                            <div className="text2">
-                            <p style={{fontSize: 20 }}> Klikněte na mapu níže a začněte objevovat hudební akce <br></br> ve vašem okolí!
-                                <br></br>➜
+                            <p className="text2">
+                            <p style={{fontSize: 20 }}> 
+                                Klikněte na mapu níže a začněte objevovat hudební akce <br></br> ve vašem okolí!
+                                <br/> 
+                                ➜
                             </p>
                             <ul style={{padding: '10px 0px 0px 20px'}}>
-                                <li style={{paddingBottom: '10px'}}>Po kliknutí na mapu můžete prostřednictvím ikonek v levém horním rohu vyhledávat konkrétní název akce, interpreta nebo místa a určit si i časový rozsah, ve kterém chcete akce vyhledávat.</li>
+                                <li style={{paddingBottom: '10px'}}>Prostřednictvím ikonek v levém horním rohu můžete vyhledávat konkrétní název akce, interpreta nebo místa a určit si i časový rozsah, ve kterém chcete akce vyhledávat.</li>
                                 <li>Pokud chcete svůj koncert zařadit do naší databáze, můžete tak učinit prostřednictvím vytvoření účtu pro pořadatele. 
                                 Stačí kliknout na tlačítko "Zaregistrovat se" na domovské stránce.</li>
                             </ul>
-                            <p>
-                                <br />Pro jakékoliv dotazy či připomínky nás neváhejte kontaktovat prostřednictvím <br />sekce "O nás". Rádi vám pomůžeme!
+                                Pro jakékoliv dotazy či připomínky nás neváhejte <a href="/home/about"> kontaktovat </a> 
                             </p>
                             </div>
                         </section>

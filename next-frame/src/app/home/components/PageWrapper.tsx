@@ -4,7 +4,7 @@ import '../../styles/home.css'
 
 export default function PageWrapper({children}: {children: React.ReactNode}) {
     return (
-        <body className="page-wrapper">
+        <body >
             <Header/>
             { children }
             <Footer/>

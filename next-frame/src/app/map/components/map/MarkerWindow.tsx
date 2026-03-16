@@ -5,7 +5,7 @@ import { Marker } from "react-leaflet";
 import type { LatLngExpression, LatLngTuple } from 'leaflet'
 import { useEffect, useRef, useState } from "react";
 import 'leaflet/dist/leaflet.css'
-import '../../styles/map.css'
+import '../../../styles/map.css'
 import { MarkerProps } from "@/src/lib/map-types";
 
 export default function MarkerWindow({ evtInfo, clicker, isActiveMarker, onActiveChange }: { evtInfo: MarkerProps, clicker?: () => void, isActiveMarker?: boolean, onActiveChange?: (active: boolean) => void }) {
