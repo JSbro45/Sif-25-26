@@ -8,50 +8,64 @@ export class FormInputObject {
         public type: HTMLInputTypeAttribute,
         public id: string,
         public required: boolean,
-        public value: React.RefObject<HTMLInputElement | null> | undefined = undefined
+        public func: (() => void) | undefined = undefined,
+        public ref: React.RefObject<HTMLInputElement | null> | undefined = undefined
     ) {}
 }
 
 
-const InputBox = ({ inputObject }: { inputObject: FormInputObject }) => (
+const InputBox = ({ inputObj }: { inputObj: FormInputObject }) => (
     <div className="form-input-box">
-        <label> { inputObject.label } { inputObject.required? ( <a><b> * </b></a> ) : ( null ) } </label> 
+        {
+            inputObj.type != 'button'
+                ? <label htmlFor={inputObj.id}> 
+                    { inputObj.label } { inputObj.required? ( <b> * </b> ) : ( '' ) } 
+                </label>
+                : null
+        } 
         <input 
-            type={ inputObject.type } 
-            id={ inputObject.id } 
-            name={ inputObject.id } 
-            required={ inputObject.required } 
-            onChange={ e => inputObject.value ? inputObject.value.current = e.target : null }
+            id={ inputObj.id } 
+            name={ inputObj.id } 
+            type={ inputObj.type } 
+            required={ inputObj.required } 
+            value={inputObj.type === 'button' ? inputObj.label : ''} 
+            onClick={() =>  inputObj.func ? inputObj.func(): null}
         />
+            {/*onChange={ e => inputObj.ref ? inputObj.ref.current = e.target : null } */}
     </div>
 );
 
-
 export const FormComponent = ({formMapper, refObject, execute}: {
-        formMapper: FormInputObject[], 
+        formMapper: (FormInputObject | FormInputObject[])[], 
         refObject: React.RefObject<HTMLFormElement | null>, 
-        execute: (param: object[]) => void
+        execute: (param: object[]) => void | Promise<void>
     }) => (
     <form
         ref={refObject}
         onSubmit={e => {
-            e.preventDefault();
             if (refObject && refObject.current) {
-                const final = [] as { [key: string]: string }[]
-                for (const obj of formMapper) {
-                    const input = refObject.current.elements.namedItem(obj.id) as HTMLInputElement;
-                    console.log(input.value);
-                    final.push({ [obj.id]: input.value });
+                const final = [] as { [key: string]: string | null }[]
+                for (const obj of formMapper.flat()) {
+                    const input = refObject.current.elements.namedItem(obj.id) as HTMLInputElement | null;
+                    final.push({ [obj.id]: input ? input.value : null });
                 }
                 execute(final)
-            }
-        }}
+        }}}
         className="form-container"
     >
-        {formMapper.map((obj, index) => (
-            <InputBox key={index} inputObject={obj} />
+        {formMapper.map((obj, key) => (
+            Array.isArray(obj) ? (
+                <div key={key} className="form-input-group">
+                    {
+                        obj.map((item, i) => (
+                            <InputBox key={`${key}-${i}`} inputObj={item} />
+                        ))
+                    }
+                </div>
+            ) : (
+                <InputBox key={key} inputObj={obj} />
+            )
         ))}
-            <button type="submit"> Přidat </button>
+        <button type="submit"> Přidat </button>
     </form>
-);
-
+    );
