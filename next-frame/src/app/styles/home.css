@@ -3,8 +3,16 @@
     background-color: #ffffff;
     font-family: Arial, sans-serif;
     height: 100%;
-    width: 99%;
+    width: 100%;
     margin-left: -10px;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
 .page-section {
@@ -40,8 +48,6 @@
 .map-contain-home{
     display: flex;
     margin-top: 0;
-    
-    width: 100%;
 }
 
 .map-text{
@@ -49,8 +55,8 @@
     color: #ffffff;
     display: flex;
     justify-content: center;
-    height: 700px;
-    width: 90%;
+    height: 500px;
+    width: 1320px;
     border-radius: 45px;
     margin-left: 20px;
     margin-bottom: 60px;
