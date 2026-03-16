@@ -38,11 +38,10 @@
 }
 
 .map-contain-home{
-    position: block;
     display: flex;
     margin-top: 0;
     
-    width: 900px;
+    width: 100%;
 }
 
 .map-text{
@@ -51,7 +50,7 @@
     display: flex;
     justify-content: center;
     height: 700px;
-    width: 1320px;
+    width: 90%;
     border-radius: 45px;
     margin-left: 20px;
     margin-bottom: 60px;

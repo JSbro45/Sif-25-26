@@ -7,8 +7,11 @@ import { Show, UserButton } from "@clerk/nextjs";
 export default function Header({}) {
     return (
         <header className="header">
+
             <div id="logo_header">
-                <img src="/logo-3.png"  alt="LocalFest logo" className="logo" style={{height:"100px",width:"300px"}}/> {/*style="height:40px;width:40px;object-fit:contain;"*/}
+                <Link href="/home">                
+                    <img src="/logo-3.png"  alt="LocalFest logo" className="logo" style={{height:"100px",width:"300px"}}/> {/*style="height:40px;width:40px;object-fit:contain;"*/}
+                </Link>
             </div>
             <SearchBar />
             <nav className="nav">
