@@ -1,11 +1,11 @@
 'use client';
 
-//import { useState } from 'react'
 import Header from "./components/Header";
 import MapModule from '../map/components/map/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
 import { useRouter } from 'next/navigation';
+
 
 export default function HomePage() {
     const router = useRouter();
@@ -45,8 +45,10 @@ export default function HomePage() {
                             </div>
                         </section>
                             </div>
-                    <div className="map-contain-home">
-                        <MapModule map_type='embed' markers={[]} onEmbedMapClick={() => router.push('/map')}/>    
+                    <div className="home-map-container" onDoubleClick={() => router.push('/map')}>
+
+                        <MapModule map_type='embed' markers={[]} onMarkerClick={() => router.push('/map')} />  
+                        
                     </div>
                 </div>   
         </PageWrapper>

@@ -69,7 +69,7 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
-    router.push('/')
+    router.push('/acc_info')
     return null
   }
 
@@ -136,6 +136,8 @@ export default function Page() {
       {/* For your debugging purposes. You can just console.log errors, but we put them in the UI for convenience */
       /* errors && <p>{JSON.stringify(errors, null, 2)}</p> */
       /* Required for sign-up flows. Clerk's bot sign-up protection is enabled by default */}
+      <div id="clerk-captcha" />
     </section>
+
   )
 }
