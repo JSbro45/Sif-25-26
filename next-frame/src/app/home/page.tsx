@@ -1,11 +1,10 @@
 'use client';
 
-//import { useState } from 'react'
-import Header from "./components/Header";
 import MapModule from '../map/components/map/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
 import { useRouter } from 'next/navigation';
+
 
 export default function HomePage() {
     const router = useRouter();

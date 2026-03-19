@@ -39,10 +39,8 @@ export default function AddEventForm() {
             </section>
             <section>
                 <h2>Vyhledat místo konání</h2>
-                <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => {
-                    console.log(obj);
-                }}/>
-                {/*<MapModule map_type='embed' onMarkerClick={(payload: MarkerProps)=>router.push('/map')}/>*/}
+                <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => console.log(obj)}/>
+                {/*<MapModule map_type='embed' />*/}
             </section>
         </div>
     )
