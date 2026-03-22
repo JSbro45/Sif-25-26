@@ -1,12 +1,15 @@
 'use client'
 
-import { useAuth, useSignUp } from '@clerk/nextjs'
+import { useAuth, useSignUp, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import "../../../../styles/forms.css"
+import { useState } from 'react'
 
 export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
+  const {user}= useUser()
+  const [userData, setUserData] = useState({firstName:'', lastName:''})
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
@@ -14,9 +17,9 @@ export default function Page() {
     const emailAddress = formData.get('email') as string
     const password = formData.get('password') as string
     const confirmPass = formData.get('confirm-pass') as string
-    const name = { 
-      name: formData.get('name'),
-      surname: formData.get('surname')
+    const setUserData = { 
+      firstName: formData.get('firstName'),
+      surname: formData.get('lastName')
     }
 
     if (password && confirmPass && password !== confirmPass) {
@@ -25,7 +28,7 @@ export default function Page() {
 
     const { error } = await signUp.password({
       emailAddress,
-      password,
+      password
     })
 
     if (error) {
@@ -69,7 +72,10 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
-    router.push('/acc_info')
+    console.log(user)
+    user?.update(userData)
+    console.log(user?.firstName)
+    router.push('/account')
     return null
   }
 
@@ -106,12 +112,12 @@ export default function Page() {
       <form action={handleSubmit}>
         <div>
           <label htmlFor="name">zadejte jméno</label>
-          <input id="name" type="text" name="name" />
+          <input id="firstName" type="text" name="firstName" />
           {/*errors.fields.emailAddress && <p>{errors.fields.emailAddress.message}</p>*/}
         </div>
         <div>
           <label htmlFor="surname">zadejte příjmení</label>
-          <input id="surname" type="text" name="surname" />
+          <input id="lastName" type="text" name="lastName" />
           {/*errors.fields.emailAddress && <p>{errors.fields.emailAddress.message}</p>*/}
         </div>
         <div>

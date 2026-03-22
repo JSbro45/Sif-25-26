@@ -5,6 +5,7 @@ import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MarkerProps } from '../../../../lib/map-types'
 import { getPins } from '@/src/lib/data-fetch';
+import { API_KEY } from '@/src/lib/map-keys'
 
 export default function MapModule({ map_type, markers, onMarkerClick, activeMarkerEvent, onMarkerActiveChange } : {
     map_type: 'page' | 'embed',
@@ -13,7 +14,6 @@ export default function MapModule({ map_type, markers, onMarkerClick, activeMark
     activeMarkerEvent?: MarkerProps | null, 
     onMarkerActiveChange?: (event: MarkerProps | null) => void,
 }) {
-  const API_KEY = 'lijiPKo4X8TaQxEXRTHg_8ySYzbGEwoVTL6YILGdk78'
 
 
   return (

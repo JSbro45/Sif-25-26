@@ -6,8 +6,6 @@ export default function UserAccountInfo() {
             <img className="avatar" src="insertpng" alt="Pfp uživatele" />
             <div>
                 <h1 id="profile-name" className="name">Název/Jméno</h1>
-                <div className="handle">...</div>
-                <div className="meta">...</div>
                 <div className="actions">
                     <a className="btn" href="/account/edit">Editovat</a>
                     <a className="btn secondary" href="/logout">Odhlásit se</a>

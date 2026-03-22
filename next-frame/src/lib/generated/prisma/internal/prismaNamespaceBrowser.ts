@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
+  HostUserProfile: 'HostUserProfile',
   Event: 'Event',
   Address: 'Address'
 } as const
@@ -72,17 +72,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
+export const HostUserProfileScalarFieldEnum = {
   id: 'id',
-  role: 'role',
-  name: 'name',
+  clerkId: 'clerkId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  orgName: 'orgName',
+  webSite: 'webSite',
   email: 'email',
   password: 'password',
-  verification: 'verification',
   createdAt: 'createdAt'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type HostUserProfileScalarFieldEnum = (typeof HostUserProfileScalarFieldEnum)[keyof typeof HostUserProfileScalarFieldEnum]
 
 
 export const EventScalarFieldEnum = {
@@ -95,7 +97,8 @@ export const EventScalarFieldEnum = {
   createdAt: 'createdAt',
   latitude: 'latitude',
   longitude: 'longitude',
-  hostUserId: 'hostUserId'
+  hostUserId: 'hostUserId',
+  addressId: 'addressId'
 } as const
 
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -103,7 +106,11 @@ export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof Ev
 
 export const AddressScalarFieldEnum = {
   id: 'id',
-  placeName: 'placeName',
+  region: 'region',
+  town: 'town',
+  district: 'district',
+  adress: 'adress',
+  establishment: 'establishment',
   postalCode: 'postalCode',
   lat: 'lat',
   lng: 'lng'

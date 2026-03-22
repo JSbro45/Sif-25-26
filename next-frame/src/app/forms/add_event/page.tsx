@@ -4,9 +4,9 @@ import { FormComponent, FormInputObject } from "../components/FormInput"
 import MapModule from "../../map/components/map/MapModule"
 import { MarkerProps} from "@/src/lib/map-types";
 import { ValueOf } from "next/dist/shared/lib/constants";
-import { setEventPin } from "@/src/lib/data-fetch";
 import { useRef } from "react";
-
+import { geoCode } from "@/src/lib/geocode";
+import { Show } from "@clerk/nextjs";
 
 
 export default function AddEventForm() {
@@ -30,18 +30,23 @@ export default function AddEventForm() {
     const formRef = useRef<HTMLFormElement | null>(null)
 
     return (
-        <div>
-            <section className="add-evt-container">
-                <h1>Přidat Akci</h1>
-                <FormComponent formMapper={mapper} refObject={formRef} execute={(obj) => {
-                    console.log(obj);
-                }}/>
-            </section>
-            <section>
-                <h2>Vyhledat místo konání</h2>
-                <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => console.log(obj)}/>
-                {/*<MapModule map_type='embed' />*/}
-            </section>
-        </div>
+        <Show when={'signed-in'}>
+            <div>
+                <section className="add-evt-container">
+                    <h1>Přidat Akci</h1>
+                    <FormComponent formMapper={mapper} refObject={formRef} execute={(obj) => {
+                        console.log(obj);
+                    }}/>
+                </section>
+                <section>
+                    <h2>Vyhledat místo konání</h2>
+                {/*
+                    <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => {if (mapSearch[0].type==='text')geoCode(obj[0].)}}/>
+                    <MapModule map_type='embed' />
+                */}
+                </section>
+            </div>
+        </Show>
     )
 }
+
