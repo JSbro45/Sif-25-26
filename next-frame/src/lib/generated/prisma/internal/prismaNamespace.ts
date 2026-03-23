@@ -672,10 +672,11 @@ export const HostUserProfileScalarFieldEnum = {
   clerkId: 'clerkId',
   firstName: 'firstName',
   lastName: 'lastName',
-  orgName: 'orgName',
-  webSite: 'webSite',
   email: 'email',
   password: 'password',
+  orgName: 'orgName',
+  webSite: 'webSite',
+  baseAddressId: 'baseAddressId',
   createdAt: 'createdAt'
 } as const
 

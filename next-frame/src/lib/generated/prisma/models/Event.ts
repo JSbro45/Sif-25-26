@@ -562,10 +562,6 @@ export type EventCreategenresInput = {
   set: string[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type EventUpdatephotosInput = {
   set?: string[]
   push?: string | string[]

@@ -3,13 +3,15 @@
 import { useAuth, useSignUp, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import "../../../../styles/forms.css"
+import { newHostUser } from '@/src/lib/data-fetch'
+import { FormComponent, FormInputObject } from '../../../components/FormInput'
 import { useState } from 'react'
 
 export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
   const {user}= useUser()
-  const [userData, setUserData] = useState({firstName:'', lastName:''})
+  const [userData, setUserData] = useState({})
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
@@ -17,9 +19,17 @@ export default function Page() {
     const emailAddress = formData.get('email') as string
     const password = formData.get('password') as string
     const confirmPass = formData.get('confirm-pass') as string
+    const signUpMapper = [
+      new FormInputObject('zadejte jméno', 'firstName','text',true)
+      new FormInputObject('zadejte')
+    ]
     const setUserData = { 
       firstName: formData.get('firstName'),
-      surname: formData.get('lastName')
+      surname: formData.get('lastName'),
+      email: emailAddress,
+      password:password,
+      orgName: 
+
     }
 
     if (password && confirmPass && password !== confirmPass) {
@@ -73,8 +83,7 @@ export default function Page() {
 
   if (signUp.status === 'complete' || isSignedIn) {
     console.log(user)
-    user?.update(userData)
-    console.log(user?.firstName)
+    const newUser = async newHostUser(userData)
     router.push('/account')
     return null
   }
@@ -139,6 +148,7 @@ export default function Page() {
           Registrovat se
         </button>
       </form>
+      <FormComponent formMapper={}/>
       {/* For your debugging purposes. You can just console.log errors, but we put them in the UI for convenience */
       /* errors && <p>{JSON.stringify(errors, null, 2)}</p> */
       /* Required for sign-up flows. Clerk's bot sign-up protection is enabled by default */}

@@ -16,17 +16,17 @@ datasource db {
 
 
 model HostUserProfile {
-  id          Int      @id @default(autoincrement())
-  clerkId     String
-  firstName   String
-  lastName    String
-  orgName     String
-  webSite     String
-  email       String   @unique
-  password    String    // For OAuth users
-  events      Event[]  @relation("events")
-
-  createdAt   DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  clerkId       String
+  firstName     String
+  lastName      String
+  email         String   @unique
+  password      String    // For OAuth users
+  orgName       String
+  webSite       String?
+  events        Event[]  @relation("events")
+  baseAddressId Int?
+  createdAt     DateTime @default(now())
   @@index([email])
 }
 
@@ -55,7 +55,6 @@ model Event {
   longitude       Float
   hostUserId      Int 
   hostUser        HostUserProfile @relation("events", fields: [hostUserId], references: [id], onDelete: Cascade)
-  //performers      String[]
   addressId       Int
   address         Address @relation("events", fields: [addressId], references: [id])
 
