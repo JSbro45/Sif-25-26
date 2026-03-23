@@ -41,7 +41,7 @@ export default function AddEventForm() {
                 <section>
                     <h2>Vyhledat místo konání</h2>
                     <form action={geoCode}>
-                        <input type="text" />
+                        <input type="text" name="query"/>
                         <button> hledat </button>
                     </form>
                     {/*<MapModule map_type='embed' />*/}
