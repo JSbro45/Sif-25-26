@@ -1,7 +1,9 @@
 import { API_KEY } from "./map-keys";
 
 
-export async function geoCode(query: string) {
+export async function geoCode(data: FormData) {
+  const query = data.get('query') as string
+  if(!query) return 
   try {
     const url = new URL(`https://api.mapy.cz/v1/geocode`);
     url.searchParams.set('lang', 'cs');
@@ -13,13 +15,13 @@ export async function geoCode(query: string) {
       'regional.municipality_part',
       'regional.street',
       'regional.address',
-      'coordinate',
     ].forEach(type => url.searchParams.append('type', type));
     const response = await fetch(url.toString(), {
       mode: 'cors',
     });
     const json = await response.json();
     console.log('geocode', json);
+
   } catch (ex) {
   	console.log(ex);
   }

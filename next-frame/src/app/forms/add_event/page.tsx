@@ -40,10 +40,12 @@ export default function AddEventForm() {
                 </section>
                 <section>
                     <h2>Vyhledat místo konání</h2>
-                {/*
-                    <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => {if (mapSearch[0].type==='text')geoCode(obj[0].)}}/>
-                    <MapModule map_type='embed' />
-                */}
+                    <form action={geoCode}>
+                        <input type="text" />
+                        <button> hledat </button>
+                    </form>
+                    {/*<MapModule map_type='embed' />*/}
+            
                 </section>
             </div>
         </Show>
