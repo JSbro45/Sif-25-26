@@ -30,23 +30,19 @@ export default function AddEventForm() {
     const formRef = useRef<HTMLFormElement | null>(null)
 
     return (
-        <Show when={'signed-in'}>
-            <div>
-                <section className="add-evt-container">
-                    <h1>Přidat Akci</h1>
-                    <FormComponent formMapper={mapper} refObject={formRef} execute={(obj) => {
-                        console.log(obj);
-                    }}/>
-                </section>
-                <section>
-                    <h2>Vyhledat místo konání</h2>
-                {/*
-                    <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => {if (mapSearch[0].type==='text')geoCode(obj[0].)}}/>
-                    <MapModule map_type='embed' />
-                */}
-                </section>
-            </div>
-        </Show>
+        <div>
+            <section className="add-evt-container">
+                <h1>Přidat Akci</h1>
+                <FormComponent formMapper={mapper} refObject={formRef} execute={(obj) => {
+                    console.log(obj);
+                }}/>
+            </section>
+            <section>
+                <h2>Vyhledat místo konání</h2>
+                <FormComponent formMapper={mapSearch} refObject={formRef} execute={(obj) => console.log(obj)}/>
+                {/*<MapModule map_type='embed' />*/}
+            </section>
+        </div>
     )
 }
 
