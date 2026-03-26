@@ -65,7 +65,7 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: Mar
       </div>
       {(activeEvent && selectedRef.current) ? (
         <EventView
-          event={selectedRef.current}
+          events={selectedRef.current}
           onClose={() => setActiveEvent(null)}
         />
       ) : null}

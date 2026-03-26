@@ -36,7 +36,7 @@ export async function getPins(/*timespan : { start: Date; end: Date } , genre_li
 export async function newAddress(place: AddressProps){
     const object = {
         region : place.region,
-        town : place.town,
+        town : place.municipality,
         district : place.district,
         street : place.street,
         houseNumber : place.houseNumber,

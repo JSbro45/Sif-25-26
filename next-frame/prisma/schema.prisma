@@ -65,11 +65,11 @@ model Event {
 model Address {
   id              Int      @id @default(autoincrement())
   region          String
-  town            String
+  municipality    String
   district        String?
   street          String
-  houseNumber     Int
-  postalCode      Int 
+  houseNumber     String
+  postalCode      String
   lat             Float  // latitude
   lng             Float  // longitude
   events          Event[] @relation("events")

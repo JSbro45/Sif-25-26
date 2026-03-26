@@ -1,4 +1,5 @@
 import { API_KEY } from "./map-keys";
+import { AddressProps, GeoItem, GeoJsonResponse, GeoType } from "./map-types";
 
 
 export async function geoCode(data: FormData) {
@@ -18,49 +19,23 @@ export async function geoCode(data: FormData) {
     ].forEach(type => url.searchParams.append('type', type));
     
     const response = await fetch(url.toString(), { mode: 'cors' });
-    const json = await response.json();
-    console.log('geocode', response);
-/*
-{
-  bbox: [13.771978378295898, 50.61357498168945, 13.875493049621582, 50.6771240234375],
-  label: "Statutární město",
-  location: "Česko",
-  name: "Teplice",
-  position: {
-    lat: 50.6404,
-    lon: 13.82451
-  },
-  regionalStructure: [{
-  name: "Teplice",
-  type: "regional.municipality"
-}, {
-  name: "okres Teplice",
-  type: "regional.region"
-}, {
-  name: "Ústecký kraj",
-  type: "regional.region"
-}, {
-  isoCode: "CZ",
-  name: "Česko",
-  type: "regional.country"
-}],
-  type: "regional.municipality"
-}
-*/
+    const json = await response.json() as GeoJsonResponse;
+    console.log('geocode', json);
+    const pickRegionType = (i:number, geoType: GeoType) => 
+      json.items[i].regionalStructure.filter(reg => reg.type === geoType).join(', ') || '' as string
 
-    const addresses = (json.items || []).map((item: any) => ({
-      label: item.label,
-      street: item.street,
-      houseNumber: item.house_number,
-      city: item.city,
-      municipality: item.municipality,
-      region: item.region,
-      postalCode: item.postal_code,
-      country: item.country,
-      coordinates: item.position, // usually {lat, lon}
-    }));
-    console.log('addresses', addresses);
-    } catch (ex) {
+    const addresses = json.items.map((item: GeoItem, key: number) => ({
+      id : -1,
+      region: pickRegionType(key, 'regional.region'),
+      municipality: pickRegionType(key, 'regional.municipality'),
+      district: pickRegionType(key, 'regional.municipality_part'),
+      street: pickRegionType(key, 'regional.street'),
+      houseNumber: pickRegionType(key, 'regional.address'),
+      postalCode: item.zip,
+      coordinates: [item.position.lat, item.position.lon]
+    })) as AddressProps[] 
+    
+  } catch (ex) {
   	console.log(ex); 
   }
 }

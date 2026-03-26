@@ -1,4 +1,4 @@
-import { LatLngTuple } from 'leaflet';
+import { geoJson, LatLngTuple } from 'leaflet';
 import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
 import { Event, Address } from './generated/prisma/client';
@@ -37,7 +37,7 @@ interface InputTypeMap {
 type Model = Event | Address;
 
 
-export type AddressProps = Pick<Address, 'id' | 'region' | 'town' | 'district' | 'street' | 'houseNumber' | 'postalCode' > & { coordinates: LatLngTuple } 
+export type AddressProps = Pick<Address, 'id' | 'region' | 'municipality' | 'district' | 'street' | 'houseNumber' | 'postalCode' > & { coordinates: LatLngTuple } 
 
 export type EventProps = Pick<Event, 'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId' | 'addressId' >
 
@@ -47,7 +47,27 @@ export class MarkerProps {
     public searchByAddress(selectedAddress : AddressProps) { 
         return this.events.filter(evt => evt.addressId === selectedAddress.id)
     } 
-    
+}
+
+export type GeoType = "regional.address" | "regional.street" | "regional.municipality_part" | "regional.municipality" | "regional.region" | "regional.country"
+
+export type GeoItem = {
+    bbox: [number ,number ,number ,number]
+    label: string,
+    location: string,
+    name: string,
+    position : {
+        lat: number
+        lon: number
+    }
+    regionalStructure: {name: string, type: GeoType}[]
+    type : GeoType
+    zip: string
+}
+
+export type GeoJsonResponse = {
+    items : GeoItem[],
+    locality: []
 }
 
 

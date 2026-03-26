@@ -700,7 +700,7 @@ export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof Ev
 export const AddressScalarFieldEnum = {
   id: 'id',
   region: 'region',
-  town: 'town',
+  municipality: 'municipality',
   district: 'district',
   street: 'street',
   houseNumber: 'houseNumber',
