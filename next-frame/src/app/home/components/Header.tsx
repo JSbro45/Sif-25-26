@@ -23,7 +23,7 @@ export default function Header({}) {
                     <Link href="/forms/auth/sign-up" id="signup" className="links_header"> Zaregistrovat se </Link>
                 </Show>
                 <Show when={'signed-in'}>
-                    <Link href="/home/account" id="account" className="links_header"> Účet </Link>
+                    <Link href="/account" id="account" className="links_header"> Účet </Link>
                 </Show>
             </nav>
         </header>

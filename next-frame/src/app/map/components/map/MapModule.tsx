@@ -5,7 +5,6 @@ import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MarkerProps } from '../../../../lib/map-types'
 import { getPins } from '@/src/lib/data-fetch';
-import { LatLngTuple } from 'leaflet';
 
 export default function MapModule({ map_type, markers, onMarkerClick, activeMarkerEvent, onMarkerActiveChange, onEmbedMapClick } : {
     map_type: 'page' | 'embed',
