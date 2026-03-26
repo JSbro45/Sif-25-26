@@ -1,14 +1,13 @@
 import { LatLngTuple } from 'leaflet';
 import { prisma } from './dbclient';
-import {  } from './map-types';  
-import { MarkerProps } from './map-types';
-import { Event, User } from './generated/prisma/client';
+import { AddressProps, EventProps, MarkerProps } from './map-types';
+import { Event, Address } from './generated/prisma/client';
 
 
-export async function getPins(timespan: { start: Date; end: Date } , genre_list: string[]) {
+export async function getPins(/*timespan : { start: Date; end: Date } , genre_list: string[] | undefined */) {
     const events = await prisma.event.findMany({
         where: {
-            AND: [
+            /*AND: [
                 {
                     date_time: {
                         gte: timespan?.start,
@@ -20,39 +19,48 @@ export async function getPins(timespan: { start: Date; end: Date } , genre_list:
                         hasSome: genre_list
                     }
                 }): {}
-            ]
+            ]*/
         }
     }) as Event[];
 
-    const pins = events as unknown as MarkerProps[];
-    pins.map((pin, k) => {
-        pin.coordinates = [events[k].latitude, events[k].longitude] as LatLngTuple;
-    });
-    
-    return pins;
-} 
+    const addressIds = events.map(event => event.addressId).filter(id => id !== undefined);
+    const addresses = await prisma.address.findMany({ where: { id: { in: addressIds }}}) 
 
+    // Map addresses to pins, or adjust as needed for your MarkerProps structure
+    const pins = addresses as AddressProps []
+    pins.map((pin, k) => pin.coordinates = [addresses[k].lat, addresses[k].lng] as LatLngTuple );
 
-export async function getAllPins() {
-    const events = await prisma.event.findMany() as Event[];
-    const pins = events as unknown as MarkerProps[];
-    pins.map((pin, k) => {
-        pin.coordinates = [events[k].latitude, events[k].longitude] as LatLngTuple;
-    });
+    return new MarkerProps(addresses, events)
+ }
 
-    return pins;
+export async function newAddress(place: AddressProps){
+    const object = {
+        region : place.region,
+        town : place.town,
+        district : place.district,
+        street : place.street,
+        houseNumber : place.houseNumber,
+        postalCode : place.postalCode,
+        lat : place.coordinates[0],
+        lng : place.coordinates[1]
+    }
+    let address = await prisma.address.findFirst({ where: object })
+    if (!address) {
+        address = await prisma.address.create({ data: object })
+    }
+    return address
 }
 
 
-export async function setEventPin(evt_data: {eventName: string, hostId: number, date_time: Date, genre_list: string[], location: LatLngTuple}) {
+export async function setEventPin(evt_data: EventProps) {
     const event = await prisma.event.create({
         data: {
-            name:        evt_data.eventName,
-            hostUserId:  evt_data.hostId,
+            name:        evt_data.name,
+            hostUserId:  evt_data.hostUserId,
             date_time:   evt_data.date_time,
-            genres:      evt_data.genre_list, 
-            latitude:    evt_data.location[0],
-            longitude:   evt_data.location[1]
+            genres:      evt_data.genres, 
+            photos:      evt_data.photos,
+            addressId:   evt_data.addressId
         }
     })
 }

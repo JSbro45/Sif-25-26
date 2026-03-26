@@ -95,8 +95,6 @@ export const EventScalarFieldEnum = {
   photos: 'photos',
   genres: 'genres',
   createdAt: 'createdAt',
-  latitude: 'latitude',
-  longitude: 'longitude',
   hostUserId: 'hostUserId',
   addressId: 'addressId'
 } as const
@@ -109,8 +107,8 @@ export const AddressScalarFieldEnum = {
   region: 'region',
   town: 'town',
   district: 'district',
-  adress: 'adress',
-  establishment: 'establishment',
+  street: 'street',
+  houseNumber: 'houseNumber',
   postalCode: 'postalCode',
   lat: 'lat',
   lng: 'lng'

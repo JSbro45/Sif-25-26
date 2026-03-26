@@ -1,9 +1,9 @@
 import '../../styles/eventview.css'
-import { MarkerProps } from '../../../lib/map-types';
+import { EventProps } from '../../../lib/map-types';
 
 
 
-export default function EventView({event, onClose}: {event: MarkerProps, onClose: () => void}) {
+export default function EventView({event, onClose}: {event: EventProps[], onClose: () => void}) {
    console.log('EventView received event:', event)
     return (
         <section className="evt-view">
@@ -12,7 +12,7 @@ export default function EventView({event, onClose}: {event: MarkerProps, onClose
             </button>
 
             <div className="evt-text">
-                <h1 className='nazev-koncertu'> {event.name} </h1>
+                <h1 className='nazev-koncertu'> {event[0].name} </h1>
                 <div className="evt-img-container">
                     <img src="path/to/image.jpg" alt="Koncert_Foto"/>
                 </div>
@@ -23,10 +23,10 @@ export default function EventView({event, onClose}: {event: MarkerProps, onClose
                 <p><img src="/icons/global.png" alt='odkaz' height={20} width={20} className='evt-icons'></img> Odkaz na interpreta</p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> <i>{event.genres.join(', ')}</i></p>
+                <p><img src="/icons/quaver.png" alt='quaver' height={20} width={20} className='evt-icons'></img> <i>{event[0].genres.join(', ')}</i></p>
              </div>
              <div className="event-info">
-                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img> {event.date_time.toString()} </p>
+                <p><img src="/icons/calendar.png" alt='calendar_icon' height={20} width={20} className='evt-icons'></img> {event[0].date_time.toString()} </p>
              </div>
              <div className="event-info">
                 <p><img src="/icons/money.png" alt='money' height={20} width={20} className='evt-icons'></img>Vstupné</p>

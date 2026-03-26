@@ -16,14 +16,52 @@ export async function geoCode(data: FormData) {
       'regional.street',
       'regional.address',
     ].forEach(type => url.searchParams.append('type', type));
-    const response = await fetch(url.toString(), {
-      mode: 'cors',
-    });
+    
+    const response = await fetch(url.toString(), { mode: 'cors' });
     const json = await response.json();
-    console.log('geocode', json);
+    console.log('geocode', response);
+/*
+{
+  bbox: [13.771978378295898, 50.61357498168945, 13.875493049621582, 50.6771240234375],
+  label: "Statutární město",
+  location: "Česko",
+  name: "Teplice",
+  position: {
+    lat: 50.6404,
+    lon: 13.82451
+  },
+  regionalStructure: [{
+  name: "Teplice",
+  type: "regional.municipality"
+}, {
+  name: "okres Teplice",
+  type: "regional.region"
+}, {
+  name: "Ústecký kraj",
+  type: "regional.region"
+}, {
+  isoCode: "CZ",
+  name: "Česko",
+  type: "regional.country"
+}],
+  type: "regional.municipality"
+}
+*/
 
-  } catch (ex) {
-  	console.log(ex);
+    const addresses = (json.items || []).map((item: any) => ({
+      label: item.label,
+      street: item.street,
+      houseNumber: item.house_number,
+      city: item.city,
+      municipality: item.municipality,
+      region: item.region,
+      postalCode: item.postal_code,
+      country: item.country,
+      coordinates: item.position, // usually {lat, lon}
+    }));
+    console.log('addresses', addresses);
+    } catch (ex) {
+  	console.log(ex); 
   }
 }
 

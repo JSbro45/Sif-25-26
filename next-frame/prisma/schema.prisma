@@ -51,11 +51,8 @@ model Event {
   photos          String[]
   genres          String[]
   createdAt       DateTime @default(now())
-  latitude        Float
-  longitude       Float
   hostUserId      Int 
   hostUser        HostUserProfile @relation("events", fields: [hostUserId], references: [id], onDelete: Cascade)
-  //performers      String[]
   addressId       Int
   address         Address @relation("events", fields: [addressId], references: [id])
 
@@ -69,9 +66,9 @@ model Address {
   id              Int      @id @default(autoincrement())
   region          String
   town            String
-  district        String
-  adress          String
-  establishment   String
+  district        String?
+  street          String
+  houseNumber     Int
   postalCode      Int 
   lat             Float  // latitude
   lng             Float  // longitude

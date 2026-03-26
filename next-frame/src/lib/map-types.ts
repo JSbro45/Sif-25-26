@@ -1,7 +1,7 @@
 import { LatLngTuple } from 'leaflet';
 import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
-import { Event, User } from './generated/prisma/client';
+import { Event, Address } from './generated/prisma/client';
 import { HTMLInputTypeAttribute} from 'react';
 
 
@@ -34,23 +34,23 @@ interface InputTypeMap {
 }
 
 
-type Model = Event | User;
+type Model = Event | Address;
 
 
-export type MarkerProps = Pick<Event,  'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId'> & { coordinates: LatLngTuple } 
+export type AddressProps = Pick<Address, 'id' | 'region' | 'town' | 'district' | 'street' | 'houseNumber' | 'postalCode' > & { coordinates: LatLngTuple } 
 
+export type EventProps = Pick<Event, 'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId' | 'addressId' >
 
+export class MarkerProps {
+    constructor(public address: AddressProps[], public events: EventProps[]) {}
 
-export type MarkerIdentifiers<Keys extends Array<keyof MarkerProps>> = {
-
+    public searchByAddress(selectedAddress : AddressProps) { 
+        return this.events.filter(evt => evt.addressId === selectedAddress.id)
+    } 
+    
 }
 
 
-export  const mapTiles = {
-        'basic': [
-            'https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}', 
-            '<a href="https://api.mapy.com/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
-            ' 49^{circ }44^{prime }37.526"N), (15^{circ }20^{prime }19.098"E'
-        ]
-    };
+
+
 
