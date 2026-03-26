@@ -33,20 +33,22 @@ export async function getPins(/*timespan : { start: Date; end: Date } , genre_li
     return new MarkerProps(addresses, events)
  }
 
-export async function newAddress(place: AddressProps){
-    const object = {
-        region : place.region,
-        town : place.municipality,
-        district : place.district,
-        street : place.street,
-        houseNumber : place.houseNumber,
-        postalCode : place.postalCode,
-        lat : place.coordinates[0],
-        lng : place.coordinates[1]
-    }
-    let address = await prisma.address.findFirst({ where: object })
+
+export async function newAddress(props: AddressProps){
+    let address : Promise<Address> | Address
+    const data =  {
+        region : props.region,
+        municipality : props.municipality,
+        district : props.district,
+        street : props.street,
+        houseNumber : props.houseNumber,
+        postalCode: props.postalCode,
+        lat : props.coordinates[0],
+        lng : props.coordinates[1]
+    } 
+    address = await prisma.address.findFirst({ where: data })
     if (!address) {
-        address = await prisma.address.create({ data: object })
+        address = await prisma.address.create({ data: data })
     }
     return address
 }

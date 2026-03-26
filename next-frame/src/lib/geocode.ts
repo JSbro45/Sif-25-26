@@ -1,6 +1,6 @@
 import { API_KEY } from "./map-keys";
 import { AddressProps, GeoItem, GeoJsonResponse, GeoType } from "./map-types";
-
+ 
 
 export async function geoCode(data: FormData) {
   const query = data.get('query') as string
@@ -34,7 +34,7 @@ export async function geoCode(data: FormData) {
       postalCode: item.zip,
       coordinates: [item.position.lat, item.position.lon]
     })) as AddressProps[] 
-    
+
   } catch (ex) {
   	console.log(ex); 
   }

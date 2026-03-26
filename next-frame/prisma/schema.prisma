@@ -74,4 +74,5 @@ model Address {
   lng             Float  // longitude
   events          Event[] @relation("events")
 
+  @@index([id])
 }

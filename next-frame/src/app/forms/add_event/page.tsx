@@ -40,7 +40,7 @@ export default function AddEventForm() {
                 </section>
                 <section>
                     <h2>Vyhledat místo konání</h2>
-                    <form action={geoCode}>
+                    <form action={(FormData) => geoCode(FormData)}>
                         <input type="text" name="query"/>
                         <button> hledat </button>
                     </form>
