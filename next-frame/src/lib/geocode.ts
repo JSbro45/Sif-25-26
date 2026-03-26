@@ -4,7 +4,7 @@ import { AddressProps, GeoItem, GeoJsonResponse, GeoType } from "./map-types";
 
 export async function geoCode(data: FormData) {
   const query = data.get('query') as string
-  if(!query) return 
+  if(!query) return []
   try {
     const url = new URL(`https://api.mapy.cz/v1/geocode`);
     url.searchParams.set('lang', 'cs');
@@ -34,7 +34,8 @@ export async function geoCode(data: FormData) {
       postalCode: item.zip,
       coordinates: [item.position.lat, item.position.lon]
     })) as AddressProps[] 
-
+    
+    return addresses
   } catch (ex) {
   	console.log(ex); 
   }

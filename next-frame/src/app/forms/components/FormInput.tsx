@@ -27,8 +27,7 @@ const InputBox = ({ inputObj }: { inputObj: FormInputObject }) => (
             id={ inputObj.id } 
             name={ inputObj.id } 
             type={ inputObj.type } 
-            required={ inputObj.required } 
-            value={inputObj.type === 'button' ? inputObj.label : ''} 
+            required={ inputObj.required }  
             onClick={() =>  inputObj.func ? inputObj.func(): null}
         />
             {/*onChange={ e => inputObj.ref ? inputObj.ref.current = e.target : null } */}

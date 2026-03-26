@@ -2,11 +2,12 @@
 
 import { FormComponent, FormInputObject } from "../components/FormInput"
 import MapModule from "../../map/components/map/MapModule"
-import { MarkerProps} from "@/src/lib/map-types";
+import { AddressProps, MarkerProps} from "@/src/lib/map-types";
 import { ValueOf } from "next/dist/shared/lib/constants";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { geoCode } from "@/src/lib/geocode";
 import { Show } from "@clerk/nextjs";
+import safeFetch from "@/src/lib/safe-fetch";
 
 
 export default function AddEventForm() {
@@ -28,9 +29,11 @@ export default function AddEventForm() {
         new FormInputObject("Název místa konání:", "text", "map-name", true),
     ]
     const formRef = useRef<HTMLFormElement | null>(null)
+    const [addressList, setAddressList] = useState<AddressProps[]>([])
+
+    const geo = (formData:FormData) => safeFetch(geoCode(data),[])
 
     return (
-        <Show when={'signed-in'}>
             <div>
                 <section className="add-evt-container">
                     <h1>Přidat Akci</h1>
@@ -40,15 +43,14 @@ export default function AddEventForm() {
                 </section>
                 <section>
                     <h2>Vyhledat místo konání</h2>
-                    <form action={(FormData) => geoCode(FormData)}>
+                    <form action={(FormData) => setAddressList() }>
                         <input type="text" name="query"/>
-                        <button> hledat </button>
+                        <button type="submit"> hledat </button>
                     </form>
                     {/*<MapModule map_type='embed' />*/}
             
                 </section>
             </div>
-        </Show>
     )
 }
 
