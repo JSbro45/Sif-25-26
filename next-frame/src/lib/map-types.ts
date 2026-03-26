@@ -1,7 +1,7 @@
 import { LatLngTuple } from 'leaflet';
 import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
-import { Event, User } from './generated/prisma/client';
+import { Event, HostUserProfile } from './generated/prisma/client';
 import { HTMLInputTypeAttribute} from 'react';
 
 
@@ -34,11 +34,10 @@ interface InputTypeMap {
 }
 
 
-type Model = Event | User;
+type Model = Event ;
 
 
 export type MarkerProps = Pick<Event,  'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId'> & { coordinates: LatLngTuple } 
-
 
 
 export type MarkerIdentifiers<Keys extends Array<keyof MarkerProps>> = {

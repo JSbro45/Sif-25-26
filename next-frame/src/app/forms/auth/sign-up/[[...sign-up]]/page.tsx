@@ -6,35 +6,44 @@ import "../../../../styles/forms.css"
 import { newHostUser } from '@/src/lib/data-fetch'
 import { FormComponent, FormInputObject } from '../../../components/FormInput'
 import { useState } from 'react'
+import { HostSignUpProps } from '@/src/lib/user-types'
+import { EmailAddress } from '@clerk/nextjs/server'
+
 
 export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
   const {user}= useUser()
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState<HostSignUpProps|null>(null)
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
-    
-    const emailAddress = formData.get('email') as string
+    const emailAddress =  formData.get('email') as string;
     const password = formData.get('password') as string
-    const confirmPass = formData.get('confirm-pass') as string
-    const signUpMapper = [
-      new FormInputObject('zadejte jméno', 'firstName','text',true)
-      new FormInputObject('zadejte')
+    /*const signUpMapper = [
+      new FormInputObject('zadejte jméno', 'text', 'firstName', true),
+      new FormInputObject('zadejte příjmení', 'text', 'lastName', true),
+      new FormInputObject('zadejte zadejte emailovou adresu', 'email', 'email', true),
+      new FormInputObject('zadejte heslo', 'password', 'password', true),
+      new FormInputObject('potvrďte heslo', 'email', 'email', true)
     ]
-    const setUserData = { 
-      firstName: formData.get('firstName'),
-      surname: formData.get('lastName'),
+    signUpMapper.map((object, key) =>  formData.get(object.id))
+    */
+
+    const data = { 
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
       email: emailAddress,
-      password:password,
-      orgName: 
+      password: password
+    } as HostSignUpProps
 
-    }
-
-    if (password && confirmPass && password !== confirmPass) {
+    const confirmPass = formData.get('confirm-pass') as string
+    
+    if (data.password && confirmPass && data.password !== confirmPass) {
       console.error('Passwords do not match')
     }
+    
+    setUserData(data)
 
     const { error } = await signUp.password({
       emailAddress,
@@ -83,12 +92,10 @@ export default function Page() {
 
   if (signUp.status === 'complete' || isSignedIn) {
     console.log(user)
-    const newUser = async newHostUser(userData)
+    const newUser = newHostUser(userData.firstName,userData.lastName,userData.emailAddress)
     router.push('/account')
     return null
   }
-
-  
 
   if (
     signUp.status === 'missing_requirements' &&

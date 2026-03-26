@@ -42,7 +42,7 @@ export const FormComponent = ({formMapper, refObject, execute}: {
     }) => (
     <form
         ref={refObject}
-        onSubmit={e => {
+        action={(formData:FormData) => {
             if (refObject && refObject.current) {
                 const final = [] as { [key: string]: string | null }[]
                 for (const obj of formMapper.flat()) {

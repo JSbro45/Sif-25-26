@@ -22,7 +22,7 @@ model HostUserProfile {
   lastName      String
   email         String   @unique
   password      String    // For OAuth users
-  orgName       String
+  orgName       String?
   webSite       String?
   events        Event[]  @relation("events")
   baseAddressId Int?

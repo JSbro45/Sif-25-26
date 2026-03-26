@@ -44,7 +44,16 @@ export async function getAllPins() {
     return pins;
 }
 
-export async function newHostUser(firstName:string, lastName:string, orgName: string, webSite: string, email:string, password: string, clerkId:string) {
+
+export async function newHostUser(
+    firstName:string,
+    lastName:string, 
+    orgName: string, 
+    webSite: string, 
+    email:string, 
+    password: string, 
+    clerkId:string
+) {
     const user = await prisma.hostUserProfile.create(
         {
             data:{
