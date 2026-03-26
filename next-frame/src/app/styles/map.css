@@ -1,9 +1,9 @@
 .page-map {
-  position: fixed;
+  position: absolute;
   width:105%;
   height:105%;
   left: -60px;
-  top: -20px;
+  top: 110px;
   z-index: 0;
 }
 
