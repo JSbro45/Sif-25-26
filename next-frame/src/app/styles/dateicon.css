@@ -1,13 +1,13 @@
  .date-container {
-    margin-top: 80px;
+    margin-top: 200px;
  }
  
 /* uprava z templates */     
         
         .date-container {
-            position: fixed;
+            position: absolute;
             align-items: left;
-            top: 20px;
+            top: 40px;
             left: 20px;
             background: white;
             width: 230px;

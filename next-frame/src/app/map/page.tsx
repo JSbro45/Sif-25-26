@@ -4,6 +4,8 @@ import MapAndSelectors from './components/MapSelectors';
 import { getAllPins } from '../../lib/data-fetch';
 import safeFetch from '../../lib/safe-fetch'
 import { MarkerProps } from '../../lib/map-types';
+import DateIcon from './components/DateIcon';
+import SearchBar from './components/SearchBar';
 import '../styles/map.css'
 
 export default async function Page() {
@@ -11,7 +13,8 @@ export default async function Page() {
   
   return (
     <>
-    <Header/>
+      <Header/>
+      <SearchBar />
       <main>
         <MapAndSelectors
           initialMarkers={initialMarkers}
@@ -20,6 +23,7 @@ export default async function Page() {
           */
         />
       </main>
+      <DateIcon />
     </>
   )
 }
