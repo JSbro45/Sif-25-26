@@ -1,5 +1,5 @@
  .date-container {
-    margin-top: 200px;
+    margin-top: 210px;
  }
  
 /* uprava z templates */     
@@ -8,10 +8,10 @@
             position: absolute;
             align-items: left;
             top: 40px;
-            left: 20px;
+            left: 30px;
             background: white;
-            width: 230px;
-            height: 20px;
+            width: 220px;
+            height: 16px;
             padding: 1rem;
             border-radius:999px;
             box-shadow:0 6px 18px rgba(94, 67, 67, 0.486);
@@ -24,14 +24,14 @@
         }
         .date-label {
             display: block;
-            margin-top: -3px;
+            margin-top: -4px;
             margin-bottom: 0.5rem;
             font-weight: bold;
             color: #0e5f04;
         }
         .date-input {
             position: relative;
-            bottom: 10px;
+            bottom: 12px;
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 999px;

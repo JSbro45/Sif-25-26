@@ -13,16 +13,18 @@ export default async function Page() {
   
   return (
     <>
-      <Header/>
+      <div className='header-map'>
+        <Header/>
+        <main>
+          <MapAndSelectors
+            initialMarkers={initialMarkers}
+            /*
+            onSearch={(params) => getPins(params)}
+            */
+          />
+        </main>
+      </div>
       <SearchBar />
-      <main>
-        <MapAndSelectors
-          initialMarkers={initialMarkers}
-          /*
-          onSearch={(params) => getPins(params)}
-          */
-        />
-      </main>
       <DateIcon />
     </>
   )
