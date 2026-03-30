@@ -14,7 +14,9 @@ export default async function Page() {
   return (
     <>
       <div className='header-map'>
-        <Header/>
+        <div className='header-container'>
+          <Header/>
+        </div>
         <main>
           <MapAndSelectors
             initialMarkers={initialMarkers}
