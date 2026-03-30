@@ -220,7 +220,7 @@ export type HostUserProfileGroupByOutputType = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName: string | null
   webSite: string | null
   baseAddressId: number | null
   createdAt: Date
@@ -256,7 +256,7 @@ export type HostUserProfileWhereInput = {
   lastName?: Prisma.StringFilter<"HostUserProfile"> | string
   email?: Prisma.StringFilter<"HostUserProfile"> | string
   password?: Prisma.StringFilter<"HostUserProfile"> | string
-  orgName?: Prisma.StringFilter<"HostUserProfile"> | string
+  orgName?: Prisma.StringNullableFilter<"HostUserProfile"> | string | null
   webSite?: Prisma.StringNullableFilter<"HostUserProfile"> | string | null
   baseAddressId?: Prisma.IntNullableFilter<"HostUserProfile"> | number | null
   createdAt?: Prisma.DateTimeFilter<"HostUserProfile"> | Date | string
@@ -270,7 +270,7 @@ export type HostUserProfileOrderByWithRelationInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  orgName?: Prisma.SortOrder
+  orgName?: Prisma.SortOrderInput | Prisma.SortOrder
   webSite?: Prisma.SortOrderInput | Prisma.SortOrder
   baseAddressId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -287,7 +287,7 @@ export type HostUserProfileWhereUniqueInput = Prisma.AtLeast<{
   firstName?: Prisma.StringFilter<"HostUserProfile"> | string
   lastName?: Prisma.StringFilter<"HostUserProfile"> | string
   password?: Prisma.StringFilter<"HostUserProfile"> | string
-  orgName?: Prisma.StringFilter<"HostUserProfile"> | string
+  orgName?: Prisma.StringNullableFilter<"HostUserProfile"> | string | null
   webSite?: Prisma.StringNullableFilter<"HostUserProfile"> | string | null
   baseAddressId?: Prisma.IntNullableFilter<"HostUserProfile"> | number | null
   createdAt?: Prisma.DateTimeFilter<"HostUserProfile"> | Date | string
@@ -301,7 +301,7 @@ export type HostUserProfileOrderByWithAggregationInput = {
   lastName?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
-  orgName?: Prisma.SortOrder
+  orgName?: Prisma.SortOrderInput | Prisma.SortOrder
   webSite?: Prisma.SortOrderInput | Prisma.SortOrder
   baseAddressId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -322,7 +322,7 @@ export type HostUserProfileScalarWhereWithAggregatesInput = {
   lastName?: Prisma.StringWithAggregatesFilter<"HostUserProfile"> | string
   email?: Prisma.StringWithAggregatesFilter<"HostUserProfile"> | string
   password?: Prisma.StringWithAggregatesFilter<"HostUserProfile"> | string
-  orgName?: Prisma.StringWithAggregatesFilter<"HostUserProfile"> | string
+  orgName?: Prisma.StringNullableWithAggregatesFilter<"HostUserProfile"> | string | null
   webSite?: Prisma.StringNullableWithAggregatesFilter<"HostUserProfile"> | string | null
   baseAddressId?: Prisma.IntNullableWithAggregatesFilter<"HostUserProfile"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HostUserProfile"> | Date | string
@@ -334,7 +334,7 @@ export type HostUserProfileCreateInput = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName?: string | null
   webSite?: string | null
   baseAddressId?: number | null
   createdAt?: Date | string
@@ -348,7 +348,7 @@ export type HostUserProfileUncheckedCreateInput = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName?: string | null
   webSite?: string | null
   baseAddressId?: number | null
   createdAt?: Date | string
@@ -361,7 +361,7 @@ export type HostUserProfileUpdateInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -375,7 +375,7 @@ export type HostUserProfileUncheckedUpdateInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -389,7 +389,7 @@ export type HostUserProfileCreateManyInput = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName?: string | null
   webSite?: string | null
   baseAddressId?: number | null
   createdAt?: Date | string
@@ -401,7 +401,7 @@ export type HostUserProfileUpdateManyMutationInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -414,7 +414,7 @@ export type HostUserProfileUncheckedUpdateManyInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -522,7 +522,7 @@ export type HostUserProfileCreateWithoutEventsInput = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName?: string | null
   webSite?: string | null
   baseAddressId?: number | null
   createdAt?: Date | string
@@ -535,7 +535,7 @@ export type HostUserProfileUncheckedCreateWithoutEventsInput = {
   lastName: string
   email: string
   password: string
-  orgName: string
+  orgName?: string | null
   webSite?: string | null
   baseAddressId?: number | null
   createdAt?: Date | string
@@ -563,7 +563,7 @@ export type HostUserProfileUpdateWithoutEventsInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -576,7 +576,7 @@ export type HostUserProfileUncheckedUpdateWithoutEventsInput = {
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
-  orgName?: Prisma.StringFieldUpdateOperationsInput | string
+  orgName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   webSite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   baseAddressId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -687,7 +687,7 @@ export type $HostUserProfilePayload<ExtArgs extends runtime.Types.Extensions.Int
     lastName: string
     email: string
     password: string
-    orgName: string
+    orgName: string | null
     webSite: string | null
     baseAddressId: number | null
     createdAt: Date

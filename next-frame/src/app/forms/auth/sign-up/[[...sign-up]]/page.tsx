@@ -6,7 +6,7 @@ import "../../../../styles/forms.css"
 import { newHostUser } from '@/src/lib/data-fetch'
 import { FormComponent, FormInputObject } from '../../../components/FormInput'
 import { useState } from 'react'
-import { HostSignUpProps } from '@/src/lib/user-types'
+import { ProfileProps } from '@/src/lib/user-types'
 import { EmailAddress } from '@clerk/nextjs/server'
 
 
@@ -14,12 +14,10 @@ export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
   const {user}= useUser()
-  const [userData, setUserData] = useState<HostSignUpProps|null>(null)
+  const [userData, setUserData] = useState<ProfileProps|null>(null)
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
-    const emailAddress =  formData.get('email') as string;
-    const password = formData.get('password') as string
     /*const signUpMapper = [
       new FormInputObject('zadejte jméno', 'text', 'firstName', true),
       new FormInputObject('zadejte příjmení', 'text', 'lastName', true),
@@ -29,13 +27,12 @@ export default function Page() {
     ]
     signUpMapper.map((object, key) =>  formData.get(object.id))
     */
-
     const data = { 
       firstName: formData.get('firstName') as string,
       lastName: formData.get('lastName') as string,
-      email: emailAddress,
-      password: password
-    } as HostSignUpProps
+      email: formData.get('email') as string,
+      password: formData.get('password') as string
+    } as ProfileProps
 
     const confirmPass = formData.get('confirm-pass') as string
     
@@ -46,8 +43,10 @@ export default function Page() {
     setUserData(data)
 
     const { error } = await signUp.password({
-      emailAddress,
-      password
+      emailAddress: data.email,
+      password: data.password,
+      firstName: data.firstName,
+      lastName: data.lastName
     })
 
     if (error) {
@@ -63,12 +62,10 @@ export default function Page() {
   const handleVerify = async (formData: FormData) => {
     const code = formData.get('code') as string
 
-    await signUp.verifications.verifyEmailCode({
-      code,
-    })
+    await signUp.verifications.verifyEmailCode({ code })
     if (signUp.status === 'complete') {
       await signUp.finalize({
-        // Redirect the user to the home page after signing up
+        // Redirect the user to the account page after signing up
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
             // Handle pending session tasks
@@ -91,8 +88,8 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
-    console.log(user)
-    const newUser = newHostUser(userData.firstName,userData.lastName,userData.emailAddress)
+    console.log('user: ',user)
+
     router.push('/account')
     return null
   }
@@ -116,7 +113,7 @@ export default function Page() {
             Ověřit
           </button>
         </form>
-        <button onClick={() => signUp.verifications.sendEmailCode()}>I need a new code</button>
+        <button onClick={() => signUp.verifications.sendEmailCode()}>Nový kód</button>
       </section>
     )
   }
@@ -155,7 +152,6 @@ export default function Page() {
           Registrovat se
         </button>
       </form>
-      <FormComponent formMapper={}/>
       {/* For your debugging purposes. You can just console.log errors, but we put them in the UI for convenience */
       /* errors && <p>{JSON.stringify(errors, null, 2)}</p> */
       /* Required for sign-up flows. Clerk's bot sign-up protection is enabled by default */}

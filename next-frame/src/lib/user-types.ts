@@ -1,4 +1,6 @@
 import { HostUserProfile } from "./generated/prisma/client"
 
 
-export type HostSignUpProps = Pick<HostUserProfile, 'firstName'| 'lastName' | 'email' | 'password' >
+export type ProfileProps = Pick<HostUserProfile, 'firstName'| 'lastName' | 'email' | 'password' > 
+
+
