@@ -1,6 +1,5 @@
 'use client';
 
-import Header from "./components/Header";
 import MapModule from '../map/components/map/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
@@ -26,31 +25,31 @@ export default function HomePage() {
                                 </ul>
                             </div>
                         </section>
-                <div className="map-text">
+                    <div className="map-text">
                         <section className="page-section">
                             <div className="text2">
-                            <p style={{fontSize: 20 }}> 
-                                Klikněte na mapu níže a začněte objevovat hudební akce <br></br> ve vašem okolí!
-                                <br/> 
-                                ➜
-                            </p>
-                            <ul style={{padding: '10px 0px 0px 20px'}}>
-                                <li style={{paddingBottom: '10px'}}>Prostřednictvím ikonek v levém horním rohu můžete vyhledávat konkrétní název akce, interpreta nebo místa a určit si i časový rozsah, ve kterém chcete akce vyhledávat.</li>
-                                <li>Pokud chcete svůj koncert zařadit do naší databáze, můžete tak učinit prostřednictvím vytvoření účtu pro pořadatele. 
-                                Stačí kliknout na tlačítko "Zaregistrovat se" na domovské stránce.</li>
-                            </ul>
-                            <p>
-                                Pro jakékoliv dotazy či připomínky nás neváhejte <a href="/home/about"> kontaktovat </a> 
-                            </p>
+                                <p style={{fontSize: 20 }}> 
+                                    Klikněte na mapu a začněte <br /> objevovat hudební akce <br /> ve vašem okolí!
+                                    <br/> 
+                                    ➜
+                                </p>
+                                <ul style={{padding: '10px 0px 0px 20px'}}>
+                                    <li style={{paddingBottom: '10px'}}>Prostřednictvím ikonek v levém horním rohu můžete vyhledávat konkrétní název akce, interpreta nebo místa a určit si i časový rozsah, ve kterém chcete akce vyhledávat.</li>
+                                    <li>Pokud chcete svůj koncert zařadit do naší databáze, můžete tak učinit prostřednictvím vytvoření účtu pro pořadatele. 
+                                    Stačí kliknout na tlačítko "Zaregistrovat se" na domovské stránce.</li>
+                                </ul>
+                                <p>
+                                    Pro jakékoliv dotazy či připomínky nás neváhejte <a href="/home/about" id="kontaktovat"> kontaktovat </a>!
+                                </p>
                             </div>
                         </section>
-                            </div>
                     <div className="home-map-container" onDoubleClick={() => router.push('/map')}>
 
                         <MapModule map_type='embed' markers={[]} onMarkerClick={() => router.push('/map')} />  
                         
                     </div>
-                </div>   
+            </div>   
+            </div>   
         </PageWrapper>
     )
 }

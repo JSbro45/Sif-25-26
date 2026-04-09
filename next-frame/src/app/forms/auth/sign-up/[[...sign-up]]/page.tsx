@@ -3,32 +3,50 @@
 import { useAuth, useSignUp, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import "../../../../styles/forms.css"
+import { newHostUser } from '@/src/lib/data-fetch'
+import { FormComponent, FormInputObject } from '../../../components/FormInput'
 import { useState } from 'react'
+import { ProfileProps } from '@/src/lib/user-types'
+import { EmailAddress } from '@clerk/nextjs/server'
+
 
 export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
   const {user}= useUser()
-  const [userData, setUserData] = useState({firstName:'', lastName:''})
+  const [userData, setUserData] = useState<ProfileProps|null>(null)
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
-    
-    const emailAddress = formData.get('email') as string
-    const password = formData.get('password') as string
-    const confirmPass = formData.get('confirm-pass') as string
-    const setUserData = { 
-      firstName: formData.get('firstName'),
-      surname: formData.get('lastName')
-    }
+    /*const signUpMapper = [
+      new FormInputObject('zadejte jméno', 'text', 'firstName', true),
+      new FormInputObject('zadejte příjmení', 'text', 'lastName', true),
+      new FormInputObject('zadejte zadejte emailovou adresu', 'email', 'email', true),
+      new FormInputObject('zadejte heslo', 'password', 'password', true),
+      new FormInputObject('potvrďte heslo', 'email', 'email', true)
+    ]
+    signUpMapper.map((object, key) =>  formData.get(object.id))
+    */
+    const data = { 
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      password: formData.get('password') as string
+    } as ProfileProps
 
-    if (password && confirmPass && password !== confirmPass) {
+    const confirmPass = formData.get('confirm-pass') as string
+    
+    if (data.password && confirmPass && data.password !== confirmPass) {
       console.error('Passwords do not match')
     }
+    
+    setUserData(data)
 
     const { error } = await signUp.password({
-      emailAddress,
-      password
+      emailAddress: data.email,
+      password: data.password,
+      firstName: data.firstName,
+      lastName: data.lastName
     })
 
     if (error) {
@@ -44,12 +62,10 @@ export default function Page() {
   const handleVerify = async (formData: FormData) => {
     const code = formData.get('code') as string
 
-    await signUp.verifications.verifyEmailCode({
-      code,
-    })
+    await signUp.verifications.verifyEmailCode({ code })
     if (signUp.status === 'complete') {
       await signUp.finalize({
-        // Redirect the user to the home page after signing up
+        // Redirect the user to the account page after signing up
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
             // Handle pending session tasks
@@ -72,14 +88,11 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
-    console.log(user)
-    user?.update(userData)
-    console.log(user?.firstName)
+    console.log('user: ',user)
+
     router.push('/account')
     return null
   }
-
-  
 
   if (
     signUp.status === 'missing_requirements' &&
@@ -100,7 +113,7 @@ export default function Page() {
             Ověřit
           </button>
         </form>
-        <button onClick={() => signUp.verifications.sendEmailCode()}>I need a new code</button>
+        <button onClick={() => signUp.verifications.sendEmailCode()}>Nový kód</button>
       </section>
     )
   }

@@ -1,30 +1,27 @@
 'use client'
 
-import { SignOutButton, useAuth, UserProfile, useUser } from "@clerk/nextjs"
+import { Show, SignOutButton, useAuth, UserProfile, useUser } from "@clerk/nextjs"
+import UserAccountInfo from "./components/UserAccountInfo"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
+import { findUserByClerkId } from "@/src/lib/data-fetch"
+import safeFetch from "@/src/lib/safe-fetch"
 
 
 export default function Account() {
+    const findUser = (clerkId: string | undefined) => safeFetch(() => findUserByClerkId(clerkId), null)
+
     const router = useRouter()
     const { isSignedIn, user, isLoaded } = useUser()
-    console.log('signed in? ',isSignedIn,'name:',user)
-    
-    useEffect(() => {
-        if (isLoaded && !isSignedIn) router.push('/forms/auth/login')
+    useEffect(() => { 
+        if (isLoaded && !isSignedIn) router.push('/forms/auth/login') 
     }, [isLoaded, isSignedIn, router])
 
-    return (
-        <div className="container">
-            <SignOutButton>
-                <button> Odhlásit se </button>
-            </SignOutButton>
-            {
-                <h2 style={{color:'red'}}> 
-                    {( isSignedIn && isLoaded )? user.fullName:'uzivatel neni prihlaseny'} 
-                </h2> 
-            }
-        </div>
+    if(!isLoaded) return <img src="/logo.png" alt="Loading..." />
+
+    if(isSignedIn) return (
+        <Show when={'signed-in'}>
+            <UserAccountInfo user={findUser(user?.id)} />
+        </Show>
     )
 }
-

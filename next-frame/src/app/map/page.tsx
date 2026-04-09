@@ -1,3 +1,4 @@
+'use server'
 
 import Header from '../home/components/Header'
 import MapAndSelectors from './components/MapSelectors';
