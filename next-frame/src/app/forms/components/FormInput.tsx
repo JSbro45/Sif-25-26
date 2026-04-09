@@ -34,22 +34,17 @@ const InputBox = ({ inputObj }: { inputObj: FormInputObject }) => (
     </div>
 );
 
-export const FormComponent = ({formMapper, refObject, execute}: {
+export const FormComponent = ({formMapper, submitCaption, execute}: {
         formMapper: (FormInputObject | FormInputObject[])[], 
-        refObject: React.RefObject<HTMLFormElement | null>, 
-        execute: (param: object[]) => void | Promise<void>
+        submitCaption: string,
+        execute: (param: FormData) => void | Promise<void>
     }) => (
     <form
-        ref={refObject}
         action={(formData:FormData) => {
-            if (refObject && refObject.current) {
-                const final = [] as { [key: string]: string | null }[]
-                for (const obj of formMapper.flat()) {
-                    const input = refObject.current.elements.namedItem(obj.id) as HTMLInputElement | null;
-                    final.push({ [obj.id]: input ? input.value : null });
-                }
-                execute(final)
-        }}}
+            if (formData && formData) {
+                execute(formData);
+            }
+        }}
         className="form-container"
     >
         {formMapper.map((obj, key) => (
@@ -65,6 +60,6 @@ export const FormComponent = ({formMapper, refObject, execute}: {
                 <InputBox key={key} inputObj={obj} />
             )
         ))}
-        <button type="submit"> Přidat </button>
+        <button type="submit"> {submitCaption} </button>
     </form>
     );

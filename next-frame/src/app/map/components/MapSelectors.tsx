@@ -9,6 +9,7 @@ import { useRef, useState } from "react";
 import { MarkerProps, AddressProps, EventProps } from "../../../lib/map-types";
 
 
+
 export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps }) {
   const [markers, setMarkers] = useState<MarkerProps>(initialMarkers)
   const [activeEvent, setActiveEvent] = useState<AddressProps | null>(null)
@@ -51,7 +52,7 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: Mar
        />*/}
       <MapModule
         map_type='page'
-        markers={markers}
+        markers={markers.address}
         activeMarker={activeEvent}
         onMarkerClick={(selected) => {
            selectedRef.current = markers.searchByAddress(selected); 

@@ -38,6 +38,7 @@ export async function geoCode(data: FormData) {
     return addresses
   } catch (ex) {
   	console.log(ex); 
+    return []
   }
 }
 

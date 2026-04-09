@@ -1,11 +1,8 @@
 import { LatLngTuple } from 'leaflet';
 import { prisma } from './dbclient';
 import { AddressProps, EventProps, MarkerProps } from './map-types';
-import { Event, Address } from './generated/prisma/client';
-import { MarkerProps } from './map-types';
 import { ProfileProps } from './user-types';
-import { Event, HostUserProfile } from './generated/prisma/client';
-import { User } from '@clerk/nextjs/server';
+import { Event, Address, HostUserProfile } from './generated/prisma/client';
 
 
 export async function getPins(/*timespan : { start: Date; end: Date } , genre_list: string[] | undefined */) {
@@ -87,7 +84,7 @@ export async function findUserByClerkId(clerkId: string | undefined) {
 }
 
 
-export async function setEventPin(evt_data: {eventName: string, hostId: number, date_time: Date, genre_list: string[], location: LatLngTuple, addressId: number}) {
+export async function setEventPin(evt_data: EventProps) {
     const event = await prisma.event.create({
         data: {
             name:        evt_data.name,

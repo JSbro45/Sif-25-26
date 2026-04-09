@@ -1,5 +1,6 @@
 'use client';
 
+import { MarkerProps } from '@/src/lib/map-types';
 import MapModule from '../map/components/map/MapModule';
 import '../styles/home.css'
 import PageWrapper from "./components/PageWrapper";
@@ -45,8 +46,8 @@ export default function HomePage() {
                         </section>
                     <div className="home-map-container" onDoubleClick={() => router.push('/map')}>
 
-                        <MapModule map_type='embed' markers={[]} onMarkerClick={() => router.push('/map')} />  
-                        
+                        <MapModule map_type='embed' markers={new MarkerProps([],[])} onMarkerClick={() => router.push('/map')} />
+
                     </div>
             </div>   
             </div>   
