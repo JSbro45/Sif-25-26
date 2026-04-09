@@ -10,8 +10,8 @@ import { MarkerProps, AddressProps, EventProps } from "../../../lib/map-types";
 
 
 
-export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps }) {
-  const [markers, setMarkers] = useState<MarkerProps>(initialMarkers)
+export default function MapAndSelectors({ initialMarkers}: { initialMarkers: [EventProps[], AddressProps[]] }) {
+  const [markers, setMarkers] = useState<MarkerProps>(new MarkerProps(initialMarkers[1], initialMarkers[0]))
   const [activeEvent, setActiveEvent] = useState<AddressProps | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 

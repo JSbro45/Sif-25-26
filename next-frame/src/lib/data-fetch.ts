@@ -22,7 +22,7 @@ export async function getPins(/*timespan : { start: Date; end: Date } , genre_li
                 }): {}
             ]*/
         }
-    }) as Event[];
+    }) as EventProps[];
 
     const addressIds = events.map(event => event.addressId).filter(id => id !== undefined);
     const addresses = await prisma.address.findMany({ where: { id: { in: addressIds }}}) 
@@ -31,8 +31,8 @@ export async function getPins(/*timespan : { start: Date; end: Date } , genre_li
     const pins = addresses as AddressProps []
     pins.map((pin, k) => pin.coordinates = [addresses[k].lat, addresses[k].lng] as LatLngTuple );
 
-    return new MarkerProps(addresses, events)
- }
+    return [addresses, events] as [AddressProps[], EventProps[]];
+}
 
 
 export async function newAddress(props: AddressProps){

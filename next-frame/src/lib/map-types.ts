@@ -1,7 +1,7 @@
 import { geoJson, LatLngTuple } from 'leaflet';
 import { ValueOf } from 'next/dist/shared/lib/constants';
 import{ keys } from 'ts-transformer-keys';
-import { Event, HostUserProfile } from './generated/prisma/client';
+import { Event, Address } from './generated/prisma/client';
 import { HTMLInputTypeAttribute} from 'react';
 
 
