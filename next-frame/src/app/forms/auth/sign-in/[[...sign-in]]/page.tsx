@@ -73,8 +73,6 @@ export default function Page() {
     return null
   }
 
-  
-
   if (
     signUp.status === 'missing_requirements' &&
     signUp.unverifiedFields.includes('email_address') &&

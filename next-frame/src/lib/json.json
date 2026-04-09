@@ -1,0 +1,40 @@
+{
+  "items": [{
+    "bbox": [14.310804567483443, 50.24828447231818, 14.316419038009188, 50.25043856803701],
+    "label": "Adresa",
+    "location": "Kralupy nad Vltavou - Lobeček, Česko",
+    "name": "Družstevní 680",
+    "position": {
+        "lat": 50.24936,
+        "lon": 14.31361
+    },
+    "regionalStructure": [
+        {
+            "name": "680",
+            "type": "regional.address"
+        }, {
+            "name": "Družstevní",
+            "type": "regional.street"
+        }, {
+            "name": "Lobeček",
+            "type": "regional.municipality_part"
+        }, {
+            "name": "Kralupy nad Vltavou",
+            "type": "regional.municipality"
+        }, {
+            "name": "okres Mělník",
+            "type": "regional.region"
+        }, {
+            "name": "Středočeský kraj",
+            "type": "regional.region"
+        }, {
+            "isoCode": "CZ",
+            "name": "Česko",
+            "type": "regional.country"
+        }
+    ],
+    "type": "regional.address",
+    "zip": "278 01"
+  }],
+  "locality": []
+}

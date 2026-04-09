@@ -27,30 +27,24 @@ const InputBox = ({ inputObj }: { inputObj: FormInputObject }) => (
             id={ inputObj.id } 
             name={ inputObj.id } 
             type={ inputObj.type } 
-            required={ inputObj.required } 
-            value={inputObj.type === 'button' ? inputObj.label : ''} 
+            required={ inputObj.required }  
             onClick={() =>  inputObj.func ? inputObj.func(): null}
         />
             {/*onChange={ e => inputObj.ref ? inputObj.ref.current = e.target : null } */}
     </div>
 );
 
-export const FormComponent = ({formMapper, refObject, execute}: {
+export const FormComponent = ({formMapper, submitCaption, execute}: {
         formMapper: (FormInputObject | FormInputObject[])[], 
-        refObject: React.RefObject<HTMLFormElement | null>, 
-        execute: (param: object[]) => void | Promise<void>
+        submitCaption: string,
+        execute: (param: FormData) => void | Promise<void>
     }) => (
     <form
-        ref={refObject}
-        onSubmit={e => {
-            if (refObject && refObject.current) {
-                const final = [] as { [key: string]: string | null }[]
-                for (const obj of formMapper.flat()) {
-                    const input = refObject.current.elements.namedItem(obj.id) as HTMLInputElement | null;
-                    final.push({ [obj.id]: input ? input.value : null });
-                }
-                execute(final)
-        }}}
+        action={(formData:FormData) => {
+            if (formData && formData) {
+                execute(formData);
+            }
+        }}
         className="form-container"
     >
         {formMapper.map((obj, key) => (
@@ -66,6 +60,6 @@ export const FormComponent = ({formMapper, refObject, execute}: {
                 <InputBox key={key} inputObj={obj} />
             )
         ))}
-        <button type="submit"> Přidat </button>
+        <button type="submit"> {submitCaption} </button>
     </form>
     );

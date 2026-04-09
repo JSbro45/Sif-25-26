@@ -6,19 +6,23 @@ import DateIcon from "./DateIcon";
 import PlusBar from "./PlusBar";
 import EventView from "./EventView";
 import { useRef, useState } from "react";
-import { MarkerProps } from "../../../lib/map-types";
+import { MarkerProps, AddressProps, EventProps } from "../../../lib/map-types";
 
 
-export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps[] }) {
-  const [markers, setMarkers] = useState<MarkerProps[]>(initialMarkers)
-  const [activeMarkerEvent, setActiveMarkerEvent] = useState<MarkerProps | null>(null)
+
+export default function MapAndSelectors({ initialMarkers}: { initialMarkers: MarkerProps }) {
+  const [markers, setMarkers] = useState<MarkerProps>(initialMarkers)
+  const [activeEvent, setActiveEvent] = useState<AddressProps | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const selectedRef = useRef<MarkerProps | null>(null)
+  const selectedRef = useRef<EventProps[]>([])
   const searchRef = useRef<string>('')
   const dateRef = useRef<string>('')
 
-    console.log('Initial markers:', initialMarkers)
+
+
+   
+  
   /*
   const handleSearch = async () => {
     setIsLoading(true)
@@ -48,22 +52,22 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: Mar
        />*/}
       <MapModule
         map_type='page'
-        markers={markers}
-        activeMarkerEvent={activeMarkerEvent}
-        onMarkerClick={(payload: MarkerProps) => {
-           selectedRef.current = payload 
+        markers={markers.address}
+        activeMarker={activeEvent}
+        onMarkerClick={(selected) => {
+           selectedRef.current = markers.searchByAddress(selected); 
         }}
-        onMarkerActiveChange={setActiveMarkerEvent}
+        onMarkerActiveChange={setActiveEvent}
       />
-      <div className='evtview-plusbar' data-event-open={activeMarkerEvent ? true : false}>
+      <div className='evtview-plusbar' data-event-open={activeEvent ? true : false}>
         <div className='plus-bar-container'>
           <PlusBar signedIn={true} />
         </div>
       </div>
-      {(activeMarkerEvent && selectedRef.current) ? (
+      {(activeEvent && selectedRef.current) ? (
         <EventView
-          event={selectedRef.current}
-          onClose={() => setActiveMarkerEvent(null)}
+          events={selectedRef.current}
+          onClose={() => setActiveEvent(null)}
         />
       ) : null}
     </>

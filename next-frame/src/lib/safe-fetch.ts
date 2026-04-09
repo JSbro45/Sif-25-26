@@ -1,5 +1,3 @@
-
-
 export default async function safeFetch<T>(
   fetchFn: () => Promise<T>,
   fallback: T
