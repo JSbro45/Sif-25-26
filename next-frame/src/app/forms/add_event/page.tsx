@@ -46,7 +46,6 @@ export default function AddEventForm() {
                         <button type="submit"> hledat </button>
                     </form>
                     {/*<MapModule map_type='embed' />*/}
-            
                 </section>
                 <section>
                     <MapModule map_type='embed' markers={addressList} onMarkerClick={

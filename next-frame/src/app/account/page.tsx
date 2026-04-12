@@ -1,27 +1,46 @@
-'use client'
+'use server'
 
-import { Show, SignOutButton, useAuth, UserProfile, useUser } from "@clerk/nextjs"
-import UserAccountInfo from "./components/UserAccountInfo"
-import { useRouter } from "next/navigation"
-import { useEffect } from "react"
-import { findUserByClerkId } from "@/src/lib/data-fetch"
-import safeFetch from "@/src/lib/safe-fetch"
+import {UserAuthComponent, ProfileUI} from "./components/UserAccount_";
+import Profile from "./components/Profile";
+import EventCards from "../events/components/EventCards";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { findUserByClerkId, newHostUser } from "@/src/lib/data-fetch";
+import { clerkClient } from "@clerk/nextjs/server";
+
+async function getOrCreateUser(clerkId: string) {
+  let user = await findUserByClerkId(clerkId);
+
+  if (!user) {
+    const clerkUser = await (await clerkClient()).users.getUser(clerkId);
+
+    user = await newHostUser({
+      firstName: clerkUser.firstName as string,
+      lastName: clerkUser.lastName as string,
+      email: clerkUser.emailAddresses[0].emailAddress as string
+    },
+      clerkId,
+    );
+  }
+
+  return user;
+}
 
 
-export default function Account() {
-    const findUser = (clerkId: string | undefined) => safeFetch(() => findUserByClerkId(clerkId), null)
 
-    const router = useRouter()
-    const { isSignedIn, user, isLoaded } = useUser()
-    useEffect(() => { 
-        if (isLoaded && !isSignedIn) router.push('/forms/auth/login') 
-    }, [isLoaded, isSignedIn, router])
+export default async function AccountPage() {
+    const { userId: clerkId } = await auth();
+  
+    if (!clerkId) redirect("/forms/auth/login");
 
-    if(!isLoaded) return <img src="/logo.png" alt="Loading..." />
+    const user = await getOrCreateUser(clerkId);
 
-    if(isSignedIn) return (
-        <Show when={'signed-in'}>
-            <UserAccountInfo user={findUser(user?.id)} />
-        </Show>
+    return (
+    <div>
+        <div>
+            <Profile user={user} />
+        </div>
+        <EventCards hostId={user.id} />
+    </div>
     )
 }

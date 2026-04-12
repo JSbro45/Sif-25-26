@@ -8,14 +8,11 @@ import { SignOutButton } from "@clerk/nextjs"
 
 export default function Default() {
     const router = useRouter()
-    // const pins = safeFetch(() => getPins({start: new Date("2025-01-01"), end: new Date('2026-30-05')}, []), [])
-    const size = 120
+    const size = 400
+    
     return (
-        <div id='loading-screen'>
-            <Image src="/logo.png" alt="redirect logo" width={size} height={size} onLoad={() => router.push('/map')} />
-            <SignOutButton>
-                Odhlásit se
-            </SignOutButton>
+        <div id='loading-screen' style={{backgroundColor: 'grey', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+            <Image src="/logo-2.svg" alt="redirect logo" width={size} height={size} onLoad={() => router.push('/map')} />
         </div>
     )       
 }

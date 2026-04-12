@@ -8,13 +8,18 @@ import { FormComponent, FormInputObject } from '../../../components/FormInput'
 import { useState } from 'react'
 import { ProfileProps } from '@/src/lib/user-types'
 import { EmailAddress } from '@clerk/nextjs/server'
+import safeFetch from '@/src/lib/safe-fetch'
+
+
+
+
 
 
 export default function Page() {
   const { signUp, errors, fetchStatus } = useSignUp()
   const { isSignedIn } = useAuth()
-  const {user}= useUser()
-  const [userData, setUserData] = useState<ProfileProps|null>(null)
+  const { user } = useUser()
+  const [userData, setUserData] = useState<ProfileProps | null>(null)
   const router = useRouter()
 
   const handleSubmit = async (formData: FormData) => {
@@ -31,12 +36,11 @@ export default function Page() {
       firstName: formData.get('firstName') as string,
       lastName: formData.get('lastName') as string,
       email: formData.get('email') as string,
-      password: formData.get('password') as string
     } as ProfileProps
-
+    const password = formData.get('password') as string
     const confirmPass = formData.get('confirm-pass') as string
     
-    if (data.password && confirmPass && data.password !== confirmPass) {
+    if (password && confirmPass && password !== confirmPass) {
       console.error('Passwords do not match')
     }
     
@@ -44,7 +48,7 @@ export default function Page() {
 
     const { error } = await signUp.password({
       emailAddress: data.email,
-      password: data.password,
+      password: password,
       firstName: data.firstName,
       lastName: data.lastName
     })
@@ -88,8 +92,7 @@ export default function Page() {
   }
 
   if (signUp.status === 'complete' || isSignedIn) {
-    console.log('user: ',user)
-
+    console.log('user: ', user)
     router.push('/account')
     return null
   }

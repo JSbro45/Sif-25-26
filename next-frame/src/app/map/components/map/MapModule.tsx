@@ -1,6 +1,6 @@
 'use client';
 
-import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet' 
+import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MarkerProps, AddressProps, EventProps } from '../../../../lib/map-types'
@@ -10,7 +10,7 @@ import { API_KEY } from '@/src/lib/map-keys'
 export default function MapModule({ map_type, markers: address, onMarkerClick, activeMarker = null, onMarkerActiveChange } : {
     map_type: 'page' | 'embed',
     markers : AddressProps[], 
-    onMarkerClick?: (selected: AddressProps) => void, 
+    onMarkerClick: (selected: AddressProps) => void, 
     activeMarker?: AddressProps | null, 
     onMarkerActiveChange?: (event: AddressProps | null) => void,
 }) {

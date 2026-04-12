@@ -10,7 +10,7 @@ import SearchBar from './components/SearchBar';
 import '../styles/map.css'
 
 export default async function Page() {
-  const initialMarkers = await safeFetch<[EventProps[],AddressProps[]]>(() => getPins(), [[],[]])
+  const initialMarkers = await safeFetch<[AddressProps[], EventProps[]]>(() => getPins(), [[], []])
   
   return (
     <>

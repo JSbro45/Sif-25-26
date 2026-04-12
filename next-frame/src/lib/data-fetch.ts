@@ -55,22 +55,27 @@ export async function newAddress(props: AddressProps){
 }
 
 
-export async function newHostUser(props: ProfileProps, clerkId: string) {
+export async function newHostUser(props: ProfileProps | null, clerkId: string | undefined) {
+    if (!clerkId) {
+        console.error('Clerk ID is required to create a new host user profile.')
+        return null;
+    }
     const user = await prisma.hostUserProfile.create(
         {
             data:{
                 clerkId: clerkId,
-                firstName: props.firstName,
-                lastName: props.lastName,
-                email: props.email,
-                password: props.password,
+                firstName: props?.firstName || '',
+                lastName: props?.lastName || '',
+                email: props?.email || '',
                 orgName: '',
                 webSite: '',
-
             }
         }
-    )
+    ) as HostUserProfile;
+    return user as HostUserProfile;
 }
+
+
 
 
 export async function findUserByClerkId(clerkId: string | undefined) {

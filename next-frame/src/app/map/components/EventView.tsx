@@ -7,14 +7,14 @@ import { useState } from 'react';
 export default function EventView({events, onClose}: {events: EventProps[], onClose: () => void}) {
    console.log('EventView received event:', event)
    const cardCount = events.length
-   const [cardNumber, setCardNuber] = useState<number>(0)
+   const [cardNumber, setCardNumber] = useState<number>(0)
     return (
         <section className="evt-view">
          <section style={{display:'flex'}}>
             <div className='cards' style={{display:'flex'}}>
                {
                   events.map( (evt, k) => 
-                     <button className='evt-card' key={k} onClick={()=> setCardNuber(k)}>
+                     <button className='evt-card' key={k} onClick={()=> setCardNumber(k)}>
                         {'akce '+(k+1)}
                      </button>
                   )

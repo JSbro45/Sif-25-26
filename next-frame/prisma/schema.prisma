@@ -21,7 +21,7 @@ model HostUserProfile {
   firstName     String
   lastName      String
   email         String   @unique
-  password      String    // For OAuth users
+
   orgName       String?
   webSite       String?
   events        Event[]  @relation("events")
@@ -34,10 +34,10 @@ model HostUserProfile {
 model UserProfile {
   id          Int     @id @default(autoincrement())
   clerkId     String
+  userName    String  @unique
   email       String  @unique
   password    String
   
-
   createdAt   DateTime @default(now())
   @@index([email])
 }
