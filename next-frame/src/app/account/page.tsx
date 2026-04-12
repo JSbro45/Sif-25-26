@@ -8,6 +8,8 @@ import { redirect } from "next/navigation";
 import { findUserByClerkId, newHostUser } from "@/src/lib/data-fetch";
 import { clerkClient } from "@clerk/nextjs/server";
 
+
+
 async function getOrCreateUser(clerkId: string) {
   let user = await findUserByClerkId(clerkId);
 
@@ -22,18 +24,19 @@ async function getOrCreateUser(clerkId: string) {
       clerkId,
     );
   }
+  user = await findUserByClerkId(clerkId);
 
   return user;
 }
 
 
-
 export default async function AccountPage() {
     const { userId: clerkId } = await auth();
-  
+
     if (!clerkId) redirect("/forms/auth/login");
 
     const user = await getOrCreateUser(clerkId);
+    console.log('user profile', user)
 
     return (
     <div>

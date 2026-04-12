@@ -75,16 +75,11 @@ export async function newHostUser(props: ProfileProps | null, clerkId: string | 
     return user as HostUserProfile;
 }
 
-
-
-
 export async function findUserByClerkId(clerkId: string | undefined) {
     let user = await prisma.hostUserProfile.findFirst({
-        where: {
-            clerkId: clerkId
-        }
+        where: { clerkId: clerkId }
     }) as HostUserProfile | null;
-    if(!user) console.error('requested user not found', clerkId)
+    if (!user) console.error('requested user not found', clerkId)
     return user;
 }
 
