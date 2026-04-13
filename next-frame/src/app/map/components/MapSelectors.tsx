@@ -6,6 +6,7 @@ import DateIcon from "./DateIcon";
 import PlusBar from "./PlusBar";
 import EventView from "./EventView";
 import { useRef, useState } from "react";
+import { Show } from "@clerk/nextjs";
 import { MarkerProps, AddressProps, EventProps } from "../../../lib/map-types";
 
 
@@ -46,6 +47,8 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: [ A
         ref={dateRef}
         onSubmit={handleSearch}
        />*/}
+
+      <DateIcon />
       <MapModule
         map_type='page'
         pins={markers.address}
@@ -55,11 +58,12 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: [ A
         }}
         onMarkerActiveChange={setActiveEvent}
       />
-      <div className='evtview-plusbar' data-event-open={activeEvent ? true : false}>
+      <Show when={'signed-in'}>
         <div className='plus-bar-container'>
           <PlusBar signedIn={true} />
         </div>
-      </div>
+      </Show>
+
       {(activeEvent && selectedRef.current) ? (
         <EventView
           events={selectedRef.current}
