@@ -48,7 +48,7 @@ export default function MapAndSelectors({ initialMarkers}: { initialMarkers: [ A
        />*/}
       <MapModule
         map_type='page'
-        markers={markers.address}
+        pins={markers.address}
         activeMarker={activeEvent}
         onMarkerClick={(selected) => {
            selectedRef.current = markers.searchByAddress(selected); 

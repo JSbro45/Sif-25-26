@@ -8,9 +8,11 @@ export class FormInputObject {
         public type: HTMLInputTypeAttribute,
         public id: string,
         public required: boolean,
-        public func: (() => void) | undefined = undefined,
-        public ref: React.RefObject<HTMLInputElement | null> | undefined = undefined
-    ) {}
+        public ref: React.RefObject<HTMLInputElement | null> | undefined = undefined,
+        public func: (() => void) | undefined = undefined
+    ) {
+
+    }
 }
 
 
@@ -24,6 +26,7 @@ const InputBox = ({ inputObj }: { inputObj: FormInputObject }) => (
                 : null
         } 
         <input 
+            ref={inputObj.ref || null}
             id={ inputObj.id } 
             name={ inputObj.id } 
             type={ inputObj.type } 

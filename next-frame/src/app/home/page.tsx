@@ -46,7 +46,7 @@ export default function HomePage() {
                         </section>
                     <div className="home-map-container" onDoubleClick={() => router.push('/map')}>
 
-                        <MapModule map_type='embed' markers={new MarkerProps([],[])} onMarkerClick={() => router.push('/map')} />
+                        <MapModule map_type='embed' pins={new MarkerProps([],[])} onMarkerClick={() => router.push('/map')} />
 
                     </div>
             </div>   

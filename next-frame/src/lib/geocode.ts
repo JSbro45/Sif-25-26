@@ -21,8 +21,9 @@ export async function geoCode(data: FormData) {
     const response = await fetch(url.toString(), { mode: 'cors' });
     const json = await response.json() as GeoJsonResponse;
     console.log('geocode', json);
+
     const pickRegionType = (i:number, geoType: GeoType) => 
-      json.items[i].regionalStructure.filter(reg => reg.type === geoType).join(', ') || '' as string
+      json.items[i].regionalStructure.filter(reg => reg.type === geoType).map(reg => reg.name).join(', ') || '' as string
 
     const addresses = json.items.map((item: GeoItem, key: number) => ({
       id : -1,
@@ -34,7 +35,7 @@ export async function geoCode(data: FormData) {
       postalCode: item.zip,
       coordinates: [item.position.lat, item.position.lon]
     })) as AddressProps[] 
-    
+    console.log('addresses', addresses);
     return addresses
   } catch (ex) {
   	console.log(ex); 

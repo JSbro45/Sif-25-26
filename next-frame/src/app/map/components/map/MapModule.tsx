@@ -7,9 +7,9 @@ import { MarkerProps, AddressProps, EventProps } from '../../../../lib/map-types
 import { getPins } from '@/src/lib/data-fetch';
 import { API_KEY } from '@/src/lib/map-keys'
 
-export default function MapModule({ map_type, markers: address, onMarkerClick, activeMarker = null, onMarkerActiveChange } : {
+export default function MapModule({ map_type, pins, onMarkerClick, activeMarker = null, onMarkerActiveChange } : {
     map_type: 'page' | 'embed',
-    markers : AddressProps[], 
+    pins : AddressProps[], 
     onMarkerClick: (selected: AddressProps) => void, 
     activeMarker?: AddressProps | null, 
     onMarkerActiveChange?: (event: AddressProps | null) => void,
@@ -23,14 +23,14 @@ export default function MapModule({ map_type, markers: address, onMarkerClick, a
           url={`https://api.mapy.com/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${API_KEY}`}
         />
         {
-          address.map((address, key) => 
+          pins.map((pin, key) => 
             <MarkerWindow
               key={key}
-              location={address.coordinates}
-              isActiveMarker={activeMarker === address}
+              location={pin.coordinates}
+              isActiveMarker={activeMarker === pin}
               onActiveChange={(active) => {
-                onMarkerClick && onMarkerClick(address);
-                onMarkerActiveChange?.(active ? address : null);
+                onMarkerClick && onMarkerClick(pin);
+                onMarkerActiveChange?.(active ? pin : null);
               }}
             />
           )
