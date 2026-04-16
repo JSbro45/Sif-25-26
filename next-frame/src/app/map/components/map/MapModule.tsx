@@ -1,10 +1,9 @@
-'use client';
+'use client'
 
 import { MapContainer, TileLayer } from 'react-leaflet' 
 import MarkerWindow from './MarkerWindow'
 import 'leaflet/dist/leaflet.css'
 import { MarkerProps, AddressProps, EventProps } from '../../../../lib/map-types'
-import { getPins } from '@/src/lib/data-fetch';
 import { API_KEY } from '@/src/lib/map-keys'
 
 export default function MapModule({ map_type, pins, onMarkerClick, activeMarker = null, onMarkerActiveChange } : {

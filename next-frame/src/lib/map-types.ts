@@ -49,6 +49,13 @@ export class MarkerProps {
     } 
 }
 
+export type FilterProps = {
+    dateRange: {startDate: Date, endDate: Date},
+    genre?: string,
+    radius?: number
+}
+
+
 export type GeoType = "regional.address" | "regional.street" | "regional.municipality_part" | "regional.municipality" | "regional.region" | "regional.country"
 
 export type GeoItem = {

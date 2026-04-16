@@ -10,9 +10,7 @@ import { Show, useAuth } from "@clerk/nextjs";
 import safeFetch from "@/src/lib/safe-fetch";
 
 
-
 export default function AddEventForm() {
-    const {isSignedIn} = useAuth()
     const router = useRouter()
     const [useAddress, setUseAddress] = useState<AddressProps | null>(null)
     const addressRef = useRef<HTMLInputElement | null>(null)
@@ -35,18 +33,19 @@ export default function AddEventForm() {
     const geo = (formData: FormData) => safeFetch(() => geoCode(formData), [])
 
     const markerClick = (selected: AddressProps) => {
-                        selectedRef.current = selected
-                        setUseAddress(selected)
-                        const addressString = ((selected.municipality+ ", "||"")  
-                            + (selected.street + " " || "") 
-                            + (selected.houseNumber + ", ") 
-                            + (selected.postalCode || "")  
-                        ) || null
-                        if (addressRef.current && addressString) {
-                            console.log('address string:', addressString)
-                            addressRef.current.value = addressString
-                        }
-                    }
+        console.log('use adress:', selected)
+        setUseAddress(selected)
+
+        const addressString = (selected.municipality ? selected.municipality : "")
+            + (selected.street ? (", " + selected.street) : "")
+            + (selected.houseNumber ? (", " + selected.houseNumber) : "")
+            + (selected.postalCode ? (", " + selected.postalCode) : "")
+
+        if (addressRef.current && addressString) {
+            console.log('address string:', addressString)
+            addressRef.current.value = addressString
+        }
+    } 
 
     return (
         <Show when={'signed-in'}>

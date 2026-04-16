@@ -4,10 +4,10 @@ import '../../styles/home.css'
 
 export default function PageWrapper({children}: {children: React.ReactNode}) {
     return (
-        <body className="page-wrapper">
+        <div className="page-wrapper">
             <Header/>
             { children }
             <Footer/>
-        </body>
+        </div>
     )
 }
