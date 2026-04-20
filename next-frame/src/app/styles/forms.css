@@ -19,7 +19,7 @@ section {
 
 h1 {
     text-align: center;
-    color: #080d3a;
+    color: #1b4707;
     margin-bottom: 30px;
 }
 .form-group {
@@ -43,12 +43,12 @@ input {
 }
 input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #4aa327;
 }
 button {
     width: 100%;
     padding: 10px;
-    background-color: #071347;
+    background-color: #1b4707;
     color: white;
     border: none;
     border-radius: 4px;
