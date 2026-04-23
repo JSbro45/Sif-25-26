@@ -1,16 +1,16 @@
 import '../../styles/eventview.css'
 import { EventProps } from '../../../lib/map-types';
+import {XButton} from './MinorComps';
 import { useState } from 'react';
 
 
-
 export default function EventView({events, onClose}: {events: EventProps[], onClose: () => void}) {
-   console.log('EventView received event:', event)
+   console.log('EventView received event:', events)
    const cardCount = events.length
    const [cardNumber, setCardNumber] = useState<number>(0)
     return (
         <section className="evt-view">
-         <section style={{display:'flex'}}>
+         <div style={{display:'flex'}}>
             <div className='cards' style={{display:'flex'}}>
                {
                   events.map( (evt, k) => 
@@ -20,22 +20,8 @@ export default function EventView({events, onClose}: {events: EventProps[], onCl
                   )
                }
             </div>
-            <button className='x-btn' onClick={onClose}>
-               <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="x-svg"
-               >
-               <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-         </section>
+            <XButton onClose={onClose} />
+         </div>
             <div className="evt-text">
                 <h1 className='nazev-koncertu'> {events[0].name} </h1>
                 <div className="evt-img-container">
@@ -70,9 +56,8 @@ export default function EventView({events, onClose}: {events: EventProps[], onCl
                 <p><img src="/icons/pin_web.png" alt='money' height={20} width={20} className='evt-icons'></img>Web místa konání</p>
              </div>
             </div>
-               <p className='line-break2'></p>
                <p className='meta2'> Podrobnější údaje naleznete zde: 
-               <button className='meta2-btn'>Zjistit více</button>
+                  <a href='' className='meta2-btn'> Zjistit více </a>
                </p>
             </div>
     </section>

@@ -10,9 +10,10 @@ import { MarkerProps, AddressProps, EventProps } from "../../../lib/map-types"
 interface MapAndViewProps {
   addresses: AddressProps[]
   events: EventProps[]
+  children?: React.ReactNode
 }
 
-export default function MapAndView({ addresses, events }: MapAndViewProps) {
+export default function MapAndView({ addresses, events, children }: MapAndViewProps) {
   const [markers] = useState<MarkerProps>(new MarkerProps(addresses, events))
   const [activeEvent, setActiveEvent] = useState<AddressProps | null>(null)
   const selectedRef = useRef<EventProps[]>([])
@@ -23,12 +24,12 @@ export default function MapAndView({ addresses, events }: MapAndViewProps) {
         map_type='page'
         pins={markers.address}
         activeMarker={activeEvent}
-        onMarkerClick={(selected) => {
-          selectedRef.current = markers.searchByAddress(selected)
+        onMarkerClick={(selected) => { 
+          selectedRef.current = markers.searchByAddress(selected)         
         }}
         onMarkerActiveChange={setActiveEvent}
       />
-      
+      { children }
       <Show when={'signed-in'}>
         <div className='plus-bar-container'>
           <PlusBar signedIn={true} />
@@ -36,9 +37,9 @@ export default function MapAndView({ addresses, events }: MapAndViewProps) {
       </Show>
 
       {(activeEvent && selectedRef.current.length > 0) ? (
-        <EventView
-          events={selectedRef.current}
-          onClose={() => setActiveEvent(null)}
+        <EventView 
+        events={selectedRef.current} 
+        onClose={() => setActiveEvent(null)} 
         />
       ) : null}
     </>

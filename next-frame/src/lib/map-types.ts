@@ -50,7 +50,7 @@ export class MarkerProps {
 }
 
 export type FilterProps = {
-    dateRange: {startDate: Date, endDate: Date},
+    dateRange: {start: Date, end: Date},
     genre?: string,
     radius?: number
 }

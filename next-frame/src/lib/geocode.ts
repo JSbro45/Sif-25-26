@@ -3,6 +3,7 @@ import { AddressProps, GeoItem, GeoJsonResponse, GeoType } from "./map-types";
  
 
 export async function geoCode(data: FormData) {
+  'use server'
   const query = data.get('query') as string
   if(!query) return []
   try {

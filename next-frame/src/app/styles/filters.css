@@ -1,39 +1,51 @@
- .date-container {
-    margin-top: 210px;
- }
- 
-/* uprava z templates */     
-        
-        .date-container {
-            position: absolute;
-            align-items: left;
-            top: 40px;
-            left: 30px;
-            background: white;
-            width: 220px;
-            height: 16px;
-            padding: 1rem;
-            border-radius:999px;
-            box-shadow:0 6px 18px rgba(94, 67, 67, 0.486);
-            z-index: 10;
-        }
-        .text-date {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-        .date-label {
-            display: block;
-            margin-top: -4px;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #0e5f04;
-        }
-        .date-input {
-            position: relative;
-            bottom: 12px;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 999px;
-            font-size: 1rem;
-        }
+ /* Container for the filter bar */
+/* Container for the filter bar */
+.filter-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    background: #fff;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(94, 67, 67, 0.15);
+    position: relative; 
+    margin: 1rem auto;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: auto;
+    min-width: 320px;
+}
+
+/* Style for date inputs */
+.filter-bar input[type="date"] {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    font-size: 1rem;
+    background: #f8f8f8;
+    color: #333;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.filter-bar input[type="date"]:focus {
+    border: 1.5px solid #0e5f04;
+}
+
+/* Style for the submit button */
+.filter-bar button[type="submit"] {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 999px;
+    background: #0e5f04;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.filter-bar button[type="submit"]:hover {
+    background: #158c0b;
+}

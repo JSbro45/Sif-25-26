@@ -3,6 +3,7 @@
 import {UserAuthComponent, ProfileUI} from "./components/UserAccount_";
 import Profile from "./components/Profile";
 import EventCards from "../events/components/EventCards";
+import Header from "../home/components/Header";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { findUserByClerkId, newHostUser } from "@/src/lib/data-fetch";
@@ -39,11 +40,11 @@ export default async function AccountPage() {
     console.log('user profile', user)
 
     return (
-    <div>
+      <div>
         <div>
-            <Profile user={user} />
+          <Profile user={user} />
         </div>
         <EventCards hostId={user.id} />
-    </div>
+      </div>
     )
 }

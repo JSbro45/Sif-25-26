@@ -93,7 +93,8 @@ export default function Page() {
 
   if (signUp.status === 'complete' || isSignedIn) {
     console.log('user: ', user)
-    router.push('/account')
+    const params = new URLSearchParams({ orgName: '', website: '', baseAddress: '' }).toString()
+    router.push(`/create_profile${params}`)
     return null
   }
 
