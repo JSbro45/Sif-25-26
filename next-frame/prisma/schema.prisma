@@ -30,18 +30,6 @@ model HostUserProfile {
   @@index([email])
 }
 
-/*
-model UserProfile {
-  id          Int     @id @default(autoincrement())
-  clerkId     String
-  userName    String  @unique
-  email       String  @unique
-  password    String
-  
-  createdAt   DateTime @default(now())
-  @@index([email])
-}
-*/
 
 model Event {
   id              Int @id @default(autoincrement())
@@ -76,3 +64,20 @@ model Address {
 
   @@index([id])
 }
+
+
+
+
+
+/*
+model UserProfile {
+  id          Int     @id @default(autoincrement())
+  clerkId     String
+  userName    String  @unique
+  email       String  @unique
+  password    String
+  
+  createdAt   DateTime @default(now())
+  @@index([email])
+}
+*/

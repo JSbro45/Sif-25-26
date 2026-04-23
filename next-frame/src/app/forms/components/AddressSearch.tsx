@@ -29,7 +29,7 @@ export default function AddressSearchSection({ search, select: onAddressSelect, 
   }
 
   return (
-    <>
+    <div className="right-section">
       <section>
         <h2>Vyhledat místo konání</h2>
         <form action={handleSearch}>
@@ -40,7 +40,7 @@ export default function AddressSearchSection({ search, select: onAddressSelect, 
         </form>
       </section>
 
-      <section>
+      <section className="embed-container">
         <MapModule
           map_type='embed'
           pins={addressList}
@@ -48,6 +48,6 @@ export default function AddressSearchSection({ search, select: onAddressSelect, 
           onMarkerClick={onAddressSelect}
         />
       </section>
-    </>
+    </div>
   )
 }

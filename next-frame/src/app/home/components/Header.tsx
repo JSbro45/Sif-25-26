@@ -18,8 +18,8 @@ export default function Header({}) {
                 <Link href="/events" className="links_header"> Eventy </Link>
                 <Link href="/home/about" className="links_header"> O Nás </Link>
                 <Show when={'signed-out'}>
-                    <Link href="/forms/auth/sign-in" id="login" className="links_header"> Přihlásit se </Link>
-                    <Link href="/forms/auth/sign-up" id="signup" className="links_header"> Zaregistrovat se </Link>
+                    <Link href="/forms/auth/sign-in" className="links_header"> <button id="login"> Přihlásit se </button> </Link>
+                    <Link href="/forms/auth/sign-up" className="links_header"> <button id="signup" > Zaregistrovat se </button> </Link>
                 </Show>
                 <Show when={'signed-in'}>
                     <Link href="/account" id="account" className="links_header"> Účet </Link>

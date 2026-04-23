@@ -61,8 +61,10 @@ export default function AddEventForm({ geoFunction, submitFunction }: AddEventFo
 
   return (
     <Show when={'signed-in'}>
-      <EventForm isSubmitting={isSubmitting} onSubmit={handleEventSubmit} addressRef={inputRef} />
-      <AddressSearch search={geoFunction} select={handleAddressSelect} selectedAddress={selectedAddress} />
+      <main >
+        <EventForm isSubmitting={isSubmitting} onSubmit={handleEventSubmit} addressRef={inputRef} />
+        <AddressSearch search={geoFunction} select={handleAddressSelect} selectedAddress={selectedAddress} />
+      </main>
     </Show>
   )
 }

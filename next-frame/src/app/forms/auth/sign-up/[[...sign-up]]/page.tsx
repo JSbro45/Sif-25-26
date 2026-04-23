@@ -93,8 +93,15 @@ export default function Page() {
 
   if (signUp.status === 'complete' || isSignedIn) {
     console.log('user: ', user)
-    const params = new URLSearchParams({ orgName: '', website: '', baseAddress: '' }).toString()
-    router.push(`/create_profile${params}`)
+    if (user){
+      const params = new URLSearchParams({
+          clerkId: user?.id ,
+          orgName: 'Local Fest',
+          website: '',
+          baseAddress: ''
+      }).toString()
+      router.push(`/forms/create_profile?${params}`)
+    }
     return null
   }
 

@@ -98,6 +98,3 @@ export async function setEvent(evt_data: EventProps) {
 
 
 
-import { geoCode } from "@/src/lib/geocode";
-import safeFetch from "@/src/lib/safe-fetch";
-

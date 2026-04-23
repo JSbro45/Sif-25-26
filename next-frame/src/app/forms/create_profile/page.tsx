@@ -1,4 +1,7 @@
 import { newHostUser } from "@/src/lib/data-fetch"
+import { HostUserProfile } from "@/src/lib/generated/prisma/client"
+import { currentUser } from "@clerk/nextjs/server"
+import { redirect } from "next/navigation"
 
 
 interface SearchParams {
@@ -8,29 +11,31 @@ interface SearchParams {
     baseAddress: string | undefined
 }
 
-export default function CreateProfile({ searchParams }: { searchParams: SearchParams }) {
-    const 
-    const handleSubmit = async (formData: FormData) => {
-        const { clerkId, orgName, website, baseAddress } = searchParams;
+export default async function CreateProfile({ 
+    searchParams 
+}: { 
+    searchParams: Promise<SearchParams>  // Promise in Next.js 15+
+}) {
+    const { clerkId, orgName, website, baseAddress } = await searchParams
 
-        // Call the newHostUser function with the form data
-        const result = await newHostUser({
-            
-            clerkId,
-            orgName,
-            website,
-            baseAddress,
-        });
+    const clerkUser = await currentUser()
 
-        if (result) {
-            // Handle successful profile creation
+    if (clerkUser) {
+        const hostUser = newHostUser(
+            {
+                firstName: clerkUser.firstName,
+                lastName: clerkUser.lastName,
+                email: clerkUser.emailAddresses
+            }, 
+            clerkId ?? clerkUser.id   // use param or fall back to session
+        ) as HostUserProfile | null
+
+        if (hostUser) {
+            redirect('/account')
         } else {
-            // Handle errors
+            redirect('/forms/auth/sign-up')
         }
-    };
-    return (
-        <div id='loading-screen' style={{backgroundColor: 'grey', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-            <Image src="/logo-2.svg" alt="redirect logo" width={size} height={size} onLoad={() => router.push('/account')} />
-        </div>
-    )       
+    }
+
+    return <p></p>
 }
