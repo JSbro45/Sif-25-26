@@ -69,7 +69,7 @@ model Address {
   district        String?
   street          String
   houseNumber     String
-  postalCode      String
+  postalCode      String?
   lat             Float  // latitude
   lng             Float  // longitude
   events          Event[] @relation("events")

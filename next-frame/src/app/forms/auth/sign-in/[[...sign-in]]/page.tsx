@@ -17,7 +17,6 @@ export default function Page() {
       console.error(JSON.stringify(error, null, 2))
       return
     }
-
     if (signIn.status === 'complete') {
       await signIn.finalize({
         navigate: ({ session, decorateUrl }) => {

@@ -41,7 +41,7 @@ export async function newAddress(props: AddressProps){
         district : props.district,
         street : props.street,
         houseNumber : props.houseNumber,
-        postalCode: props.postalCode,
+        postalCode: '',
         lat : props.coordinates[0],
         lng : props.coordinates[1]
     } 
@@ -49,7 +49,7 @@ export async function newAddress(props: AddressProps){
     if (!address) {
         address = await prisma.address.create({ data: data })
     }
-    return address as Address
+    return address as AddressProps
 }
 
 
@@ -73,12 +73,12 @@ export async function newHostUser(props: ProfileProps | null, clerkId: string | 
     return user as HostUserProfile;
 }
 
-export async function findUserByClerkId(clerkId: string | undefined) {
+export async function findUserByClerkId(clerkId: string | undefined):Promise<HostUserProfile|null> {
     let user = await prisma.hostUserProfile.findFirst({
         where: { clerkId: clerkId }
     }) as HostUserProfile | null;
     if (!user) console.error('requested user not found', clerkId)
-    return user;
+    return user as HostUserProfile;
 }
 
 
@@ -101,27 +101,3 @@ export async function setEvent(evt_data: EventProps) {
 import { geoCode } from "@/src/lib/geocode";
 import safeFetch from "@/src/lib/safe-fetch";
 
-export async function geoFunction(formData: FormData) {
-  return safeFetch(() => geoCode(formData), []);
-}
-
-export async function submitFunction(formData: FormData, selectedAddress: any) {
-  try {
-    if (!selectedAddress) return null;
-    const address = await newAddress(selectedAddress);
-    const eventData = {
-      name: formData.get('evt-name') as string,
-      description: formData.get('evt-desc') as string,
-      date_time: formData.get('evt-datetime') as string,
-      genres: formData.get('evt-genre')?.toString().split(', ') || [],
-      photos: [],
-      hostUserId: "",
-      addressId: address.id
-    };
-    const event = await setEvent(eventData);
-    return event;
-  } catch (error) {
-    console.error('Event submission failed:', error);
-    return null;
-  }
-}

@@ -5,6 +5,7 @@ import MapModule from "../../map/components/map/MapModule"
 import { AddressProps, MarkerProps, GeoType} from "@/src/lib/map-types";
 // import { useRef, useState } from "react";
 import { geoCode } from "@/src/lib/geocode";
+import { submitEvent } from "./actions";
 // import { Show, useAuth } from "@clerk/nextjs";
 import safeFetch from "@/src/lib/safe-fetch";
 
@@ -80,34 +81,12 @@ import AddEventForm from "../components/AddEventForm"
 import { newAddress, setEvent } from "@/src/lib/data-fetch";
 import { redirect } from "next/navigation";
 
-const geo = (formData: FormData) => safeFetch(() => geoCode(formData), [])
-const submit = async (formData: FormData, selectedAddress: AddressProps | null) => {
-    try {
-        if (!selectedAddress) return null
-        const address = await newAddress(selectedAddress)
-        const eventData = {
-            name: formData.get('evt-name') as string,
-            description: formData.get('evt-desc') as string,
-            date_time: formData.get('evt-datetime') as string,
-            genres: formData.get('evt-genre')?.toString().split(', ') || [],
-            photos: [],
-            hostUserId: "", 
-            addressId: address.id 
-        }
-        const event = await setEvent(eventData)
-        redirect('/account') 
-        return event
-    } catch (error) {
-        console.error('Event submission failed:', error)
-        return null
-    }
-}
 
-export default function AddEventPage() {
+export default async function AddEventPage() {
     return (
         <AddEventForm 
-            geoFunction={geo}
-            submitFunction={submit}
+            geoFunction={geoCode}
+            submitFunction={submitEvent}
         />
     )
 }

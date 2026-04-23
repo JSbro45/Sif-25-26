@@ -37,7 +37,7 @@ interface InputTypeMap {
 type Model = Event | Address;
 
 
-export type AddressProps = Pick<Address, 'id' | 'region' | 'municipality' | 'district' | 'street' | 'houseNumber' | 'postalCode' > & { coordinates: LatLngTuple } 
+export type AddressProps = Pick<Address, 'id' | 'region' | 'municipality' | 'district' | 'street' | 'houseNumber' > & { coordinates: LatLngTuple } 
 
 export type EventProps = Pick<Event, 'name' | 'description' | 'date_time' | 'genres' | 'photos' | 'hostUserId' | 'addressId' >
 

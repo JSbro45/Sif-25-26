@@ -33,7 +33,6 @@ export async function geoCode(data: FormData) {
       district: pickRegionType(key, 'regional.municipality_part'),
       street: pickRegionType(key, 'regional.street'),
       houseNumber: pickRegionType(key, 'regional.address'),
-      postalCode: item.zip,
       coordinates: [item.position.lat, item.position.lon]
     })) as AddressProps[] 
     console.log('addresses', addresses);

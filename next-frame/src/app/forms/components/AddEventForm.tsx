@@ -1,22 +1,32 @@
 'use client'
 
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Show } from "@clerk/nextjs"
+import { Show, useUser } from "@clerk/nextjs"
 import { AddressProps } from "@/src/lib/map-types"
 import EventForm from "./EventForm"
 import AddressSearch from "./AddressSearch"
 
 interface AddEventFormProps {
   geoFunction: (formData: FormData) => Promise<AddressProps[]>
-  submitFunction: (formData: FormData, selectedAddress: AddressProps | null) => Promise<Event | null>
+  submitFunction: (formData: FormData, selectedAddress: AddressProps | null, clerkId : string) => Promise<void>
 }
 
 export default function AddEventForm({ geoFunction, submitFunction }: AddEventFormProps) {
   const router = useRouter()
+  const { user, isSignedIn, isLoaded } = useUser()
   const [selectedAddress, setSelectedAddress] = useState<AddressProps | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const inputRef = useRef<HTMLInputElement | null>(null)
+
+  
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push('/forms/auth/sign-in')
+    }
+  }, [isLoaded, isSignedIn, router])
+
+  if (!isLoaded || !isSignedIn) return null
 
   const handleAddressSelect = (address: AddressProps) => {
     console.log('Selected address:', address)
@@ -25,7 +35,6 @@ export default function AddEventForm({ geoFunction, submitFunction }: AddEventFo
     const addressString = (address.municipality ? address.municipality : "")
         + (address.street ? (", " + address.street) : "")
         + (address.houseNumber ? (", " + address.houseNumber) : "")
-        + (address.postalCode ? (", " + address.postalCode) : "")
 
     if (inputRef.current && addressString) {
         inputRef.current.value = addressString
@@ -35,7 +44,11 @@ export default function AddEventForm({ geoFunction, submitFunction }: AddEventFo
   const handleEventSubmit = async (formData: FormData) => {
     setIsSubmitting(true)
     try {
-        await submitFunction(formData, selectedAddress)
+        console.log(user)
+        if(user) {
+          console.log(user.id)
+          await submitFunction(formData, selectedAddress, user.id)
+        }
         /*
         if (result.success) router.push('/map')
         */
