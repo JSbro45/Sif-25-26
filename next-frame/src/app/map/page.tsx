@@ -1,18 +1,25 @@
 'use server'
 
 import Header from '../home/components/Header'
-import MapAndView from './components/MapSelectors';
+import MapAndView from './components/MapAndView';
+import FilterBar from './components/Filters';
 import { getPins } from '../../lib/data-fetch';
 import safeFetch from '../../lib/safe-fetch'
 import { AddressProps, EventProps, FilterProps } from '../../lib/map-types';
-import DateIcon from './components/DateIcon';
-import SearchBar from './components/SearchBar';
 import '../styles/map.css'
 
-export default async function Page() {
 
-  const setMarkers = async (props : FilterProps) => 
-    await safeFetch<[AddressProps[], EventProps[]]>(() => getPins(), [[], []])
+export default async function Page({ searchParams }: { searchParams: { genre?: string, start?: string, end?: string }}) {
+  const markers = {
+    dateRange: {
+      start: searchParams.start ? new Date(searchParams.start) : new Date(),
+      end: searchParams.end ? new Date(searchParams.end) : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    },
+    genre: searchParams.genre,
+    radius: undefined
+  } as FilterProps
+
+  const [addresses, events] = await safeFetch<[AddressProps[], EventProps[]]>( () => getPins(markers), [[], []] )
 
   return (
     <>
@@ -20,10 +27,9 @@ export default async function Page() {
         <div className='header-container'>
           <Header/>
         </div>
-        <main>
-          <MapAndView addresses={[]} events={[]}
-          />
-        </main>
+          <MapAndView addresses={addresses} events={events} >
+            <FilterBar/>
+          </MapAndView>
       </div>
     </>
   )

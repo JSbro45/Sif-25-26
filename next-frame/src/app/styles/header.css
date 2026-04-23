@@ -44,10 +44,14 @@
     color: #fbff00;
 }
 
-#login {
+button {
     margin-left:1rem;
     padding:0.5em 1em;
     border-radius:10px;
+    border: none
+}
+
+#login {
     text-decoration:none;
     font-weight: bold;
     background: #ffffff;
@@ -57,6 +61,15 @@
 #login:hover{
     background:#fdf1d2;
     color:#c94203;
+}
+
+#logout{
+    background-color: #516387;
+    color: white;
+}
+#logout:hover{
+    background-color: white;
+    color: #516387;
 }
 
 #signup {

@@ -1,11 +1,18 @@
 @import './map.css';
 
+
 main {
+    display: flex;
     font-family: Arial, sans-serif;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+}
+
+.right-section{
+    width: 100%;
+    .embed-container{
+        width: 100%;
+        height: 100%
+    }
 }
 
 section {

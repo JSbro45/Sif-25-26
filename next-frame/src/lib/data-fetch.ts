@@ -1,33 +1,31 @@
 import { LatLngTuple } from 'leaflet';
 import { prisma } from './dbclient';
-import { AddressProps, EventProps, MarkerProps } from './map-types';
+import { AddressProps, EventProps, MarkerProps, FilterProps} from './map-types';
 import { ProfileProps } from './user-types';
 import { Event, Address, HostUserProfile } from './generated/prisma/client';
 
 
-export async function getPins(/*timespan : { start: Date; end: Date } , genre_list: string[] | undefined */) {
+export async function getPins({ dateRange : { start, end }, genre} : FilterProps) {
     const events = await prisma.event.findMany({
         where: {
-            /*AND: [
+            AND: [
                 {
                     date_time: {
-                        gte: timespan?.start,
-                        lte: timespan?.end
+                        gte: start,
+                        lte: end
                     }
                 },
-                genre_list.length?({
+                genre?.length?({
                     genres: {
-                        hasSome: genre_list
+                        hasSome: genre
                     }
                 }): {}
-            ]*/
+            ]
         }
     }) as EventProps[];
 
     const addressIds = events.map(event => event.addressId).filter(id => id !== undefined);
     const addresses = await prisma.address.findMany({ where: { id: { in: addressIds }}}) 
-
-    // Map addresses to pins, or adjust as needed for your MarkerProps structure
     const pins = addresses as AddressProps []
     pins.map((pin, k) => pin.coordinates = [addresses[k].lat, addresses[k].lng] as LatLngTuple );
 
@@ -43,7 +41,7 @@ export async function newAddress(props: AddressProps){
         district : props.district,
         street : props.street,
         houseNumber : props.houseNumber,
-        postalCode: props.postalCode,
+        postalCode: '',
         lat : props.coordinates[0],
         lng : props.coordinates[1]
     } 
@@ -51,7 +49,7 @@ export async function newAddress(props: AddressProps){
     if (!address) {
         address = await prisma.address.create({ data: data })
     }
-    return address
+    return address as AddressProps
 }
 
 
@@ -75,16 +73,16 @@ export async function newHostUser(props: ProfileProps | null, clerkId: string | 
     return user as HostUserProfile;
 }
 
-export async function findUserByClerkId(clerkId: string | undefined) {
+export async function findUserByClerkId(clerkId: string | undefined):Promise<HostUserProfile|null> {
     let user = await prisma.hostUserProfile.findFirst({
         where: { clerkId: clerkId }
     }) as HostUserProfile | null;
     if (!user) console.error('requested user not found', clerkId)
-    return user;
+    return user as HostUserProfile;
 }
 
 
-export async function setEventPin(evt_data: EventProps) {
+export async function setEvent(evt_data: EventProps) {
     const event = await prisma.event.create({
         data: {
             name:        evt_data.name,
@@ -94,7 +92,9 @@ export async function setEventPin(evt_data: EventProps) {
             photos:      evt_data.photos,
             addressId:   evt_data.addressId
         }
-    })
+    }) as Event;
+    return event;
 }
+
 
 
