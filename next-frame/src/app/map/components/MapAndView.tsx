@@ -1,7 +1,7 @@
 'use client'
 
 import MapModule from "./map/MapModule"
-import PlusBar from "./PlusBar"
+import {PlusBar} from "./MinorComps"
 import EventView from "./EventView"
 import { useRef, useState } from "react"
 import { Show } from "@clerk/nextjs"
@@ -32,7 +32,7 @@ export default function MapAndView({ addresses, events, children }: MapAndViewPr
       { children }
       <Show when={'signed-in'}>
         <div className='plus-bar-container'>
-          <PlusBar signedIn={true} />
+          <PlusBar />
         </div>
       </Show>
 

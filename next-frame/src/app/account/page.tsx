@@ -2,12 +2,14 @@
 
 import {UserAuthComponent, ProfileUI} from "./components/UserAccount_";
 import Profile from "./components/Profile";
-import EventCards from "../events/components/EventCards";
+import EventCards from "../events/components/EventSelection";
 import Header from "../home/components/Header";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { findUserByClerkId, newHostUser } from "@/src/lib/data-fetch";
 import { clerkClient } from "@clerk/nextjs/server";
+import PlusBar from "../map/components/PlusBar";
+import EventSelection from "../events/components/EventSelection";
 
 
 
@@ -44,7 +46,8 @@ export default async function AccountPage() {
         <div>
           <Profile user={user} />
         </div>
-        <EventCards hostId={user.id} />
+        <EventSelection hostId={user.id} />
+        <PlusBar />
       </div>
     )
 }
