@@ -28,7 +28,7 @@ export default async function FilterBar() {
     <form action={handleFilter} className="filter-bar">
       <input type="date" name="startDate" />
       <input type="date" name="endDate" />
-      <button type="submit"> Apply Filters </button>
+      <button type="submit"> Filtruj </button>
     </form>
   )
 }

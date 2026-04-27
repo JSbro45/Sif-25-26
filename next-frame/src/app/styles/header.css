@@ -45,9 +45,10 @@
 }
 
 button {
-    margin-left:1rem;
-    padding:0.5em 1em;
-    border-radius:10px;
+    font-size: 15px;
+    margin-left:0.7rem;
+    padding:0.8em 1em;
+    border-radius:15px;
     border: none
 }
 
@@ -64,23 +65,22 @@ button {
 }
 
 #logout{
-    background-color: #516387;
-    color: white;
+    text-decoration:none;
+    font-weight: bold;
+    background: #ffffff;
+    color:#027a02;
 }
 #logout:hover{
-    background-color: white;
-    color: #516387;
+    background:#fdf1d2;
+    color:#c94203;
 }
 
 #signup {
-    margin-left:1rem;
-    padding:0.55em 1em;
-    border-radius:10px;
     text-decoration:none;
     font-weight: bold;
     background: linear-gradient(to right, #ff4800, #7c0707); 
     color: #ffffff;
-    margin-right: 25px;
+    margin-right: 30px;
 }
 
 #signup:hover{
