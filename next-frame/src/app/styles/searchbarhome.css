@@ -61,3 +61,20 @@
                 .search-container2{padding:8px 10px}
                 .search-button2{padding:7px 10px}
             }
+
+ @media screen and (max-width: 1000px) {
+    .search-container2 {
+        max-width: 1vh;
+  }
+  .search-button2 {
+    visibility: hidden;
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .search-button2 {
+    visibility: show;
+    position: absolute;
+  }
+}

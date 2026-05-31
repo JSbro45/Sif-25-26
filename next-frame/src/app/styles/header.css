@@ -4,6 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: nowrap;
     top: 0;
     margin-top: -10px;
     padding: 1.2rem;
@@ -20,10 +22,30 @@
 }
 
 .logo{
-    height:60px;
-    width:60px;
-    object-fit:contain;
-    margin-left: -10px;
+    height: 80px;
+    width: auto;
+    max-width: 260px;
+    object-fit: contain;
+}
+
+.search-wrap{
+    flex: 1 1 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+}
+
+/* Constrain the search container when placed inside header */
+.header .search-container2{
+    width: 100%;
+    max-width: 700px;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
 }
 
 #title {
@@ -57,6 +79,7 @@ button {
     font-weight: bold;
     background: #ffffff;
     color:#027a02;
+    cursor: pointer;
 }
 
 #login:hover{
@@ -69,6 +92,7 @@ button {
     font-weight: bold;
     background: #ffffff;
     color:#027a02;
+    cursor: pointer;
 }
 #logout:hover{
     background:#fdf1d2;
@@ -81,9 +105,58 @@ button {
     background: linear-gradient(to right, #ff4800, #7c0707); 
     color: #ffffff;
     margin-right: 30px;
+    cursor: pointer;
 }
 
 #signup:hover{
     background: linear-gradient(to right, #37bb03,#025c02);
     color:#ffffff;
+}
+
+@media (max-width: 900px) {
+    .header{
+        padding: 0.9rem;
+    }
+    .logo{
+        height: 48px;
+        max-width: 200px;
+        margin-left: 0;
+    }
+    button{
+        padding: 0.6em 0.9em;
+        font-size: 14px;
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        padding: 0.6rem;
+    }
+    #logo_header{
+        justify-content: center;
+        margin-bottom: 0.25rem;
+    }
+    .logo{
+        height: 80px;
+        max-width: 160px;
+    }
+    .search-wrap{
+        order: 2;
+        width: 100%;
+        justify-content: center;
+    }
+    .nav{
+        order: 3;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+    .links_header{
+        font-size: 14px;
+        margin: 0 0.35rem;
+    }
 }

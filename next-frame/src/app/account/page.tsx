@@ -10,7 +10,7 @@ import { findUserByClerkId, newHostUser } from "@/src/lib/data-fetch";
 import { clerkClient } from "@clerk/nextjs/server";
 import PlusBar from "../map/components/PlusBar";
 import EventSelection from "../events/components/EventSelection";
-
+import '../styles/account.css'
 
 
 async function getOrCreateUser(clerkId: string) {
@@ -28,6 +28,10 @@ async function getOrCreateUser(clerkId: string) {
     );
   }
   user = await findUserByClerkId(clerkId);
+
+  if (!user) {
+    throw new Error("Failed to create or retrieve user");
+  }
 
   return user;
 }

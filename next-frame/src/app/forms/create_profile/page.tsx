@@ -21,12 +21,12 @@ export default async function CreateProfile({
     const clerkUser = await currentUser()
 
     if (clerkUser) {
-        const hostUser = newHostUser(
+        const hostUser = await newHostUser(
             {
-                firstName: clerkUser.firstName,
-                lastName: clerkUser.lastName,
-                email: clerkUser.emailAddresses
-            }, 
+                firstName: clerkUser.firstName ?? "",
+                lastName: clerkUser.lastName ?? "",
+                email: clerkUser.emailAddresses?.[0]?.emailAddress ?? ""
+            },
             clerkId ?? clerkUser.id   // use param or fall back to session
         ) as HostUserProfile | null
 
