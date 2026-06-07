@@ -93,6 +93,7 @@ button {
     background: #ffffff;
     color:#027a02;
     cursor: pointer;
+    margin-right: 30px;
 }
 #logout:hover{
     background:#fdf1d2;

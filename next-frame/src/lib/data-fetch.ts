@@ -15,41 +15,48 @@ export async function getPins({ dateRange : { start, end }, genre} : FilterProps
                         lte: end
                     }
                 },
-                genre?.length?({
+                genre?.length ? {
                     genres: {
-                        hasSome: genre
+                        has: genre
                     }
-                }): {}
+                } : {}
             ]
         }
     }) as EventProps[];
 
     const addressIds = events.map(event => event.addressId).filter(id => id !== undefined);
-    const addresses = await prisma.address.findMany({ where: { id: { in: addressIds }}}) 
-    const pins = addresses as AddressProps []
-    pins.map((pin, k) => pin.coordinates = [addresses[k].lat, addresses[k].lng] as LatLngTuple );
+    const addresses = await prisma.address.findMany({ where: { id: { in: addressIds }}});
+    const pins: AddressProps[] = addresses.map(address => ({
+        ...address,
+        coordinates: [address.lat, address.lng] as LatLngTuple
+    }));
 
-    return [addresses, events] as [AddressProps[], EventProps[]];
+    return [pins, events] as [AddressProps[], EventProps[]];
 }
 
 
-export async function newAddress(props: AddressProps){
-    let address : Promise<Address> | Address
-    const data =  {
-        region : props.region,
-        municipality : props.municipality,
-        district : props.district,
-        street : props.street,
-        houseNumber : props.houseNumber,
+export async function newAddress(props: AddressProps) {
+    const data = {
+        region: props.region,
+        municipality: props.municipality,
+        district: props.district,
+        street: props.street,
+        houseNumber: props.houseNumber,
         postalCode: '',
-        lat : props.coordinates[0],
-        lng : props.coordinates[1]
-    } 
-    address = await prisma.address.findFirst({ where: data })
-    if (!address) {
-        address = await prisma.address.create({ data: data })
+        lat: props.coordinates[0],
+        lng: props.coordinates[1]
     }
-    return address as AddressProps
+
+    let address = await prisma.address.findFirst({ where: data })
+    if (!address) {
+        address = await prisma.address.create({ data })
+    }
+
+    return {
+        ...address,
+        coordinates: [address.lat, address.lng] as LatLngTuple,
+        postalCode: address.postalCode ?? ''
+    } as AddressProps
 }
 
 
@@ -74,11 +81,15 @@ export async function newHostUser(props: ProfileProps | null, clerkId: string | 
 }
 
 export async function findUserByClerkId(clerkId: string | undefined):Promise<HostUserProfile|null> {
-    let user = await prisma.hostUserProfile.findFirst({
-        where: { clerkId: clerkId }
+    if (!clerkId) {
+        console.error('Clerk ID is required to find a user.');
+        return null;
+    }
+    const user = await prisma.hostUserProfile.findFirst({
+        where: { clerkId }
     }) as HostUserProfile | null;
-    if (!user) console.error('requested user not found', clerkId)
-    return user as HostUserProfile;
+    if (!user) console.error('requested user not found', clerkId);
+    return user;
 }
 
 

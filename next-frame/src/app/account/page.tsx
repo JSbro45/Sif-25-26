@@ -11,6 +11,7 @@ import { clerkClient } from "@clerk/nextjs/server";
 import PlusBar from "../map/components/PlusBar";
 import EventSelection from "../events/components/EventSelection";
 import '../styles/account.css'
+import { Card } from "./components/Card";
 
 
 async function getOrCreateUser(clerkId: string) {
@@ -47,11 +48,18 @@ export default async function AccountPage() {
 
     return (
       <div>
+        <Card>
         <div>
           <Profile user={user} />
         </div>
+        </Card>
+        <Card>
         <EventSelection hostId={user.id} />
-        <PlusBar />
+        <div className="add-event-section">
+          <PlusBar />
+            <h2>Přidat akci</h2>
+        </div>
+        </Card> 
       </div>
     )
 }

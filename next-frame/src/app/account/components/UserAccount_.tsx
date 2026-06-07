@@ -12,9 +12,9 @@ export function ProfileUI({ children }: { children: React.ReactNode }) {
         <div className="container">
             {children}
             <SignOutButton>
-                <button> Odhlásit se </button>
+                <button id="sign-out-btn"> Odhlásit se </button>
             </SignOutButton>
-            <button> změnit údaje </button>
+            <button id="edit-profile-btn"> Změnit údaje </button>
         </div>
     )
 }

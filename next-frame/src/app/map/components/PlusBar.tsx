@@ -6,7 +6,7 @@ export default function PlusBar() {
     return (
         <Show when={'signed-in'}>
             <Link href="/forms/add_event" className='link-in-btn'>
-                <button className="round-btn" id="ddToggle" title="Open menu" style={{fontSize: "xx-large", color:"#ecfd00"}}>
+                <button className="round-btn" id="ddToggle" title="Open menu">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         width="40" 
